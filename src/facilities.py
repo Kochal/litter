@@ -2,6 +2,7 @@
 EA Waste Data Interrogator (wastes received), one row per permit."""
 from pathlib import Path
 
+import geopandas as gpd
 import pandas as pd
 from pyxlsb import open_workbook
 
@@ -40,6 +41,7 @@ def classify(sites: pd.DataFrame) -> pd.Series:
     op = sites["Operator"].astype(str)
     named_hwrc = (name.str.contains(HWRC_NAME, case=False, regex=True)
                   | (op.str.contains(COUNCIL_OP, case=False, regex=True)
+                     & ~op.str.contains(r"\b(?:ltd|limited)\b", case=False, regex=True)
                      & name.str.contains(r"recycling centre|waste site|\btip\b", case=False, regex=True)))
     named_hwrc &= ~name.str.contains(r"water recycling|former", case=False, regex=True)
     hwrc = sites["Facility Type"].eq("CA Site") | named_hwrc
@@ -65,6 +67,41 @@ def build_sites(year: int = 2024) -> pd.DataFrame:
     return sites
 
 
+HWA_ACTIVITY = r"^(?:A13a?|S0813):"
+LANDFILL_ACTIVITY = r"^(?:A0[1-6]|L0\d):"
+TRANSFER_ACTIVITY = r"transfer st|\bTS\b|WTS"
+
+
+def wales_sites() -> pd.DataFrame:
+    """Operational permitted waste sites in Wales (NRW), one row per permit, in the
+    same layout as the English site table."""
+    g = gpd.read_file(RAW / "nrw_waste_permits.json")
+    # Many permits carry no operational status; drop only those known to be closed
+    g = g[~g["operational_status"].isin(["Closed", "Pre-Operational"])]
+    act = g["waste_activity"].fillna("")
+    g = g.assign(is_hwa=act.str.contains(HWA_ACTIVITY, regex=True),
+                 is_landfill=act.str.contains(LANDFILL_ACTIVITY, regex=True),
+                 is_transfer=act.str.contains(TRANSFER_ACTIVITY, case=False, regex=True))
+    per = g.groupby("permit_number").agg(
+        site_name=("site_name", "first"), operator=("operator", "first"),
+        district=("local_aurthority", "first"), postcode=("site_postcode", "first"),
+        activity=("waste_activity", "first"), easting=("geometry", lambda x: x.iloc[0].x),
+        northing=("geometry", lambda x: x.iloc[0].y), is_hwa=("is_hwa", "any"),
+        is_landfill=("is_landfill", "any"), is_transfer=("is_transfer", "any")).reset_index()
+    out = pd.DataFrame({
+        "Facility RPA": "Wales", "Facility WPA": per["district"], "Facility District": per["district"],
+        "Permit": per["permit_number"], "Site Name": per["site_name"], "Operator": per["operator"],
+        "Permit Type": per["activity"], "easting": per["easting"], "northing": per["northing"],
+        "Post Code": per["postcode"], "Site Category": "", "Facility Type": "",
+        "tonnes": float("nan"), "tonnes_hic": float("nan"), "year": 2025})
+    # Reuse the English name rules, then let the NRW activity codes take precedence
+    kind = classify(out)
+    kind = kind.mask(per["is_transfer"].values & kind.eq("other"), "transfer")
+    kind = kind.mask(per["is_landfill"].values, "landfill")
+    out["kind"] = kind.mask(per["is_hwa"].values, "hwrc")
+    return out
+
+
 def hwrc_layer(sites: pd.DataFrame) -> pd.DataFrame:
     """One row per physical HWRC. A site can hold several permits or permit types
     (e.g. a CA site plus a transfer station on the same plot), so collapse by
@@ -82,8 +119,14 @@ if __name__ == "__main__":
     INTERIM.mkdir(parents=True, exist_ok=True)
     s = build_sites()
     s.to_csv(INTERIM / "wdi2024_sites.csv", index=False)
+    w = wales_sites()
+    w.to_csv(INTERIM / "wales_sites.csv", index=False)
+    print("Wales:", w["kind"].value_counts().to_dict())
     print(s.shape)
     print(s["kind"].value_counts().to_string())
     h = hwrc_layer(s)
     h.to_csv(INTERIM / "hwrc_england_2024.csv", index=False)
-    print("distinct HWRCs:", len(h))
+    hw = hwrc_layer(w)
+    pd.concat([h.assign(nation="England"), hw.assign(nation="Wales")]).to_csv(
+        INTERIM / "hwrc_all.csv", index=False)
+    print("distinct HWRCs: England", len(h), "Wales", len(hw))
