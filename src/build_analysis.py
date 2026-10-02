@@ -48,6 +48,9 @@ def build() -> pd.DataFrame:
     pop = pd.read_csv(INTERIM / "population.csv")
     cen = pd.read_csv(INTERIM / "census_council.csv")
     acc = pd.read_csv(INTERIM / "council_access_panel.csv")
+    cens = pd.read_csv(INTERIM / "council_access_panel_censored.csv")[
+        ["LAD25CD", "year", "t_hwrc_mean", "t_hwrc_nocar", "share_over_15"]]
+    acc = acc.merge(cens, on=["LAD25CD", "year"], suffixes=("", "_cens"))
     h = pd.read_csv(INTERIM / "lad25_hierarchy.csv")
     h["region"] = h["RGN25NM"].fillna("Wales")
     h["wda"] = wda_lookup(h)
@@ -64,6 +67,11 @@ def build() -> pd.DataFrame:
     d["basis_changed"] = rb.str.contains("changed|Mixed", regex=True).astype(int)
     d["two_tier"] = (d["CTYUA25NM"] != d["LAD25NM"] if "LAD25NM" in d else False).astype(int)
     d["log_pop"] = np.log(d["population"])
+    d = d.sort_values(["LAD25CD", "year"])
+    d["t_hwrc_mean_lag"] = d.groupby("LAD25CD")["t_hwrc_mean"].shift()
+    fin = pd.read_csv(INTERIM / "finance.csv")
+    d = d.merge(fin, on=["LAD25CD", "year"], how="left")
+    d["log_cleansing_pc"] = np.log(d["street_cleansing_k"].clip(lower=1) * 1000 / d["population"])
     area = pd.read_csv(INTERIM / "lad25_area.csv") if (INTERIM / "lad25_area.csv").exists() else None
     if area is not None:
         d = d.merge(area, on="LAD25CD", how="left")

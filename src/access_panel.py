@@ -22,7 +22,12 @@ from accessibility import load_network, nearest_time, snap
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "data" / "raw"
 INTERIM = ROOT / "data" / "interim"
-YEARS = range(2012, 2025)
+YEARS = range(2012, 2025)          # analysis years
+HISTORY_YEARS = range(2012, 2026)  # 2025 returns only confirm sites still open in 2024
+# Disappearing from the returns is not proof of closure (e.g. both Trafford HWRCs
+# vanish from the 2023 to 2025 returns but are open). Under the 'censored' variant,
+# sites last seen in or after this year are assumed open to the end of the panel.
+CENSOR_FROM = 2021
 
 
 MATCH_M = 250  # sites within this distance in different years are the same site
@@ -35,8 +40,8 @@ def english_hwrc_history() -> pd.DataFrame:
     returns but present before and after is treated as open in the gap, so only
     sites that stop appearing count as closures (and only new ones as openings)."""
     frames = []
-    for y in YEARS:
-        f = INTERIM / ("hwrc_england_2024.csv" if y == 2024 else f"hwrc_england_{y}.csv")
+    for y in HISTORY_YEARS:
+        f = INTERIM / f"hwrc_england_{y}.csv"
         frames.append(pd.read_csv(f).assign(year=y))
     allh = pd.concat(frames, ignore_index=True)
     xy = allh[["easting", "northing"]].to_numpy(float)
@@ -52,14 +57,15 @@ def english_hwrc_history() -> pd.DataFrame:
     return sites
 
 
-def hwrc_for_year(year: int, history: pd.DataFrame) -> pd.DataFrame:
-    eng = history[(history["first"] <= year) & (history["last"] >= year)]
+def hwrc_for_year(year: int, history: pd.DataFrame, censored: bool = False) -> pd.DataFrame:
+    last = history["last"].where(~(censored & (history["last"] >= CENSOR_FROM)), 9999)
+    eng = history[(history["first"] <= year) & (last >= year)]
     wal = pd.read_csv(INTERIM / "hwrc_all.csv").query("nation == 'Wales'")
     return pd.concat([eng[["easting", "northing"]].assign(nation="England"),
                       wal[["easting", "northing"]].assign(nation="Wales")])
 
 
-def lsoa_times() -> pd.DataFrame:
+def lsoa_times(censored: bool = False) -> pd.DataFrame:
     graph, xy, entry = load_network()
     lsoa = gpd.read_file(RAW / "lsoa21_pwc.gpkg")
     nation = np.where(lsoa["LSOA21CD"].str[0] == "E", "England", "Wales")
@@ -68,7 +74,7 @@ def lsoa_times() -> pd.DataFrame:
     history.to_csv(INTERIM / "hwrc_england_history.csv", index=False)
     out = []
     for year in YEARS:
-        h = hwrc_for_year(year, history)
+        h = hwrc_for_year(year, history, censored)
         t = np.full(len(lsoa), np.nan)
         for nat in ("England", "Wales"):
             f = h[h["nation"] == nat]
@@ -119,9 +125,10 @@ def council_panel(times: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    cache = INTERIM / "lsoa_hwrc_times_panel.csv"
-    times = pd.read_csv(cache) if cache.exists() else lsoa_times()
-    times.to_csv(cache, index=False)
-    p = council_panel(times)
-    p.to_csv(INTERIM / "council_access_panel.csv", index=False)
-    print(p.groupby("year")[["t_hwrc_mean", "share_over_15"]].mean().to_string())
+    for suffix, censored in [("", False), ("_censored", True)]:
+        cache = INTERIM / f"lsoa_hwrc_times_panel{suffix}.csv"
+        times = pd.read_csv(cache) if cache.exists() else lsoa_times(censored)
+        times.to_csv(cache, index=False)
+        p = council_panel(times)
+        p.to_csv(INTERIM / f"council_access_panel{suffix}.csv", index=False)
+        print(suffix, p.groupby("year")[["t_hwrc_mean", "share_over_15"]].mean().round(3).to_string())

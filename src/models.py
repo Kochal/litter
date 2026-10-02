@@ -14,8 +14,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
+import pyfixest as pf
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data" / "analysis" / "council_year.csv"
@@ -36,6 +35,10 @@ OUTCOME_LABELS = {
 # Rescaled so incidence rate ratios read per meaningful step
 SCALES = {
     "t_hwrc_mean": 5,            # per 5 minutes' drive
+    "t_hwrc_mean_cens": 5,
+    "t_hwrc_mean_lag": 5,
+    "t_hwrc_nocar": 5,
+    "share_over_15": 0.10,       # per 10 points of population >15 minutes away
     "t_transfer_mean": 5,
     "t_landfill_mean": 10,
     "private_rent_share": 0.10,  # per 10 percentage points
@@ -47,7 +50,22 @@ SCALES = {
     "churn_rate": 0.05,
     "log_density": 1,
 }
-BETWEEN_X = list(SCALES)
+BETWEEN_X = ["t_hwrc_mean", "t_transfer_mean", "t_landfill_mean", "private_rent_share",
+             "social_rent_share", "no_car_share", "flat_share", "student_share",
+             "hh_deprived_2plus_share", "churn_rate", "log_density"]
+# Within-council specifications: (label, treatment, sample filter, extra controls)
+WITHIN_SPECS = [
+    ("main", "t_hwrc_mean", None, ""),
+    ("censored recent dropouts", "t_hwrc_mean_cens", None, ""),
+    ("2012 to 2019 only", "t_hwrc_mean", "year <= 2019", ""),
+    ("lagged one year", "t_hwrc_mean_lag", None, ""),
+    ("no-car weighted", "t_hwrc_nocar", None, ""),
+    ("share >15 min", "share_over_15", None, ""),
+    ("all-incidents basis only", "t_hwrc_mean", "basis_public_only == 0 and basis_changed == 0", ""),
+    ("2017 on, no spend control", "t_hwrc_mean_cens", "year >= 2017 and log_cleansing_pc == log_cleansing_pc", ""),
+    ("2017 on, street cleansing spend", "t_hwrc_mean_cens", "year >= 2017 and log_cleansing_pc == log_cleansing_pc",
+     " + log_cleansing_pc"),
+]
 
 
 def load() -> pd.DataFrame:
@@ -59,17 +77,20 @@ def load() -> pd.DataFrame:
 
 
 def fit_ppml(formula: str, data: pd.DataFrame):
-    m = smf.glm(formula, data=data, family=sm.families.Poisson(), offset=data["log_pop"])
-    return m.fit(cov_type="cluster", cov_kwds={"groups": pd.factorize(data["wda"])[0]}, maxiter=200)
+    """PPML (Poisson) with absorbed fixed effects (after '|'), log-population offset
+    and errors clustered by waste disposal authority."""
+    return pf.fepois(formula, data=data, offset="log_pop", vcov={"CRV1": "wda"},
+                     iwls_maxiter=200)
 
 
 def tidy(res, terms, outcome, model) -> pd.DataFrame:
+    coef, se, p = res.coef(), res.se(), res.pvalue()
     rows = []
     for t in terms:
-        b, se = res.params[t], res.bse[t]
+        b, s_ = coef[t], se[t]
         rows.append({"model": model, "outcome": outcome, "term": t.removesuffix("_s"),
-                     "irr": np.exp(b), "lo": np.exp(b - 1.96 * se), "hi": np.exp(b + 1.96 * se),
-                     "p": res.pvalues[t], "n": int(res.nobs)})
+                     "irr": np.exp(b), "lo": np.exp(b - 1.96 * s_), "hi": np.exp(b + 1.96 * s_),
+                     "p": p[t], "n": int(res._N)})
     return pd.DataFrame(rows)
 
 
@@ -79,7 +100,7 @@ def between(d: pd.DataFrame) -> pd.DataFrame:
     out = []
     for y in OUTCOME_LABELS:
         dd = s.dropna(subset=[y, "log_pop", *xs])
-        f = f"{y} ~ {' + '.join(xs)} + basis_public_only + basis_changed + C(region) + C(year)"
+        f = f"{y} ~ {' + '.join(xs)} + basis_public_only + basis_changed | region + year"
         out.append(tidy(fit_ppml(f, dd), xs, y, "between"))
     return pd.concat(out)
 
@@ -87,22 +108,74 @@ def between(d: pd.DataFrame) -> pd.DataFrame:
 def within(d: pd.DataFrame, nation: str | None = "England") -> pd.DataFrame:
     s = d if nation is None else d[d["nation"] == nation]
     out = []
+    for label, x, cond, extra in WITHIN_SPECS:
+        ss = s.query(cond) if cond else s
+        for y in OUTCOME_LABELS:
+            dd = ss.dropna(subset=[y, "log_pop", x + "_s"])
+            f = f"{y} ~ {x}_s + basis_public_only + basis_changed{extra} | LAD25CD + region^year"
+            try:
+                r = tidy(fit_ppml(f, dd), [x + "_s"], y, "within")
+            except Exception as e:  # e.g. no variation left after a sample restriction
+                print("skip", label, y, e)
+                continue
+            out.append(r.assign(spec=label))
+    return pd.concat(out)
+
+
+def event_study(d: pd.DataFrame, x: str = "t_hwrc_mean_cens", jump: float = 1.0,
+                window: int = 4) -> pd.DataFrame:
+    """Fly-tipping before and after the first year a council's mean HWRC drive time
+    rises by at least `jump` minutes, against councils whose access never moved by
+    more than half a minute in any year (clean never-treated controls). Event-time
+    dummies are binned at +/- window, with the year before the event as reference."""
+    e = d[d["nation"] == "England"].sort_values(["LAD25CD", "year"]).copy()
+    e["dt"] = e.groupby("LAD25CD")[x].diff()
+    first = e[e["dt"] >= jump].groupby("LAD25CD")["year"].min().rename("event_year")
+    maxabs = e.groupby("LAD25CD")["dt"].apply(lambda s: s.abs().max())
+    controls = maxabs[maxabs < 0.5].index
+    e = e.merge(first, on="LAD25CD", how="left")
+    e = e[e["LAD25CD"].isin(controls) | e["event_year"].notna()].copy()
+    rel = (e["year"] - e["event_year"]).clip(-window, window)
+    names = []
+    for k in range(-window, window + 1):
+        if k == -1:
+            continue
+        nm = f"ev_m{-k}" if k < 0 else f"ev_p{k}"
+        e[nm] = (rel == k).astype(int)
+        names.append(nm)
+    out = []
+    for y in ["total", "hwrc_type", "bags_household", "cde", "placebo"]:
+        dd = e.dropna(subset=[y, "log_pop"])
+        r = fit_ppml(f"{y} ~ {' + '.join(names)} + basis_public_only + basis_changed"
+                     " | LAD25CD + region^year", dd)
+        t = tidy(r, names, y, "event study")
+        t["event_time"] = [int(n[4:]) * (-1 if n[3] == "m" else 1) for n in names]
+        t["n_treated"] = int(e["event_year"].notna().groupby(e["LAD25CD"]).first().sum())
+        out.append(t)
+    return pd.concat(out)
+
+
+def between_simple(d: pd.DataFrame) -> pd.DataFrame:
+    """HWRC drive time with region and year effects only, to show how much the
+    full covariate set changes the picture."""
+    s = d[d["year"] >= 2022]
+    out = []
     for y in OUTCOME_LABELS:
         dd = s.dropna(subset=[y, "log_pop", "t_hwrc_mean_s"])
-        # Councils with all-zero outcomes add nothing under fixed effects
-        dd = dd[dd.groupby("LAD25CD")[y].transform("sum") > 0]
-        f = (f"{y} ~ t_hwrc_mean_s + basis_public_only + basis_changed"
-             " + C(LAD25CD) + C(region):C(year)")
-        out.append(tidy(fit_ppml(f, dd), ["t_hwrc_mean_s"], y, "within"))
+        r = fit_ppml(f"{y} ~ t_hwrc_mean_s + basis_public_only + basis_changed | region + year", dd)
+        out.append(tidy(r, ["t_hwrc_mean_s"], y, "between (no covariates)"))
     return pd.concat(out)
 
 
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     d = load()
-    b = between(d)
+    b = between(d).assign(spec="full covariates")
+    b0 = between_simple(d).assign(spec="region and year only")
     w = within(d)
-    res = pd.concat([b, w])
+    ev = event_study(d).assign(spec="first rise of 1+ min, never-moved controls")
+    ev.to_csv(OUT / "event_study.csv", index=False)
+    res = pd.concat([b, b0, w])
     res["outcome_label"] = res["outcome"].map(OUTCOME_LABELS)
     res.to_csv(OUT / "model_results.csv", index=False)
     pd.set_option("display.width", 200)
