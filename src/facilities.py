@@ -1,5 +1,6 @@
 """Build a site-level table of permitted waste facilities in England from the
 EA Waste Data Interrogator (wastes received), one row per permit."""
+import re
 from pathlib import Path
 
 import geopandas as gpd
@@ -14,6 +15,19 @@ INTERIM = ROOT / "data" / "interim"
 SITE_COLS = ["Facility RPA", "Facility WPA", "Facility District", "Permit", "Site Name",
              "Operator", "Permit Type", "Easting ", "Northing", "Post Code",
              "Site Category", "Facility Type"]
+
+
+# Column names used by the 2016 extract, mapped to the 2024 layout
+ALIASES = {
+    "fomer planning region of facility": "Facility RPA",
+    "waste planning authority of facility": "Facility WPA",
+    "local authority of facility": "Facility District",
+    "permit reference": "Permit",
+    "facility name": "Site Name",
+    "facility postcode": "Post Code",
+    "basic waste category": "Basic Waste Cat",
+    "site type": "Facility Type",
+}
 
 
 def _rows(path: Path):
@@ -34,10 +48,18 @@ def _rows(path: Path):
 def read_received(path: Path) -> pd.DataFrame:
     rows = _rows(path)
     for header in rows:  # older extracts have a preamble above the header row
-        if header and "Site Name" in [str(h).strip() if h else h for h in header]:
+        names = {str(h).strip().lower() for h in header or [] if h}
+        if "easting" in names and names & {"site name", "facility name"}:
             break
-    header = [str(h).strip() if h is not None else f"col{i}" for i, h in enumerate(header)]
-    df = pd.DataFrame([r[:len(header)] for r in rows], columns=header).dropna(how="all")
+    # Normalise case so every year matches the 2024 layout
+    canon = {c.lower(): c for c in SITE_COLS + ["Easting", "Basic Waste Cat", "Tonnes Received", "SitePC"]}
+    canon.update(ALIASES)
+    header = [canon.get(str(h).strip().lower(), str(h).strip()) if h is not None else "" for h in header]
+    # Some extracts pad the sheet with thousands of empty 'ColumnN' fields
+    keep = [i for i, h in enumerate(header)
+            if h and not re.fullmatch(r"Column\d+", h) and h not in header[:i]]
+    df = pd.DataFrame([[r[i] if i < len(r) else None for i in keep] for r in rows],
+                      columns=[header[i] for i in keep]).dropna(how="all")
     return df.rename(columns={"SitePC": "Post Code", "Easting": "Easting "})
 
 
