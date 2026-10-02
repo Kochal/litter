@@ -4,6 +4,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pandas as pd
+import openpyxl
 from pyxlsb import open_workbook
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,13 +16,37 @@ SITE_COLS = ["Facility RPA", "Facility WPA", "Facility District", "Permit", "Sit
              "Site Category", "Facility Type"]
 
 
+def _rows(path: Path):
+    """Yield raw rows from the 'waste received' sheet of a WDI workbook (.xlsb or .xlsx)."""
+    if path.suffix == ".xlsb":
+        with open_workbook(str(path)) as wb:
+            name = next(s for s in wb.sheets if s.lower().endswith("waste received")
+                        and not s.lower().startswith("interrogator"))
+            with wb.get_sheet(name) as sh:
+                for r in sh.rows():
+                    yield [c.v for c in r]
+    else:
+        wb = openpyxl.load_workbook(path, read_only=True)
+        name = next(s for s in wb.sheetnames if "received" in s.lower())
+        yield from (list(r) for r in wb[name].iter_rows(values_only=True))
+
+
 def read_received(path: Path) -> pd.DataFrame:
-    with open_workbook(str(path)) as wb, wb.get_sheet(next(s for s in wb.sheets if s.endswith("Waste Received") and not s.startswith("Interrogator"))) as sh:
-        rows = sh.rows()
-        header = [c.v for c in next(rows)]
-        data = [[c.v for c in r] for r in rows]
-    df = pd.DataFrame(data, columns=header).dropna(how="all")
-    return df
+    rows = _rows(path)
+    for header in rows:  # older extracts have a preamble above the header row
+        if header and "Site Name" in [str(h).strip() if h else h for h in header]:
+            break
+    header = [str(h).strip() if h is not None else f"col{i}" for i, h in enumerate(header)]
+    df = pd.DataFrame([r[:len(header)] for r in rows], columns=header).dropna(how="all")
+    return df.rename(columns={"SitePC": "Post Code", "Easting": "Easting "})
+
+
+def wdi_path(year: int) -> Path:
+    if year == 2024:
+        return next((RAW / "wdi2024").glob("*Wastes Received*.xlsb"))
+    hist = RAW / "wdi_hist"
+    found = list((hist / str(year)).glob("*.xlsb")) + list(hist.glob(f"{year}.xlsx"))
+    return found[0]
 
 
 HWRC_NAME = (r"household (?:waste|recycling|reuse)|\bH ?W ?R ?C\b|\bH ?R ?C\b|civic amenity"
@@ -52,10 +77,14 @@ def classify(sites: pd.DataFrame) -> pd.Series:
 
 
 def build_sites(year: int = 2024) -> pd.DataFrame:
-    xlsb = next((RAW / f"wdi{year}").glob("*Wastes Received*.xlsb"))
-    df = read_received(xlsb)
+    df = read_received(wdi_path(year))
     df["Tonnes Received"] = pd.to_numeric(df["Tonnes Received"], errors="coerce")
-    df["Permit"] = df["Permit"].astype(str).str.replace(r"\.0$", "", regex=True)
+    # Early years write permits as 'EPR number (licence number)'; keep the first token
+    df["Permit"] = (df["Permit"].astype(str).str.replace(r"\.0$", "", regex=True)
+                    .str.split(" ").str[0])
+    for c in SITE_COLS:
+        if c not in df:
+            df[c] = None
     hh = df["Basic Waste Cat"].eq("Hhold/Ind/Com")
     df["tonnes_hic"] = df["Tonnes Received"].where(hh, 0)
     sites = (df.groupby(SITE_COLS, dropna=False)
@@ -113,6 +142,19 @@ def hwrc_layer(sites: pd.DataFrame) -> pd.DataFrame:
     h = h.groupby("Permit", as_index=False).agg(agg)
     return h.groupby(["easting", "northing"], as_index=False).agg(
         {**{k: v for k, v in agg.items() if k not in ("easting", "northing")}, "Permit": "first"})
+
+
+def build_history(years=range(2012, 2024)) -> pd.DataFrame:
+    """HWRC layer for each earlier WDI year, for the panel of access over time."""
+    out = []
+    for y in years:
+        cache = INTERIM / f"hwrc_england_{y}.csv"
+        if not cache.exists():
+            hwrc_layer(build_sites(y)).assign(year=y).to_csv(cache, index=False)
+        h = pd.read_csv(cache)
+        print(y, len(h))
+        out.append(h)
+    return pd.concat(out)
 
 
 if __name__ == "__main__":

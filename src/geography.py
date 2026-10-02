@@ -57,7 +57,9 @@ def _get_with_retry(url: str, params: dict, tries: int = 8) -> requests.Response
 def fetch_layer(url: str, page: int = 1000) -> gpd.GeoDataFrame:
     """Page through an ArcGIS feature layer (by object id, which these services
     handle more reliably than resultOffset) and return it in British National Grid."""
-    oid = requests.get(url, params={"f": "json"}, timeout=60).json()["objectIdField"]
+    meta = _get_with_retry(url, {"f": "json"}).json()
+    oid = meta.get("objectIdField") or next(
+        f["name"] for f in meta["fields"] if f["type"] == "esriFieldTypeOID")
     frames, last = [], -1
     while True:
         params = {"where": f"{oid} > {last}", "outFields": "*", "outSR": 27700, "f": "json",
