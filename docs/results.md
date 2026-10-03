@@ -151,6 +151,133 @@ access; it can only say that large effects are not visible.
    strongest natural experiment, the England DIY-charge ban from 31 December 2023)
    are not in any public dataset found, so are untested.
 
+## Neighbourhood analysis with FixMyStreet reports
+
+### What the data is and how it was used
+
+FixMyStreet is a website and app run by the charity mySociety where members of the
+public report street problems, which are passed to the council. Each report has a
+location, a date and a category chosen by the council (for example "Flytipping",
+"Fly-tip Small - Less than one bag", "Dumped rubbish"). We downloaded every report
+in 48 fly-tipping categories and 26 litter categories through mySociety's public
+Open311 interface (2012 to October 2025), and placed each report in its
+neighbourhood. A neighbourhood here is an ONS Lower Layer Super Output Area
+(LSOA): a small area of about 1,500 to 1,700 residents. There are 35,672 in
+England and Wales.
+
+| Step | Fly-tipping reports |
+|---|---|
+| Downloaded | 915,941 |
+| Inside England and Wales | 904,027 |
+| In complete years 2012 to 2024 | 721,733 |
+| In council-years with at least 50 reports (used in the models) | 674,572 |
+
+The 50-report threshold drops council-years where FixMyStreet is barely used,
+because comparing neighbourhoods needs enough reports to compare. The models use
+183,799 neighbourhood-years from 27,056 neighbourhoods in 212 councils. Litter
+reports are much rarer: 66,416 reports in 22 councils, so litter results are less
+reliable.
+
+**How FixMyStreet compares with official counts.** In a typical council-year,
+FixMyStreet reports equal about 5% of the incidents the council records
+officially (middle half of council-years: 2% to 12%; 1,278 council-years with 50
+or more reports). In 2024, 118,560 FixMyStreet reports compare with 1,305,724
+official incidents. The two only loosely agree (correlation of 0.38 between their
+logarithms), so FixMyStreet is a partial view: it captures what members of the
+public choose to report through this one channel.
+
+**The comparison.** For each council and year separately, we compared its
+neighbourhoods with each other: do neighbourhoods further from a recycling centre
+report more fly-tipping per resident than neighbourhoods closer by, when their
+housing is similar? Comparing only within a council and year removes everything
+that differs between councils or years, including how much a council uses
+FixMyStreet and how it records incidents. That was the main weakness of the
+council-level analysis.
+
+The drivers in these models, all measured per neighbourhood:
+
+- **Drive time to the nearest recycling centre**, in minutes, as in the council
+  analysis, for each year.
+- **Private renting**: the share of households renting from a private landlord or
+  letting agency (Census 2021).
+- **No car**: the share of households without a car or van (Census 2021).
+- **Population density**: residents per square kilometre.
+- **Rural**: whether ONS classes the neighbourhood as rural rather than urban.
+
+Results are rate ratios: 1.20 means 20% more reports per resident; 0.80 means 20%
+fewer; 1 means no difference.
+
+### Results
+
+**1. Within the same council and year, neighbourhoods further from a recycling
+centre do not report more fly-tipping.** A neighbourhood 5 minutes further away
+has a rate ratio of 0.93 (95% confidence interval 0.81 to 1.07), allowing for
+housing and car ownership. Looking at distance bands rather than a straight line,
+neighbourhoods 20 minutes or more away report fewer fly-tipping incidents than
+those under 5 minutes away (0.67, 0.48 to 0.93), not more.
+
+**2. Private renting and car-less households are linked to more fly-tipping, as
+in the council analysis.** Each extra 10 percentage points of households renting
+privately goes with 15% more fly-tipping reports (1.15, 1.07 to 1.24). Each extra
+10 points of households without a car goes with 23% more (1.23, 1.11 to 1.36).
+The same two drivers are linked to litter reports (1.13 and 1.21 per 10 points).
+
+**3. Rural neighbourhoods report about as much fly-tipping per resident as urban
+ones in the same council** (1.14, 0.81 to 1.60). In the official council data,
+councils further from recycling centres, which are mostly rural, record less
+fly-tipping. Comparing neighbourhoods within councils, that difference does not
+appear, which supports the view that the council-level pattern reflects how
+councils record incidents rather than less dumping in rural areas. Litter reports,
+in contrast, are 43% lower in rural neighbourhoods (0.57, 0.46 to 0.71).
+
+Reports per 1,000 residents per year, in council-years where FixMyStreet is in
+active use:
+
+| Area | Drive time to centre | Neighbourhood-years | Neighbourhoods | Fly-tipping | Litter |
+|---|---|---|---|---|---|
+| Rural | under 5 min | 2,565 | 473 | 1.16 | 0.04 |
+| Rural | 5 to 10 min | 9,179 | 1,578 | 1.73 | 0.05 |
+| Rural | 10 to 15 min | 7,843 | 1,426 | 1.84 | 0.04 |
+| Rural | 15 to 20 min | 2,929 | 551 | 1.41 | 0.05 |
+| Rural | 20 min or more | 1,304 | 260 | 1.35 | 0.08 |
+| Urban | under 5 min | 62,664 | 9,368 | 1.88 | 0.07 |
+| Urban | 5 to 10 min | 83,680 | 12,571 | 2.70 | 0.19 |
+| Urban | 10 to 15 min | 10,606 | 2,008 | 1.31 | 0.08 |
+| Urban | 15 to 20 min | 2,183 | 387 | 0.96 | 0.00 |
+| Urban | 20 min or more | 846 | 165 | 0.55 | 0.01 |
+
+These raw rates mix different councils together; the model results above compare
+neighbourhoods within the same council and year.
+
+**4. When the same neighbourhood loses its nearest recycling centre, its
+fly-tipping reports rise, but the evidence is not conclusive.** Following each
+neighbourhood over the years, a 5-minute increase in its drive time (from a
+closure) goes with 21% more fly-tipping reports (1.21, 1.03 to 1.44). This
+comparison removes everything fixed about the neighbourhood. It rests on the
+2,322 neighbourhoods whose drive time changed by at least a minute (1,264 by 3
+minutes or more), out of 27,056.
+
+| Check | Rate ratio per 5 min (95% CI) | Neighbourhood-years |
+|---|---|---|
+| Main estimate | 1.21 (1.03 to 1.44) | 146,508 |
+| Uncorrected closure data | 1.30 (1.02 to 1.64) | 146,508 |
+| Excluding 2020 and 2021 (Covid) | 1.27 (1.06 to 1.54) | 109,900 |
+| 2012 to 2019 only | 1.22 (0.99 to 1.49) | 59,441 |
+| Adding next year's drive time: this year | 1.14 (0.88 to 1.48) | 123,041 |
+| Adding next year's drive time: next year | 1.09 (0.92 to 1.30) | 123,041 |
+
+The estimate is stable across the first four checks. The last check asks whether
+next year's access already predicts this year's reports, which would point to a
+trend that existed before the closure. Because closures are permanent, this
+year's and next year's drive times are nearly identical, so the effect splits
+between them and neither is clearly different from 1 on its own. That neither
+confirms nor rules out a prior trend. Two further reasons for caution: litter
+reports fall (0.86, 0.81 to 0.92) when access worsens, although access should not
+affect littering, which suggests something else changes around closures; and
+some apparent closures in the Environment Agency data are not real (see Data
+quality issues). This is the most promising lead so far and the one a verified
+closure history would test properly.
+
 ## What to do next
 
 In order of expected value:
@@ -160,10 +287,10 @@ In order of expected value:
    system dates, DIY charges and opening hours at the same time. This fixes the
    main measurement problem and enables the DIY-ban difference-in-differences
    and booking-system event study.
-2. **Point-level data within councils.** FixMyStreet or council incident data
-   at neighbourhood level would allow comparing areas near and far from an HWRC
-   within the same council and year, which removes council recording effort
-   entirely.
+2. **Test the closure result with verified closures.** The FixMyStreet
+   neighbourhood estimate (+21% per 5 minutes) is the strongest lead. Verified
+   closure dates, and an event study around each confirmed closure with
+   neighbouring unaffected areas as the comparison, would show whether it holds.
 3. **Housing mechanisms.** Test the private-renting association more sharply
    with HMO licensing registers, tenancy turnover and student term dates
    (seasonality needs the WasteDataFlow quarterly returns).

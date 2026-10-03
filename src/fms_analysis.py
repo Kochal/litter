@@ -90,16 +90,54 @@ def models(d: pd.DataFrame) -> pd.DataFrame:
         if dd.empty:
             print("no active council-years for", kind)
             continue
-        for label, rhs in specs.items():
-            fit = pf.fepois(f"n_{kind} ~ {rhs} | lad_year", data=dd, offset="log_residents",
-                            vcov={"CRV1": "LAD25CD"})
+        dd = dd.assign(band=pd.cut(dd["t_hwrc_min"], [0, 5, 10, 15, 20, 999],
+                                   labels=["u5", "b5_10", "b10_15", "b15_20", "b20p"]).astype(str))
+        runs = [(label, f"n_{kind} ~ {rhs} | lad_year") for label, rhs in specs.items()]
+        runs.append(("drive-time bands (vs under 5 min)",
+                     f"n_{kind} ~ C(band, contr.treatment(base='u5')) + private_rent_10 + no_car_10"
+                     " + log_density + rural | lad_year"))
+        # Same neighbourhood over time: only closures and openings move drive time
+        runs.append(("same neighbourhood over time", f"n_{kind} ~ t_hwrc_5 | LSOA21CD + lad_year"))
+        for label, fml in runs:
+            fit = pf.fepois(fml, data=dd, offset="log_residents", vcov={"CRV1": "LAD25CD"})
             coef, se, p = fit.coef(), fit.se(), fit.pvalue()
             for t in coef.index:
-                rows.append({"outcome": kind, "spec": label, "term": t, "irr": np.exp(coef[t]),
+                term = t.replace("C(band, contr.treatment(base='u5'))", "band_").replace("[T.", "").rstrip("]")
+                rows.append({"outcome": kind, "spec": label, "term": term, "irr": np.exp(coef[t]),
                              "lo": np.exp(coef[t] - 1.96 * se[t]), "hi": np.exp(coef[t] + 1.96 * se[t]),
                              "p": p[t], "n_lsoa_years": int(fit._N),
                              "n_lsoas": dd["LSOA21CD"].nunique(), "n_councils": dd["LAD25CD"].nunique(),
                              "n_reports": int(dd[f"n_{kind}"].sum())})
+    return pd.DataFrame(rows)
+
+
+def over_time_checks(d: pd.DataFrame) -> pd.DataFrame:
+    """Robustness of the same-neighbourhood estimate for fly-tipping reports."""
+    dd = active_council_years(d, "flytip").sort_values(["LSOA21CD", "year"]).copy()
+    raw = pd.read_csv(INTERIM / "lsoa_hwrc_times_panel.csv")[["LSOA21CD", "year", "t_hwrc_min"]]
+    dd = dd.merge(raw.rename(columns={"t_hwrc_min": "t_raw"}), on=["LSOA21CD", "year"], how="left")
+    dd["t_raw_5"] = dd["t_raw"] / 5
+    g = dd.groupby("LSOA21CD")["t_hwrc_5"]
+    dd["t_lead_5"] = g.shift(-1)       # next year's drive time
+    dd["dt_min"] = g.diff() * 5
+    changed = dd.groupby("LSOA21CD")["dt_min"].apply(lambda s: s.abs().max())
+    runs = {
+        "main (closures confirmed or censored)": ("n_flytip ~ t_hwrc_5", dd),
+        "uncorrected closure data": ("n_flytip ~ t_raw_5", dd),
+        "with next year's drive time (pre-trend test)": ("n_flytip ~ t_hwrc_5 + t_lead_5", dd.dropna(subset=["t_lead_5"])),
+        "excluding 2020 and 2021": ("n_flytip ~ t_hwrc_5", dd[~dd["year"].isin([2020, 2021])]),
+        "2012 to 2019 only": ("n_flytip ~ t_hwrc_5", dd[dd["year"] <= 2019]),
+    }
+    rows = []
+    for label, (rhs, data) in runs.items():
+        fit = pf.fepois(f"{rhs} | LSOA21CD + lad_year", data=data, offset="log_residents",
+                        vcov={"CRV1": "LAD25CD"})
+        for t in fit.coef().index:
+            b, se = fit.coef()[t], fit.se()[t]
+            rows.append({"spec": label, "term": t, "irr": np.exp(b), "lo": np.exp(b - 1.96 * se),
+                         "hi": np.exp(b + 1.96 * se), "p": fit.pvalue()[t], "n_lsoa_years": int(fit._N),
+                         "n_lsoas_changed_1min": int((changed >= 1).sum()),
+                         "n_lsoas_changed_3min": int((changed >= 3).sum())})
     return pd.DataFrame(rows)
 
 
@@ -115,6 +153,18 @@ def descriptives(d: pd.DataFrame) -> pd.DataFrame:
     g["flytip_per_1000"] = g["flytip"] / g["residents"] * 1000
     g["litter_per_1000"] = g["litter"] / g["residents"] * 1000
     return g
+
+
+def coverage(kind: str = "flytip") -> pd.DataFrame:
+    """Where downloaded reports go: outside England and Wales, 2025 (incomplete
+    year), council-years with little FixMyStreet use, or into the models."""
+    r = load_reports(kind)
+    total = len(r)
+    by_year = reports_by_lsoa(kind)
+    in_ew = int(by_year["n_" + kind].sum())
+    in_years = int(by_year.loc[by_year["year"].isin(YEARS), "n_" + kind].sum())
+    return pd.DataFrame({"step": ["downloaded", "inside England and Wales", "in 2012 to 2024"],
+                         "reports": [total, in_ew, in_years]})
 
 
 def validate(d: pd.DataFrame) -> pd.DataFrame:
@@ -134,10 +184,16 @@ if __name__ == "__main__":
     m.to_csv(OUT / "fms_model_results.csv", index=False)
     desc = descriptives(d)
     desc.to_csv(OUT / "fms_descriptives.csv", index=False)
+    ot = over_time_checks(d)
+    ot.to_csv(OUT / "fms_over_time_checks.csv", index=False)
+    print(ot.round(3).to_string(index=False))
+    cov = coverage()
+    cov.to_csv(OUT / "fms_coverage.csv", index=False)
+    print(cov.to_string(index=False))
     v = validate(d)
     v.to_csv(INTERIM / "fms_validation.csv", index=False)
     pd.set_option("display.width", 200)
-    print(m[m.term.isin(["t_hwrc_5", "private_rent_10", "no_car_10", "rural"])].round(3).to_string(index=False))
+    print(m[m.term.str.contains("t_hwrc_5|band_|private_rent|no_car|rural")].round(3).to_string(index=False))
     print(desc.round(2).to_string(index=False))
     act = v[v["n_flytip"] >= 50]
     print("validation: council-years with 50+ reports", len(act),
