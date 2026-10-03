@@ -43,6 +43,25 @@ Source URLs:
 - ONS mid-year estimates: <https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/estimatesofthepopulationforenglandandwales>
 - MHCLG revenue outturn time series: <https://www.gov.uk/government/statistics/local-authority-revenue-expenditure-and-financing-england-revenue-outturn-multi-year-data-set>
 
+## Checking recycling centre closures (run locally)
+
+The Environment Agency records show recycling centres appearing and disappearing,
+but some disappearances are missing records, not closures. `scripts/wayback_hwrc_check.py`
+checks each of the 256 apparent closures and openings in `data/wayback/hwrc_sites_to_check.csv`
+against archived council web pages in the Wayback Machine (web.archive.org, which is
+blocked from the cloud environment, so run it on your own machine):
+
+```
+pip install requests
+python scripts/wayback_hwrc_check.py --domains trafford.gov.uk recycleforgreatermanchester.com   # quick trial
+python scripts/wayback_hwrc_check.py                                                            # all 85 councils, a few hours
+```
+
+Results go to `data/wayback/out/` (commit and push that folder; `data/wayback/cache/`
+is ignored and lets an interrupted run resume). `site_evidence.csv` gives each site a
+verdict such as "confirmed closure" or "still open after EA records end", with the
+years its name appeared on the council's list of centres and a snippet of the text.
+
 ## Licences
 
 Contains Environment Agency information © Environment Agency and/or database
