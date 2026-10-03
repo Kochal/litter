@@ -67,6 +67,9 @@ years its name appeared on the council's list of centres and a snippet of the te
 Contains Environment Agency information © Environment Agency and/or database
 right. The Waste Data Interrogator is supplied under the Environment Agency
 conditional licence, and some older extracts (e.g. 2016) add restrictions on
-publishing because of personal data, so do not commit raw or site-level WDI data.
+publishing because of personal data (operators who are individuals), so do not commit
+raw WDI files or operator details. The one site-level file in the repo,
+`data/wayback/hwrc_sites_to_check.csv`, holds only public recycling centre names, the
+council and the first and last year each site appears; remove it if in doubt.
 Contains OS data © Crown copyright and database right. Other sources are under
 the Open Government Licence v3.0.
