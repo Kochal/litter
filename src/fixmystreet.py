@@ -35,6 +35,12 @@ FLYTIP = re.compile(r"fly.?tip|flytip|fly.?tipped|dumped|dumping|illegal.?dump|a
 EXCLUDE = re.compile(r"fly.?post|poster|vehicle|car\b|cars\b|bike|cycle|trolley|needle|syringe|dog|"
                      r"graffiti|boat|caravan|animal|carcass|shopping", re.I)
 
+# Litter reports are kept as a separate outcome; reports about bins (full,
+# damaged, missing) are about bin provision, not littering.
+LITTER = re.compile(r"litter", re.I)
+LITTER_EXCLUDE = re.compile(r"\bbins?\b|weeds?|fly.?tip|not including litter|picking bags|needle", re.I)
+MONTHLY_ABOVE = 4000  # estimated reports a year above which a category is fetched month by month
+
 _session = requests.Session()
 _session.headers.update(HEADERS)
 
@@ -106,32 +112,52 @@ def is_flytip(code: str, name: str) -> bool:
     return bool(FLYTIP.search(text)) and not EXCLUDE.search(text)
 
 
-def download(codes: list[str]) -> None:
-    """One JSON-lines file per category and year; existing files are skipped so the
-    download can resume."""
+def is_litter(code: str, name: str) -> bool:
+    text = f"{code} {name}"
+    return bool(LITTER.search(text)) and not LITTER_EXCLUDE.search(text)
+
+
+def download(cats: pd.DataFrame, kind: str) -> None:
+    """Fetch every report in the given categories, one JSON-lines file per category
+    and year (or month, for large categories). Existing files are skipped, so the
+    download resumes where it stopped. `cats` holds the discovery tally."""
     now = datetime.now(timezone.utc)
-    for code in codes:
-        safe = re.sub(r"[^A-Za-z0-9]+", "_", code)[:80]
-        for y in YEARS:
-            out = RAW / "reports" / f"{safe}__{y}.jsonl"
-            if out.exists():
-                continue
-            start = datetime(y, 1, 1, tzinfo=timezone.utc)
-            end = min(datetime(y + 1, 1, 1, tzinfo=timezone.utc), now)
-            rows = fetch_window(start, end, code)
-            out.parent.mkdir(parents=True, exist_ok=True)
-            with out.open("w") as f:
-                for r in rows:
-                    f.write(json.dumps(r) + "\n")
-            if rows:
-                print(code, y, len(rows), flush=True)
+    sample_days_per_year = 4
+    for row in cats.sort_values("n", ascending=False).itertuples():
+        code = row.service_code
+        safe = re.sub(r"[^A-Za-z0-9]+", "_", str(code))[:80]
+        est_per_year = row.n / max(1, row.last_year - row.first_year + 1) / sample_days_per_year * 365
+        # Small categories are only searched around the years they were seen in
+        years = YEARS if est_per_year > 200 else range(max(YEARS.start, row.first_year - 1),
+                                                       min(YEARS.stop, row.last_year + 2))
+        for y in years:
+            months = range(1, 13) if est_per_year > MONTHLY_ABOVE else [None]
+            for m in months:
+                tag = f"{y}" if m is None else f"{y}-{m:02d}"
+                out = RAW / "reports" / kind / f"{safe}__{tag}.jsonl"
+                if out.exists():
+                    continue
+                start = datetime(y, m or 1, 1, tzinfo=timezone.utc)
+                if start > now:
+                    break
+                end = (datetime(y + 1, 1, 1, tzinfo=timezone.utc) if m in (None, 12)
+                       else datetime(y, m + 1, 1, tzinfo=timezone.utc))
+                rows = fetch_window(start, min(end, now), code)
+                out.parent.mkdir(parents=True, exist_ok=True)
+                tmp = out.with_suffix(".part")
+                with tmp.open("w") as f:
+                    for r in rows:
+                        f.write(json.dumps(r) + "\n")
+                tmp.rename(out)
+                if rows:
+                    print(kind, code, tag, len(rows), flush=True)
 
 
-def load_reports() -> pd.DataFrame:
+def load_reports(kind: str = "flytip") -> pd.DataFrame:
     keep = ["service_request_id", "requested_datetime", "service_code", "service_name",
             "status", "lat", "long", "interface_used"]
     rows = []
-    for f in sorted((RAW / "reports").glob("*.jsonl")):
+    for f in sorted((RAW / "reports" / kind).glob("*.jsonl")):
         for line in f.open():
             r = json.loads(line)
             rec = {k: r.get(k) for k in keep}
@@ -148,8 +174,11 @@ if __name__ == "__main__":
     RAW.mkdir(parents=True, exist_ok=True)
     cats = discover()
     cats["flytip"] = [is_flytip(str(c), str(n)) for c, n in zip(cats["service_code"], cats["service_name"])]
+    cats["litter"] = [is_litter(str(c), str(n)) and not f
+                      for c, n, f in zip(cats["service_code"], cats["service_name"], cats["flytip"])]
     cats.to_csv(RAW / "categories_sample.csv", index=False)
-    print(cats["flytip"].sum(), "fly-tipping categories of", len(cats))
+    print(cats["flytip"].sum(), "fly-tipping and", cats["litter"].sum(), "litter categories of", len(cats))
     if "--download" in sys.argv:
-        codes = cats.loc[cats["flytip"], "service_code"].dropna().unique().tolist()
-        download(codes)
+        for kind in ("flytip", "litter"):
+            sel = cats[cats[kind]].dropna(subset=["service_code"]).drop_duplicates("service_code")
+            download(sel, kind)
