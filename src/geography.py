@@ -14,6 +14,8 @@ ONS = "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services"
 LAYERS = {
     "lsoa21_pwc": f"{ONS}/LSOA_PopCentroids_EW_2021_V4/FeatureServer/0",
     "lad25_bgc": f"{ONS}/Local_Authority_Districts_DEC_2025_Boundaries_UK_BGC/FeatureServer/0",
+    # Super-generalised LSOA boundaries with the 2021 rural-urban classification
+    "lsoa21_bsc_ruc": f"{ONS}/LSOA_2021_EW_BSC_V4_RUC/FeatureServer/0",
 }
 
 

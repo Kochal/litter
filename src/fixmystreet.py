@@ -163,7 +163,7 @@ def load_reports(kind: str = "flytip") -> pd.DataFrame:
             rec = {k: r.get(k) for k in keep}
             rec["council"] = ";".join((r.get("agency_responsible") or {}).get("recipient", []))
             rows.append(rec)
-    df = pd.DataFrame(rows).drop_duplicates("service_request_id")
+    df = pd.DataFrame(rows, columns=keep + ["council"]).drop_duplicates("service_request_id")
     df["requested_datetime"] = pd.to_datetime(df["requested_datetime"], utc=True)
     df[["lat", "long"]] = df[["lat", "long"]].astype(float)
     return df
