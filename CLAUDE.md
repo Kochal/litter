@@ -23,8 +23,8 @@ Feedback from the project owner on the first results page; apply to every report
 
 ## Data handling
 
-- Raw and intermediate data (data/raw, data/interim, data/analysis) are gitignored.
-  EA Waste Data Interrogator files are under the EA conditional licence (some years
-  forbid publishing), and FixMyStreet reports contain public free text: publish
-  council-level or other aggregates only.
+- Raw and intermediate data (data/raw, data/interim, data/analysis) are gitignored
+  for size. Derived data may be committed or published as long as it contains no
+  personally identifiable information (e.g. no operator names from EA files, no
+  free text or reporter details from FixMyStreet reports).
 - Never send the owner's personal details to external services (e.g. in user agents).

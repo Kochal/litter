@@ -21,12 +21,13 @@ Method, per council domain:
    address mentions recycling centres, tips, household waste or civic amenity
    sites.
 2. Pick "list pages": addresses that look like the council's page listing all its
-   recycling centres (for example /household-waste-recycling-centres). Keep the
-   most-captured few.
+   recycling centres (for example /household-waste-recycling-centres), choosing
+   the most-captured ones separately for each year.
 3. For each list page and each year, read one archived copy (closest to July)
    and look for each site's distinctive name words.
-4. Per site: which years its name appears on the list, and pages about the site
-   itself (address contains its name) with their last good capture.
+4. Per site: which years its name (or an alias from the input) appears on a list,
+   and which years a page about the site itself (address contains its name) was
+   captured; both count as evidence the site was open.
 5. Verdict, by comparing with the years the site appears in the EA records.
 
 Responses are cached in data/wayback/cache/, so an interrupted run resumes.
@@ -138,18 +139,30 @@ def snapshot_text(fx: Fetcher, timestamp: str, original: str) -> str | None:
 
 # ---------------------------------------------------------------- matching
 def tokens(name: str) -> list[str]:
-    words = re.findall(r"[a-z]+", name.lower())
-    return [w for w in words if len(w) >= 4 and w not in GENERIC][:2]
+    words = [w for w in re.findall(r"[a-z]+", name.lower()) if w not in GENERIC]
+    long = [w for w in words if len(w) >= 4]
+    return (long or [w for w in words if len(w) >= 3])[:2]
 
 
-def on_page(text: str, toks: list[str]) -> tuple[bool, str]:
-    if not toks:
-        return False, ""
-    hits = [re.search(rf"\b{re.escape(t)}\b", text) for t in toks]
-    if not all(hits):
-        return False, ""
-    i = hits[0].start()
-    return True, text[max(0, i - 80): i + 120]
+def name_variants(site: dict) -> list[list[str]]:
+    """Search words for the EA name and any 'also known as' names (semicolon
+    separated in the input's aliases column, e.g. a site renamed by the council)."""
+    names = [site["name"]] + [a for a in (site.get("aliases") or "").split(";") if a.strip()]
+    return [t for t in (tokens(n) for n in names) if t]
+
+
+def on_page(text: str, variants: list[list[str]]) -> tuple[bool, str]:
+    """True if every search word of any name variant is on the page. Words are also
+    matched with spaces removed, so 'rosehill' finds 'rose hill'."""
+    squashed = re.sub(r"[^a-z]", "", text)
+    for toks in variants:
+        hits = [re.search(rf"\b{re.escape(t)}\b", text) for t in toks]
+        if all(hits):
+            i = hits[0].start()
+            return True, text[max(0, i - 80): i + 120]
+        if all(t in squashed for t in toks) and len("".join(toks)) >= 6:
+            return True, "(matched with spaces removed) " + " ".join(toks)
+    return False, ""
 
 
 def norm_path(url: str) -> str:
@@ -162,7 +175,11 @@ def verdict(event: str, ea_first: int, ea_last: int, present: dict[int, bool]) -
     if not checked:
         return "unclear", "no archived list page found"
     if not yes:
-        return "unclear", "name never found on the archived list pages (name may differ)"
+        if "closure" in event and checked and min(checked) > ea_last:
+            return ("likely closure (never listed afterwards)",
+                    f"not on any list checked ({min(checked)} to {max(checked)}); no list from before {ea_last + 1} "
+                    "to compare, and the council may use a different name")
+        return "unclear", "name never found on the archived pages (name may differ)"
     notes = []
     out = []
     if "closure" in event:
@@ -191,7 +208,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--domains", nargs="*", help="only these domains (for a trial run)")
     ap.add_argument("--sleep", type=float, default=2.0, help="seconds between requests")
-    ap.add_argument("--list-pages", type=int, default=3, help="list pages to read per domain")
+    ap.add_argument("--list-pages", type=int, default=2, help="list pages to read per domain and year")
     a = ap.parse_args()
 
     sites = list(csv.DictReader(open(WB / "hwrc_sites_to_check.csv", encoding="utf-8")))
@@ -206,6 +223,7 @@ def main():
     present = defaultdict(dict)       # site_id -> {year: bool}
     context = defaultdict(dict)       # site_id -> {year: snippet}
     site_pages = defaultdict(list)    # site_id -> [(url, last_ok_ts, n_captures)]
+    page_years = defaultdict(set)     # site_id -> years with a good capture of the site's own page
     list_log = []
 
     for n, (domain, dsites) in enumerate(sorted(by_domain.items()), 1):
@@ -220,25 +238,25 @@ def main():
         for r in ok:
             by_url[norm_path(r["original"])].append(r)
 
-        # Pages about each site, by name in the address
+        # Pages about each site, by name in the address; a good capture in a year
+        # counts as evidence the site was open that year
         for s in dsites:
-            toks = tokens(s["name"])
-            if not toks:
-                continue
-            for u, caps in by_url.items():
-                if toks[0] in re.sub(r"[^a-z]+", " ", u.split("/", 1)[-1]).split():
-                    site_pages[s["site_id"]].append((u, max(c["timestamp"] for c in caps), len(caps)))
+            for toks in name_variants(s):
+                for u, caps in by_url.items():
+                    path_words = re.sub(r"[^a-z]+", " ", u.split("/", 1)[-1]).split()
+                    if toks[0] in path_words or (len(toks[0]) >= 6 and toks[0] in "".join(path_words)):
+                        site_pages[s["site_id"]].append((u, max(c["timestamp"] for c in caps), len(caps)))
+                        for c in caps:
+                            page_years[s["site_id"]].add(int(c["timestamp"][:4]))
 
-        # List pages: most-captured addresses that look like the centre listing
-        lists = sorted((u for u in by_url if LIST_PAGE.search("/" + u.split("/", 1)[-1])),
-                       key=lambda u: -len(by_url[u]))[: a.list_pages]
-        print(f"  {len(rows)} captures, {len(by_url)} pages, list pages: {lists}", flush=True)
-        for u in lists:
-            caps = by_url[u]
-            for y in YEARS:
-                yc = [c for c in caps if c["timestamp"][:4] == str(y)]
-                if not yc:
-                    continue
+        # List pages: addresses that look like the council's list of centres. Chosen
+        # year by year, because councils restructure their websites.
+        lists = [u for u in by_url if LIST_PAGE.search("/" + u.split("/", 1)[-1])]
+        print(f"  {len(rows)} captures, {len(by_url)} pages, {len(lists)} list pages", flush=True)
+        for y in YEARS:
+            in_year = sorted(((u, [c for c in by_url[u] if c["timestamp"][:4] == str(y)]) for u in lists),
+                             key=lambda x: -len(x[1]))
+            for u, yc in [x for x in in_year if x[1]][: a.list_pages]:
                 c = min(yc, key=lambda c: abs(int(c["timestamp"][4:8]) - 701))
                 text = snapshot_text(fx, c["timestamp"], c["original"])
                 list_log.append({"domain": domain, "url": u, "year": y, "timestamp": c["timestamp"],
@@ -246,7 +264,7 @@ def main():
                 if not text or len(text) < 500:
                     continue
                 for s in dsites:
-                    hit, snip = on_page(text, tokens(s["name"]))
+                    hit, snip = on_page(text, name_variants(s))
                     sid = s["site_id"]
                     present[sid][y] = present[sid].get(y, False) or hit
                     if hit and y not in context[sid]:
@@ -258,7 +276,7 @@ def main():
         w.writerows(list_log)
 
     fields = ["site_id", "name", "council", "event", "ea_first_year", "ea_last_year", "name_tokens",
-              "verdict", "notes", "years_listed", "years_checked", "site_pages", "example_text"]
+              "verdict", "notes", "years_listed", "years_site_page", "years_checked", "site_pages", "example_text"]
     with open(OUT / "site_evidence.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
@@ -266,13 +284,16 @@ def main():
             if a.domains and not any(d in a.domains for d in s["domains"].split(";")):
                 continue
             sid = s["site_id"]
-            pr = present.get(sid, {})
+            pr = dict(present.get(sid, {}))
+            for y in page_years.get(sid, ()):  # the site's own page captured that year
+                pr[y] = True
             v, notes = verdict(s["event"], int(s["ea_first_year"]), int(s["ea_last_year"]), pr)
             pages = sorted(site_pages.get(sid, []), key=lambda p: -p[2])[:3]
             snip = next(iter(context.get(sid, {}).values()), "")
             w.writerow({**{k: s[k] for k in ["site_id", "name", "council", "event", "ea_first_year", "ea_last_year"]},
-                        "name_tokens": " ".join(tokens(s["name"])), "verdict": v, "notes": notes,
+                        "name_tokens": " / ".join(" ".join(t) for t in name_variants(s)), "verdict": v, "notes": notes,
                         "years_listed": " ".join(str(y) for y in sorted(pr) if pr[y]),
+                        "years_site_page": " ".join(str(y) for y in sorted(page_years.get(sid, ()))),
                         "years_checked": " ".join(str(y) for y in sorted(pr)),
                         "site_pages": " | ".join(f"{u} (last ok {t[:8]})" for u, t, _ in pages),
                         "example_text": snip})
