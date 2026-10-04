@@ -65,13 +65,18 @@ def hwrc_for_year(year: int, history: pd.DataFrame, censored: bool = False) -> p
                       wal[["easting", "northing"]].assign(nation="Wales")])
 
 
-def lsoa_times(censored: bool = False) -> pd.DataFrame:
+def lsoa_times(censored: bool = False, variant: str | None = None) -> pd.DataFrame:
+    """variant: None builds the history from the WDI files; 'verified' or 'strict'
+    use the Wayback-corrected histories from verified_history.py."""
     graph, xy, entry = load_network()
     lsoa = gpd.read_file(RAW / "lsoa21_pwc.gpkg")
     nation = np.where(lsoa["LSOA21CD"].str[0] == "E", "England", "Wales")
     c_node, c_extra = snap(np.c_[lsoa.geometry.x, lsoa.geometry.y], xy, entry)
-    history = english_hwrc_history()
-    history.to_csv(INTERIM / "hwrc_england_history.csv", index=False)
+    if variant:
+        history = pd.read_csv(INTERIM / f"hwrc_england_history_{variant}.csv")
+    else:
+        history = english_hwrc_history()
+        history.to_csv(INTERIM / "hwrc_england_history.csv", index=False)
     out = []
     for year in YEARS:
         h = hwrc_for_year(year, history, censored)
@@ -125,9 +130,10 @@ def council_panel(times: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    for suffix, censored in [("", False), ("_censored", True)]:
+    for suffix, censored, variant in [("", False, None), ("_censored", True, None),
+                                      ("_verified", False, "verified"), ("_strict", False, "strict")]:
         cache = INTERIM / f"lsoa_hwrc_times_panel{suffix}.csv"
-        times = pd.read_csv(cache) if cache.exists() else lsoa_times(censored)
+        times = pd.read_csv(cache) if cache.exists() else lsoa_times(censored, variant)
         times.to_csv(cache, index=False)
         p = council_panel(times)
         p.to_csv(INTERIM / f"council_access_panel{suffix}.csv", index=False)

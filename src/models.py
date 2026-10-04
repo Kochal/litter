@@ -36,6 +36,8 @@ OUTCOME_LABELS = {
 SCALES = {
     "t_hwrc_mean": 5,            # per 5 minutes' drive
     "t_hwrc_mean_cens": 5,
+    "t_hwrc_mean_verified": 5,
+    "t_hwrc_mean_strict": 5,
     "t_hwrc_mean_lag": 5,
     "t_hwrc_nocar": 5,
     "share_over_15": 0.10,       # per 10 points of population >15 minutes away
@@ -57,6 +59,8 @@ BETWEEN_X = ["t_hwrc_mean", "t_transfer_mean", "t_landfill_mean", "private_rent_
 WITHIN_SPECS = [
     ("main", "t_hwrc_mean", None, ""),
     ("censored recent dropouts", "t_hwrc_mean_cens", None, ""),
+    ("verified closures", "t_hwrc_mean_verified", None, ""),
+    ("strict: only confirmed or likely closures", "t_hwrc_mean_strict", None, ""),
     ("2012 to 2019 only", "t_hwrc_mean", "year <= 2019", ""),
     ("lagged one year", "t_hwrc_mean_lag", None, ""),
     ("no-car weighted", "t_hwrc_nocar", None, ""),
@@ -173,7 +177,10 @@ if __name__ == "__main__":
     b = between(d).assign(spec="full covariates")
     b0 = between_simple(d).assign(spec="region and year only")
     w = within(d)
-    ev = event_study(d).assign(spec="first rise of 1+ min, never-moved controls")
+    ev = pd.concat([
+        event_study(d).assign(spec="first rise of 1+ min, never-moved controls"),
+        event_study(d, x="t_hwrc_mean_verified").assign(spec="verified closures"),
+    ])
     ev.to_csv(OUT / "event_study.csv", index=False)
     res = pd.concat([b, b0, w])
     res["outcome_label"] = res["outcome"].map(OUTCOME_LABELS)

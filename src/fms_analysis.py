@@ -111,33 +111,55 @@ def models(d: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+CLOSURE_VERSIONS = {  # label: LSOA drive-time panel file suffix
+    "uncorrected EA records": "",
+    "recent disappearances treated as open": "_censored",
+    "verified with archived council pages": "_verified",
+    "strict: only confirmed or likely closures": "_strict",
+}
+
+
 def over_time_checks(d: pd.DataFrame) -> pd.DataFrame:
-    """Robustness of the same-neighbourhood estimate for fly-tipping reports."""
-    dd = active_council_years(d, "flytip").sort_values(["LSOA21CD", "year"]).copy()
-    raw = pd.read_csv(INTERIM / "lsoa_hwrc_times_panel.csv")[["LSOA21CD", "year", "t_hwrc_min"]]
-    dd = dd.merge(raw.rename(columns={"t_hwrc_min": "t_raw"}), on=["LSOA21CD", "year"], how="left")
-    dd["t_raw_5"] = dd["t_raw"] / 5
-    g = dd.groupby("LSOA21CD")["t_hwrc_5"]
-    dd["t_lead_5"] = g.shift(-1)       # next year's drive time
-    dd["dt_min"] = g.diff() * 5
-    changed = dd.groupby("LSOA21CD")["dt_min"].apply(lambda s: s.abs().max())
-    runs = {
-        "main (closures confirmed or censored)": ("n_flytip ~ t_hwrc_5", dd),
-        "uncorrected closure data": ("n_flytip ~ t_raw_5", dd),
-        "with next year's drive time (pre-trend test)": ("n_flytip ~ t_hwrc_5 + t_lead_5", dd.dropna(subset=["t_lead_5"])),
-        "excluding 2020 and 2021": ("n_flytip ~ t_hwrc_5", dd[~dd["year"].isin([2020, 2021])]),
-        "2012 to 2019 only": ("n_flytip ~ t_hwrc_5", dd[dd["year"] <= 2019]),
-    }
+    """Same-neighbourhood estimates for each version of the closure history: the
+    main estimate, a test adding next year's drive time (earlier trend), and litter
+    reports as a placebo (access to a recycling centre should not affect litter)."""
     rows = []
-    for label, (rhs, data) in runs.items():
-        fit = pf.fepois(f"{rhs} | LSOA21CD + lad_year", data=data, offset="log_residents",
-                        vcov={"CRV1": "LAD25CD"})
-        for t in fit.coef().index:
-            b, se = fit.coef()[t], fit.se()[t]
-            rows.append({"spec": label, "term": t, "irr": np.exp(b), "lo": np.exp(b - 1.96 * se),
-                         "hi": np.exp(b + 1.96 * se), "p": fit.pvalue()[t], "n_lsoa_years": int(fit._N),
-                         "n_lsoas_changed_1min": int((changed >= 1).sum()),
-                         "n_lsoas_changed_3min": int((changed >= 3).sum())})
+    for version, suffix in CLOSURE_VERSIONS.items():
+        f = INTERIM / f"lsoa_hwrc_times_panel{suffix}.csv"
+        if not f.exists():
+            continue
+        t = pd.read_csv(f)[["LSOA21CD", "year", "t_hwrc_min"]].rename(columns={"t_hwrc_min": "tv"})
+        base = d.drop(columns=["t_hwrc_min", "t_hwrc_5"]).merge(t, on=["LSOA21CD", "year"])
+        base["tv_5"] = base["tv"] / 5
+        base = base.sort_values(["LSOA21CD", "year"])
+        g = base.groupby("LSOA21CD")["tv_5"]
+        base["tv_lead_5"] = g.shift(-1)
+        base["dt_min"] = g.diff() * 5
+        for outcome in ("flytip", "litter"):
+            dd = active_council_years(base, outcome)
+            changed = dd.groupby("LSOA21CD")["dt_min"].apply(lambda s: s.abs().max())
+            runs = {"main estimate": (f"n_{outcome} ~ tv_5", dd)}
+            if outcome == "flytip":
+                runs["with next year's drive time"] = (f"n_{outcome} ~ tv_5 + tv_lead_5", dd.dropna(subset=["tv_lead_5"]))
+                runs["excluding 2020 and 2021"] = (f"n_{outcome} ~ tv_5", dd[~dd["year"].isin([2020, 2021])])
+            for check, (rhs, data) in runs.items():
+                try:
+                    fit = pf.fepois(f"{rhs} | LSOA21CD + lad_year", data=data, offset="log_residents",
+                                    vcov={"CRV1": "LAD25CD"})
+                except ValueError:  # no drive-time changes left in this sample
+                    rows.append({"version": version, "outcome": outcome, "check": check,
+                                 "term": "not estimable: no drive-time changes", "n_councils": dd["LAD25CD"].nunique(),
+                                 "n_lsoas_changed_1min": int((changed >= 1).sum())})
+                    continue
+                for term in fit.coef().index:
+                    b, se = fit.coef()[term], fit.se()[term]
+                    rows.append({"version": version, "outcome": outcome, "check": check,
+                                 "term": "next year" if "lead" in term else "this year",
+                                 "irr": np.exp(b), "lo": np.exp(b - 1.96 * se), "hi": np.exp(b + 1.96 * se),
+                                 "p": fit.pvalue()[term], "n_lsoa_years": int(fit._N),
+                                 "n_councils": dd["LAD25CD"].nunique(),
+                                 "n_lsoas_changed_1min": int((changed >= 1).sum()),
+                                 "n_lsoas_changed_3min": int((changed >= 3).sum())})
     return pd.DataFrame(rows)
 
 

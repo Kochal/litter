@@ -278,6 +278,61 @@ some apparent closures in the Environment Agency data are not real (see Data
 quality issues). This is the most promising lead so far and the one a verified
 closure history would test properly.
 
+### Checking closures against archived council pages
+
+Many recycling centre "closures" in the Environment Agency records turned out to be
+missing records. We checked all 256 sites that appear in or disappear from those
+records between 2012 and 2024 against archived copies of council websites in the
+Internet Archive's Wayback Machine (`scripts/wayback_hwrc_check.py`, results in
+`data/wayback/out/site_evidence.csv`). For each site we looked at whether its name
+appeared on the council's list of recycling centres, year by year.
+
+| What the archived council pages showed | Sites |
+|---|---|
+| Apparent closures still listed by the council after the EA records end | 68 |
+| Apparent closures confirmed (listed before, missing after) | 16 |
+| Apparent closures likely (never listed afterwards, no earlier list to compare) | 32 |
+| Apparent closures unclear | about 50 |
+| Apparent openings listed by the council before the EA records start | 52 |
+| Apparent openings confirmed | 6 |
+| Apparent openings unclear | the rest |
+
+So about 4 in 10 apparent closures and about half of apparent openings were not
+real changes. We built two corrected histories: **verified** (sites shown to be
+open are kept open; confirmed, likely and unclear cases keep their EA dates) and
+**strict** (only confirmed or likely closures and confirmed openings count). The
+verified history has 92 closures before 2024 instead of 166; the strict one has 46.
+
+**With verified closures, the neighbourhood result holds and becomes more
+precise.** When a neighbourhood's drive time to its nearest recycling centre
+gets 5 minutes longer, its FixMyStreet fly-tipping reports go up by 15% (rate
+ratio 1.15, 95% CI 1.06 to 1.23), based on 1,874 neighbourhoods whose drive time
+changed by at least a minute (842 by 3 minutes or more), within 146,508
+neighbourhood-years in 212 councils.
+
+| Closure history | Rate ratio per 5 min (95% CI) | Neighbourhoods whose drive time changed by 1+ min |
+|---|---|---|
+| Uncorrected EA records | 1.30 (1.02 to 1.64) | 3,068 |
+| Recent disappearances treated as open | 1.21 (1.03 to 1.44) | 2,698 |
+| Verified with archived council pages | 1.15 (1.06 to 1.23) | 1,874 |
+| Verified, excluding 2020 and 2021 | 1.19 (1.11 to 1.28) | 1,874 |
+| Strict: only confirmed or likely closures | 1.15 (0.86 to 1.55) | 495 |
+
+The strict history gives the same size of effect but with only 495 neighbourhoods
+changing, too few for a precise estimate. Two doubts remain. Adding next year's
+drive time still splits the effect between this year (1.08) and next year (1.07),
+so an earlier trend cannot be ruled out. And litter reports still fall when access
+worsens (0.84, 0.82 to 0.87), although that rests on only 65 neighbourhoods in the
+22 councils with enough litter reports.
+
+**At council level the corrected histories do not change the picture.** Council
+averages of drive time show no link with recorded fly-tipping (verified: 0.87,
+p = 0.47; strict: 0.98, p = 0.94, 3,814 council-years from 296 English councils).
+The placebo waste types no longer move (p = 0.24 and 0.50), so the earlier placebo
+problem was likely caused by false closures. The 19 councils with a verified rise
+in drive time of at least a minute still record about 16% to 24% less fly-tipping
+in the years after, which points to recording changes rather than behaviour.
+
 ## What to do next
 
 In order of expected value:

@@ -51,6 +51,12 @@ def build() -> pd.DataFrame:
     cens = pd.read_csv(INTERIM / "council_access_panel_censored.csv")[
         ["LAD25CD", "year", "t_hwrc_mean", "t_hwrc_nocar", "share_over_15"]]
     acc = acc.merge(cens, on=["LAD25CD", "year"], suffixes=("", "_cens"))
+    # Recycling centre histories corrected with archived council pages (verified_history.py)
+    for v in ("verified", "strict"):
+        f = INTERIM / f"council_access_panel_{v}.csv"
+        if f.exists():
+            acc = acc.merge(pd.read_csv(f)[["LAD25CD", "year", "t_hwrc_mean"]]
+                            .rename(columns={"t_hwrc_mean": f"t_hwrc_mean_{v}"}), on=["LAD25CD", "year"])
     h = pd.read_csv(INTERIM / "lad25_hierarchy.csv")
     h["region"] = h["RGN25NM"].fillna("Wales")
     h["wda"] = wda_lookup(h)
