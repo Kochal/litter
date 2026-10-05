@@ -333,6 +333,61 @@ problem was likely caused by false closures. The 19 councils with a verified ris
 in drive time of at least a minute still record about 16% to 24% less fly-tipping
 in the years after, which points to recording changes rather than behaviour.
 
+### Closure by closure
+
+The models above pool all changes in drive time. Here each recycling centre
+closure is studied on its own and then combined (`src/closure_study.py`), which
+shows directly whether affected areas were already changing before a closure.
+
+**How it works.** For each of the 82 closures in the verified history that
+affected at least one neighbourhood between 2013 and 2024:
+
+- *Affected neighbourhoods* are those whose drive time to the nearest recycling
+  centre rose by at least a minute in the year the site disappeared, within 15 km
+  of it (each neighbourhood is tied to the nearest closing site).
+- *Comparison neighbourhoods* are in the same council as an affected one, or within
+  20 km of the site, and saw no change in drive time (less than half a minute in
+  any year) from four years before to four years after.
+- FixMyStreet fly-tipping reports are compared between affected and comparison
+  neighbourhoods of the same closure, in the same council and year, for each year
+  from four years before to four years after. Results are relative to the year
+  before the closure.
+
+![Closure study](../outputs/fig_closure_study.png)
+
+| Sample | Closures | Affected areas | Comparison areas | Closure year | Years 1 to 4 after |
+|---|---|---|---|---|---|
+| All verified closures | 82 | 2,182 | 21,630 | 0.86 (0.76 to 0.96) | 1.12 (1.00 to 1.25) |
+| Confirmed or likely closures only | 42 | 1,008 | 11,984 | 0.85 (0.74 to 0.98) | 1.28 (0.98 to 1.68) |
+| Only areas whose drive rose by 3+ minutes | 82 | 1,063 | 21,630 | 0.82 (0.72 to 0.92) | 1.18 (1.09 to 1.27) |
+| Without the 3 closures with most reports | 79 | 1,922 | 21,108 | 0.86 (0.71 to 1.04) | 0.95 (0.78 to 1.15) |
+
+Rate ratios with 95% confidence intervals. The "years 1 to 4 after" summary was
+chosen after seeing the year-by-year pattern, so treat it as a description.
+
+**What it shows.**
+
+1. **Before a closure, affected and comparison areas track each other.** In the
+   main sample, the years before closure are all close to 1 (1.05, 1.02 and 0.96),
+   so there is no sign of a trend that started earlier.
+2. **In the closure year, reports dip by about 14%,** then rise to about 20% above
+   the comparison areas three and four years later (1.21 and 1.19, both p < 0.05).
+3. **That rise depends on three closures.** Dropping the three closures with the
+   most FixMyStreet reports (Dogsthorpe in Peterborough, Foots Cray in Bexley,
+   Landmann Way in Southwark) removes it: years 1 to 4 after become 0.95 (0.78 to
+   1.15). Dropping only Foots Cray gives 1.08 (0.91 to 1.30). Two of the three were
+   rated "unclear" by the archive check, so they may not be real closures, and two
+   are in councils that use FixMyStreet as their official reporting system, where
+   residents report far more.
+4. **Litter cannot serve as a placebo here.** Only 26 closures have any litter
+   reports in their affected areas, and 82% of those come from one closure.
+
+**Conclusion.** Studied closure by closure, the evidence that losing a recycling
+centre raises fly-tipping nearby is weak. Across most closures there is no rise;
+the pooled increase comes from a handful of places with very heavy FixMyStreet
+use, some of which may not be real closures. Together with the council-level
+results, the data rule out large effects but cannot confirm a small one.
+
 ## What to do next
 
 In order of expected value:

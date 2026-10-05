@@ -104,6 +104,43 @@ def spec_plot(res: pd.DataFrame, outcomes: dict, path: Path):
     plt.close(fig)
 
 
+def closure_plot(path: Path):
+    """Event study around recycling centre closures (closure_study.py), in three
+    samples, with the number of closures and neighbourhoods in each title."""
+    r = pd.read_csv(OUT / "closure_study.csv")
+    infl = OUT / "closure_study_influence.csv"
+    r = r[(r["model"] == "event study") & (r["outcome"] == "flytip")]
+    panels = [("all verified closures", r[r["sample"] == "all verified closures"]),
+              ("confirmed or likely closures only", r[r["sample"] == "confirmed or likely closures only"])]
+    if infl.exists():
+        i = pd.read_csv(infl)
+        i = i[(i["model"] == "event study") & (i["sample"] == "without the 3 largest closures")]
+        panels.append(("without the 3 closures with most reports", i))
+    fig, axes = plt.subplots(1, len(panels), figsize=(4.2 * len(panels), 3.6), sharey=True)
+    for ax, (title, d) in zip(axes, panels):
+        d = d.copy()
+        d["k"] = [int(t[4:]) * (-1 if t[3] == "m" else 1) for t in d["term"]]
+        d = pd.concat([d, pd.DataFrame({"k": [-1], "irr": [1.0], "lo": [1.0], "hi": [1.0]})]).sort_values("k")
+        ax.fill_between(d["k"], d["lo"], d["hi"], color=SERIES, alpha=0.15, lw=0)
+        ax.plot(d["k"], d["irr"], "-o", color=SERIES, lw=2, ms=5, mec=SURFACE, mew=1.2)
+        ax.axhline(1, color=INK2, lw=1)
+        ax.axvline(-0.5, color=GRID, lw=1, ls="--")
+        ax.set_yscale("log")
+        ax.yaxis.set_minor_locator(NullLocator())
+        ax.yaxis.set_minor_formatter(NullFormatter())
+        ax.set_yticks([0.5, 0.75, 1, 1.5, 2], ["0.5", "0.75", "1", "1.5", "2"])
+        ax.set_ylim(0.45, 2.2)
+        ax.grid(axis="y", color=GRID, lw=0.8)
+        n = d.dropna(subset=["n_closures"]).iloc[0]
+        ax.set_title(f"{title}\n{int(n.n_closures)} closures, {int(n.n_affected_lsoas):,} affected and "
+                     f"{int(n.n_comparison_lsoas):,} comparison areas", fontsize=9, loc="left")
+        ax.set_xlabel("Years since closure")
+    axes[0].set_ylabel("Fly-tipping reports, ratio to\ncomparison areas (vs year before)")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     res = pd.read_csv(OUT / "model_results.csv")
     ev = pd.read_csv(OUT / "event_study.csv")
@@ -115,5 +152,7 @@ if __name__ == "__main__":
     event_plot(ev, {"total": "All incidents", "hwrc_type": "Bulky / HWRC-type household",
                     "placebo": "Placebo (carcasses, clinical, vehicle parts)"},
                OUT / "fig_event_study.png")
+    if (OUT / "closure_study.csv").exists():
+        closure_plot(OUT / "fig_closure_study.png")
     spec_plot(res, {"hwrc_type": "Bulky / HWRC-type household", "total": "All incidents",
                     "placebo": "Placebo"}, OUT / "fig_within_specs.png")
