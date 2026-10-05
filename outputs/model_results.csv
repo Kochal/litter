@@ -107,69 +107,69 @@ between (no covariates),car_boot_to_van,t_hwrc_mean,0.7591565740173702,0.5942032
 between (no covariates),tipper_plus,t_hwrc_mean,0.48375287725284943,0.316700212045438,0.7389222910177126,0.0007797142206946717,950,region and year only,Tipper lorry or larger
 between (no covariates),highway_alley,t_hwrc_mean,0.7476919564042427,0.5708839828539085,0.9792589711080848,0.03466434352015302,950,region and year only,"Highway, footpath, back alley"
 between (no covariates),placebo,t_hwrc_mean,0.8061702781855757,0.5662599914634974,1.1477245915787142,0.23188977692746482,950,region and year only,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean,0.9626902087451614,0.6513835218878379,1.422775380205863,0.8486953428858566,3814,main,All incidents
-within,hwrc_type,t_hwrc_mean,0.818642343779542,0.5533156713397045,1.2111988178578301,0.31670177175425485,3813,main,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_mean,1.3507121399872357,0.6725938707199769,2.7125184521172447,0.39805786672560695,3813,main,Household black bags
-within,cde,t_hwrc_mean,1.2067413689191047,0.7639796170180007,1.9061041669472236,0.42039767599679445,3813,main,Construction / demolition
-within,commercial,t_hwrc_mean,0.7697676571520423,0.45396729623499016,1.305253155704464,0.331438218065947,3787,main,Commercial waste
+within,total,t_hwrc_mean,0.9626902087451614,0.6513835218878379,1.4227753802058627,0.8486953428858564,3814,main,All incidents
+within,hwrc_type,t_hwrc_mean,0.8186423437795419,0.5533156713397045,1.2111988178578301,0.31670177175425485,3813,main,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_mean,1.3507121399872357,0.6725938707199767,2.7125184521172447,0.3980578667256074,3813,main,Household black bags
+within,cde,t_hwrc_mean,1.2067413689191047,0.7639796170180008,1.9061041669472232,0.42039767599679423,3813,main,Construction / demolition
+within,commercial,t_hwrc_mean,0.7697676571520423,0.45396729623499005,1.3052531557044644,0.3314382180659474,3787,main,Commercial waste
 within,car_boot_to_van,t_hwrc_mean,0.923785589465159,0.5873013545207322,1.4530526938762003,0.7315644654634372,3813,main,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean,0.2671544690086661,0.11935451392382225,0.597979146032592,0.001323516358116228,3709,main,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean,0.9214319832691061,0.640875823982023,1.3248071904410834,0.6587037367494859,3810,main,"Highway, footpath, back alley"
-within,placebo,t_hwrc_mean,1.3717424097570556,0.9565988896615273,1.9670493652693728,0.08566400572012056,3796,main,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean_cens,1.0273550988124007,0.6769395994348045,1.55916199899824,0.8990991396195871,3814,censored recent dropouts,All incidents
+within,tipper_plus,t_hwrc_mean,0.2671544690086661,0.1193545139238222,0.5979791460325921,0.001323516358116228,3709,main,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean,0.9214319832691061,0.6408758239820231,1.3248071904410834,0.6587037367494863,3810,main,"Highway, footpath, back alley"
+within,placebo,t_hwrc_mean,1.371742409757056,0.9565988896615277,1.9670493652693732,0.08566400572012034,3796,main,"Placebo: carcasses, clinical, vehicle parts"
+within,total,t_hwrc_mean_cens,1.0273550988124007,0.6769395994348046,1.5591619989982402,0.8990991396195867,3814,censored recent dropouts,All incidents
 within,hwrc_type,t_hwrc_mean_cens,0.8707021620079972,0.5629604183163548,1.3466706188557913,0.5337548764987727,3813,censored recent dropouts,"HWRC-type household (bulky, white goods, electrical, green)"
 within,bags_household,t_hwrc_mean_cens,1.4162181403830632,0.701649114072432,2.858514007819318,0.3314662890059137,3813,censored recent dropouts,Household black bags
-within,cde,t_hwrc_mean_cens,1.2558469053453734,0.7915228508675721,1.99255327617752,0.3333986606536685,3813,censored recent dropouts,Construction / demolition
-within,commercial,t_hwrc_mean_cens,0.7996499840814774,0.4387741592742024,1.4573330801869373,0.46530778026388253,3787,censored recent dropouts,Commercial waste
-within,car_boot_to_van,t_hwrc_mean_cens,1.0205103054983309,0.6443365865645146,1.6163000912008922,0.9310385236799061,3813,censored recent dropouts,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean_cens,0.26542751066404857,0.0762797626459061,0.923597045580146,0.03707564434466071,3709,censored recent dropouts,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean_cens,0.921046128007764,0.6593011384903262,1.2867048460747375,0.6296920960092351,3810,censored recent dropouts,"Highway, footpath, back alley"
-within,placebo,t_hwrc_mean_cens,1.5198275003962607,1.0182389048615836,2.2685006631864484,0.040515935191396846,3796,censored recent dropouts,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean_verified,0.8720288041952851,0.5993607225389067,1.268742189386453,0.4741267069428483,3814,verified closures,All incidents
-within,hwrc_type,t_hwrc_mean_verified,0.7387988849269397,0.47458113598131235,1.1501169157106623,0.18004336206872296,3813,verified closures,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_mean_verified,1.243046005563279,0.5919929993760612,2.61010412889235,0.5654029738285171,3813,verified closures,Household black bags
-within,cde,t_hwrc_mean_verified,1.410195343459388,0.6477307069059639,3.070181613303148,0.3865239971889387,3813,verified closures,Construction / demolition
-within,commercial,t_hwrc_mean_verified,0.6241341287767064,0.3190356960883262,1.2210025883624378,0.16857142015245197,3787,verified closures,Commercial waste
-within,car_boot_to_van,t_hwrc_mean_verified,0.8473193876059713,0.5504327679270614,1.3043375802584753,0.4515832897534082,3813,verified closures,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean_verified,0.4433217670004381,0.23278764528892046,0.8442638304643084,0.013320043076747723,3709,verified closures,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean_verified,0.9411222307381357,0.6517142447624464,1.3590481722742942,0.746189480330893,3810,verified closures,"Highway, footpath, back alley"
-within,placebo,t_hwrc_mean_verified,1.4933903633368488,0.7672583675173829,2.90673242772662,0.23788151380244216,3796,verified closures,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean_strict,0.9808386071602904,0.6060112376190566,1.5875025306063497,0.9372282630723587,3814,strict: only confirmed or likely closures,All incidents
-within,hwrc_type,t_hwrc_mean_strict,0.9462008191992076,0.6193753297167116,1.44548216129748,0.7981137979762145,3813,strict: only confirmed or likely closures,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_mean_strict,0.7265718123454001,0.2907983897873798,1.8153697442439882,0.4941713594779409,3813,strict: only confirmed or likely closures,Household black bags
-within,cde,t_hwrc_mean_strict,1.7324669703087687,0.5097280519498159,5.888319843747475,0.37863904782279234,3813,strict: only confirmed or likely closures,Construction / demolition
-within,commercial,t_hwrc_mean_strict,0.6570262342427566,0.26366106548686935,1.6372666615986051,0.36724206535849824,3787,strict: only confirmed or likely closures,Commercial waste
-within,car_boot_to_van,t_hwrc_mean_strict,0.9191373621865048,0.48567693748845775,1.739455645013499,0.7955716145407807,3813,strict: only confirmed or likely closures,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean_strict,0.3419307765955784,0.10968303768740503,1.06595020021661,0.06432712167427201,3709,strict: only confirmed or likely closures,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean_strict,0.8559054569516091,0.5389350124919831,1.3592996080402928,0.5097061395606872,3810,strict: only confirmed or likely closures,"Highway, footpath, back alley"
-within,placebo,t_hwrc_mean_strict,0.7240613463057669,0.28372138698803345,1.8478156996893285,0.49937278418625386,3796,strict: only confirmed or likely closures,"Placebo: carcasses, clinical, vehicle parts"
+within,cde,t_hwrc_mean_cens,1.2558469053453734,0.7915228508675721,1.9925532761775198,0.3333986606536685,3813,censored recent dropouts,Construction / demolition
+within,commercial,t_hwrc_mean_cens,0.7996499840814775,0.4387741592742024,1.4573330801869373,0.46530778026388253,3787,censored recent dropouts,Commercial waste
+within,car_boot_to_van,t_hwrc_mean_cens,1.0205103054983309,0.6443365865645146,1.6163000912008922,0.9310385236799064,3813,censored recent dropouts,Car boot to transit van size
+within,tipper_plus,t_hwrc_mean_cens,0.2654275106640484,0.07627976264590605,0.923597045580145,0.037075644344660486,3709,censored recent dropouts,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean_cens,0.921046128007764,0.6593011384903262,1.2867048460747372,0.6296920960092349,3810,censored recent dropouts,"Highway, footpath, back alley"
+within,placebo,t_hwrc_mean_cens,1.5198275003962605,1.0182389048615836,2.268500663186448,0.040515935191396846,3796,censored recent dropouts,"Placebo: carcasses, clinical, vehicle parts"
+within,total,t_hwrc_mean_verified,0.9748659835882185,0.5801750255933554,1.638063763578018,0.9234116231946812,3814,verified closures,All incidents
+within,hwrc_type,t_hwrc_mean_verified,0.8059898967408189,0.4439513165042501,1.4632679068585592,0.4784033935770209,3813,verified closures,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_mean_verified,1.1349710268381619,0.5545909717328393,2.322719440846958,0.7289560923405396,3813,verified closures,Household black bags
+within,cde,t_hwrc_mean_verified,1.6171494401858884,0.7088380976611409,3.6893788871146596,0.25335846092303504,3813,verified closures,Construction / demolition
+within,commercial,t_hwrc_mean_verified,1.1827599067896073,0.5617915965821515,2.490106661651345,0.6585579494785831,3787,verified closures,Commercial waste
+within,car_boot_to_van,t_hwrc_mean_verified,0.9777437557164049,0.5325294735216903,1.7951735995387736,0.9421210787382561,3813,verified closures,Car boot to transit van size
+within,tipper_plus,t_hwrc_mean_verified,0.4504985720635422,0.23236019272259317,0.8734239761695511,0.01824307349692522,3709,verified closures,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean_verified,1.0262587668315266,0.603112551488425,1.7462860852412203,0.923860933581129,3810,verified closures,"Highway, footpath, back alley"
+within,placebo,t_hwrc_mean_verified,1.4964728355894052,0.7524295004494734,2.9762668081451387,0.25050068137365455,3796,verified closures,"Placebo: carcasses, clinical, vehicle parts"
+within,total,t_hwrc_mean_strict,0.9804188826945076,0.606242620383306,1.5855387813812893,0.9357347053976308,3814,strict: only confirmed or likely closures,All incidents
+within,hwrc_type,t_hwrc_mean_strict,0.9473875950956009,0.6198436498500917,1.448015569019858,0.8028209982046528,3813,strict: only confirmed or likely closures,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_mean_strict,0.7280514549671587,0.2915959691541134,1.8177854879730921,0.4965944040470096,3813,strict: only confirmed or likely closures,Household black bags
+within,cde,t_hwrc_mean_strict,1.7372405595307132,0.5112348956698521,5.90336220637718,0.3761783672580996,3813,strict: only confirmed or likely closures,Construction / demolition
+within,commercial,t_hwrc_mean_strict,0.6476138242052253,0.2620414563683581,1.6005240968900372,0.34662904538064643,3787,strict: only confirmed or likely closures,Commercial waste
+within,car_boot_to_van,t_hwrc_mean_strict,0.9166196576538365,0.48522926243775544,1.7315353006048662,0.7884866412856355,3813,strict: only confirmed or likely closures,Car boot to transit van size
+within,tipper_plus,t_hwrc_mean_strict,0.3527532054795016,0.11432125194013874,1.0884662463390489,0.06990237882259231,3709,strict: only confirmed or likely closures,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean_strict,0.85801184208205,0.5406159069259909,1.3617511281513484,0.5158201689727988,3810,strict: only confirmed or likely closures,"Highway, footpath, back alley"
+within,placebo,t_hwrc_mean_strict,0.7360007239134416,0.29000489391687007,1.867889394157561,0.5188733270977619,3796,strict: only confirmed or likely closures,"Placebo: carcasses, clinical, vehicle parts"
 within,total,t_hwrc_mean,1.3956286268437315,0.9664980197459273,2.015295659454896,0.07536738671775955,2341,2012 to 2019 only,All incidents
 within,hwrc_type,t_hwrc_mean,1.1715382196032504,0.8117635188845796,1.6907655592567992,0.39765050807624225,2340,2012 to 2019 only,"HWRC-type household (bulky, white goods, electrical, green)"
 within,bags_household,t_hwrc_mean,2.9476645934459524,1.3431350939669187,6.468989303073705,0.007025494733122528,2340,2012 to 2019 only,Household black bags
-within,cde,t_hwrc_mean,1.645869615752213,0.934482778532962,2.898808682498141,0.08446267000331376,2340,2012 to 2019 only,Construction / demolition
+within,cde,t_hwrc_mean,1.645869615752213,0.9344827785329617,2.898808682498141,0.08446267000331376,2340,2012 to 2019 only,Construction / demolition
 within,commercial,t_hwrc_mean,0.7568041991710153,0.40253059758488774,1.4228796501913041,0.3869936181409357,2324,2012 to 2019 only,Commercial waste
 within,car_boot_to_van,t_hwrc_mean,1.4541228242367,0.9963500377881898,2.1222192078800566,0.05225310677983663,2340,2012 to 2019 only,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean,0.544709832090753,0.3145058231196781,0.9434127426741806,0.03016857693455166,2268,2012 to 2019 only,Tipper lorry or larger
+within,tipper_plus,t_hwrc_mean,0.5447098320907529,0.31450582311967806,0.9434127426741805,0.03016857693455144,2268,2012 to 2019 only,Tipper lorry or larger
 within,highway_alley,t_hwrc_mean,1.4059858063955675,1.0868095534872557,1.8188983354469332,0.00949599721666905,2337,2012 to 2019 only,"Highway, footpath, back alley"
 within,placebo,t_hwrc_mean,1.60425665896506,1.0744530746323977,2.3953018410918085,0.020825532309475925,2320,2012 to 2019 only,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean_lag,0.9474433811432074,0.6425110271043949,1.3970950265515416,0.7852727200388632,3520,lagged one year,All incidents
-within,hwrc_type,t_hwrc_mean_lag,0.8099745133016809,0.5462753013667083,1.2009671873447745,0.2943007468450367,3519,lagged one year,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_mean_lag,1.2466183915905196,0.6899653682938963,2.252370170541329,0.4651614106686546,3519,lagged one year,Household black bags
-within,cde,t_hwrc_mean_lag,1.07063484465366,0.6985657323398069,1.6408748919693443,0.7540503319926928,3519,lagged one year,Construction / demolition
+within,total,t_hwrc_mean_lag,0.9474433811432074,0.642511027104395,1.3970950265515414,0.7852727200388632,3520,lagged one year,All incidents
+within,hwrc_type,t_hwrc_mean_lag,0.8099745133016808,0.5462753013667083,1.2009671873447743,0.2943007468450365,3519,lagged one year,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_mean_lag,1.2466183915905193,0.6899653682938963,2.252370170541328,0.4651614106686548,3519,lagged one year,Household black bags
+within,cde,t_hwrc_mean_lag,1.07063484465366,0.6985657323398069,1.6408748919693443,0.754050331992693,3519,lagged one year,Construction / demolition
 within,commercial,t_hwrc_mean_lag,0.7408036643500322,0.3590131730196184,1.5286070549964093,0.4169146175616407,3495,lagged one year,Commercial waste
-within,car_boot_to_van,t_hwrc_mean_lag,0.9505201948209152,0.6343734218290831,1.4242220901332372,0.8057081053062343,3519,lagged one year,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean_lag,0.29792954856785275,0.12009195491863207,0.7391170871519659,0.008998552412575966,3423,lagged one year,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean_lag,0.8845584620136329,0.61112531096851,1.2803326235660384,0.5155779863426555,3516,lagged one year,"Highway, footpath, back alley"
-within,placebo,t_hwrc_mean_lag,1.338770775400928,0.8602151617391732,2.083556845759305,0.19608304620793326,3503,lagged one year,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_nocar,1.002993871371582,0.6956467892527625,1.446131458594896,0.9872239714217119,3814,no-car weighted,All incidents
-within,hwrc_type,t_hwrc_nocar,0.8675907107426244,0.5972804343377355,1.2602348881585266,0.4558578169256591,3813,no-car weighted,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_nocar,1.387932752046858,0.7220435613976359,2.667923969123939,0.32550032604308954,3813,no-car weighted,Household black bags
-within,cde,t_hwrc_nocar,1.255010360617663,0.8243179898072301,1.9107322959505082,0.28953592619458135,3813,no-car weighted,Construction / demolition
-within,commercial,t_hwrc_nocar,0.8246942868510057,0.5105793865653483,1.3320566490939627,0.4307508186977418,3787,no-car weighted,Commercial waste
-within,car_boot_to_van,t_hwrc_nocar,0.9707505836301487,0.6388751549613634,1.4750247967856323,0.8893899351638663,3813,no-car weighted,Car boot to transit van size
-within,tipper_plus,t_hwrc_nocar,0.290885457986356,0.12866514139297724,0.6576322751591093,0.003006874169981799,3709,no-car weighted,Tipper lorry or larger
+within,car_boot_to_van,t_hwrc_mean_lag,0.9505201948209151,0.6343734218290831,1.424222090133237,0.8057081053062338,3519,lagged one year,Car boot to transit van size
+within,tipper_plus,t_hwrc_mean_lag,0.2979295485678526,0.12009195491863202,0.7391170871519656,0.008998552412575966,3423,lagged one year,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean_lag,0.8845584620136329,0.61112531096851,1.2803326235660386,0.515577986342656,3516,lagged one year,"Highway, footpath, back alley"
+within,placebo,t_hwrc_mean_lag,1.3387707754009284,0.8602151617391735,2.0835568457593054,0.19608304620793282,3503,lagged one year,"Placebo: carcasses, clinical, vehicle parts"
+within,total,t_hwrc_nocar,1.002993871371582,0.6956467892527625,1.446131458594896,0.9872239714217121,3814,no-car weighted,All incidents
+within,hwrc_type,t_hwrc_nocar,0.8675907107426245,0.5972804343377355,1.2602348881585266,0.4558578169256591,3813,no-car weighted,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_nocar,1.387932752046858,0.722043561397636,2.667923969123939,0.32550032604308954,3813,no-car weighted,Household black bags
+within,cde,t_hwrc_nocar,1.2550103606176628,0.82431798980723,1.910732295950508,0.28953592619458157,3813,no-car weighted,Construction / demolition
+within,commercial,t_hwrc_nocar,0.8246942868510058,0.5105793865653483,1.332056649093963,0.430750818697742,3787,no-car weighted,Commercial waste
+within,car_boot_to_van,t_hwrc_nocar,0.9707505836301487,0.6388751549613634,1.475024796785632,0.8893899351638661,3813,no-car weighted,Car boot to transit van size
+within,tipper_plus,t_hwrc_nocar,0.29088545798635607,0.1286651413929772,0.6576322751591097,0.003006874169981799,3709,no-car weighted,Tipper lorry or larger
 within,highway_alley,t_hwrc_nocar,0.969972124267232,0.68035024382573,1.382884669174135,0.8661983043162869,3810,no-car weighted,"Highway, footpath, back alley"
-within,placebo,t_hwrc_nocar,1.3346370681560085,0.983726329791047,1.8107232161554747,0.06365558144757388,3796,no-car weighted,"Placebo: carcasses, clinical, vehicle parts"
+within,placebo,t_hwrc_nocar,1.3346370681560082,0.9837263297910471,1.8107232161554738,0.06365558144757388,3796,no-car weighted,"Placebo: carcasses, clinical, vehicle parts"
 within,total,share_over_15,0.9219266974880531,0.7842212866734286,1.0838125029054082,0.32468578238839174,3814,share >15 min,All incidents
 within,hwrc_type,share_over_15,0.8856836814298432,0.7167377428666956,1.0944527358272738,0.260931741444137,3813,share >15 min,"HWRC-type household (bulky, white goods, electrical, green)"
 within,bags_household,share_over_15,0.8654809595615762,0.6928460465385198,1.0811309310429642,0.20310245639900404,3813,share >15 min,Household black bags
@@ -179,14 +179,14 @@ within,car_boot_to_van,share_over_15,0.9003825539330066,0.7284627926521048,1.112
 within,tipper_plus,share_over_15,0.4907033375110579,0.20019918842744133,1.2027509568639494,0.11961302345810765,3709,share >15 min,Tipper lorry or larger
 within,highway_alley,share_over_15,0.9460163900544345,0.8077690072528579,1.1079244217294864,0.49114141532339595,3810,share >15 min,"Highway, footpath, back alley"
 within,placebo,share_over_15,1.191982389941537,0.9960036173373455,1.4265229495140548,0.05532629342549655,3796,share >15 min,"Placebo: carcasses, clinical, vehicle parts"
-within,total,t_hwrc_mean,0.9697731088571663,0.6610203851224035,1.422739606568026,0.8752777479377873,3637,all-incidents basis only,All incidents
-within,hwrc_type,t_hwrc_mean,0.8234766282117199,0.5433108824421542,1.2481137027163105,0.3599827669098463,3636,all-incidents basis only,"HWRC-type household (bulky, white goods, electrical, green)"
-within,bags_household,t_hwrc_mean,1.3590429537288258,0.7044899160642775,2.6217518632466152,0.360128897512052,3636,all-incidents basis only,Household black bags
-within,cde,t_hwrc_mean,1.1838125837583897,0.7657404993021244,1.8301398903961905,0.44775526782797126,3636,all-incidents basis only,Construction / demolition
+within,total,t_hwrc_mean,0.9697731088571664,0.6610203851224035,1.422739606568026,0.8752777479377878,3637,all-incidents basis only,All incidents
+within,hwrc_type,t_hwrc_mean,0.82347662821172,0.5433108824421543,1.2481137027163105,0.3599827669098463,3636,all-incidents basis only,"HWRC-type household (bulky, white goods, electrical, green)"
+within,bags_household,t_hwrc_mean,1.3590429537288258,0.7044899160642775,2.6217518632466157,0.360128897512052,3636,all-incidents basis only,Household black bags
+within,cde,t_hwrc_mean,1.1838125837583895,0.7657404993021245,1.8301398903961903,0.44775526782797126,3636,all-incidents basis only,Construction / demolition
 within,commercial,t_hwrc_mean,0.79695691834789,0.4831412940791795,1.3146057633369574,0.3741166960980844,3610,all-incidents basis only,Commercial waste
-within,car_boot_to_van,t_hwrc_mean,0.9370394684713224,0.5887372994825785,1.4914002667143749,0.7838889527132782,3636,all-incidents basis only,Car boot to transit van size
-within,tipper_plus,t_hwrc_mean,0.26668537603531794,0.11974929550551877,0.5939165611861261,0.0012146250744837772,3532,all-incidents basis only,Tipper lorry or larger
-within,highway_alley,t_hwrc_mean,0.9073838949350324,0.6591250249905596,1.2491492532835669,0.5512192944925562,3633,all-incidents basis only,"Highway, footpath, back alley"
+within,car_boot_to_van,t_hwrc_mean,0.9370394684713224,0.5887372994825785,1.4914002667143746,0.783888952713278,3636,all-incidents basis only,Car boot to transit van size
+within,tipper_plus,t_hwrc_mean,0.26668537603531794,0.11974929550551877,0.5939165611861262,0.0012146250744837772,3532,all-incidents basis only,Tipper lorry or larger
+within,highway_alley,t_hwrc_mean,0.9073838949350324,0.6591250249905596,1.2491492532835669,0.551219294492556,3633,all-incidents basis only,"Highway, footpath, back alley"
 within,placebo,t_hwrc_mean,1.2857613470024596,0.8261323491253265,2.001110649154337,0.26540659460411486,3619,all-incidents basis only,"Placebo: carcasses, clinical, vehicle parts"
 within,total,t_hwrc_mean_cens,0.6030862506636739,0.3266709609509715,1.1133925852508073,0.10595976628760928,2355,"2017 on, no spend control",All incidents
 within,hwrc_type,t_hwrc_mean_cens,0.5329660392830374,0.2691099374124314,1.055526978157316,0.07107498947924351,2355,"2017 on, no spend control","HWRC-type household (bulky, white goods, electrical, green)"
