@@ -92,7 +92,7 @@ def build_stacks(d: pd.DataFrame, ev: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(stacks, ignore_index=True)
 
 
-def fit(df: pd.DataFrame, outcome: str, event_study: bool):
+def fit(df: pd.DataFrame, outcome: str, event_study: bool, weights: str | None = None):
     df = df.copy()
     df["log_res"] = np.log(df["residents"])
     df["s_lsoa"] = df["stack"].astype(str) + "_" + df["LSOA21CD"]
@@ -114,7 +114,7 @@ def fit(df: pd.DataFrame, outcome: str, event_study: bool):
         df["after_closure"] = ((df["rel"] >= 0) & (df["treated"] == 1)).astype(int)
         rhs = "after_closure"
     m = pf.fepois(f"n_{outcome} ~ {rhs} | s_lsoa + s_lad_year", data=df, offset="log_res",
-                  vcov={"CRV1": "stack"})
+                  vcov={"CRV1": "stack"}, weights=weights)
     return m, df
 
 
@@ -136,6 +136,55 @@ def tidy(m, df, label, outcome) -> pd.DataFrame:
                      "n_closures_with_reports": int((used > 0).sum()),
                      "n_reports": int(uniq[f"n_{outcome}"].sum())})
     return pd.DataFrame(rows)
+
+
+def equal_weights(st: pd.DataFrame, outcome: str) -> pd.DataFrame:
+    """Weight each closure's stack so every closure contributes the same number of
+    reports; otherwise closures in councils where FixMyStreet is the official
+    reporting channel dominate."""
+    tot = st.groupby("stack")[f"n_{outcome}"].transform("sum")
+    st = st[tot > 0].copy()
+    w = 1 / tot[tot > 0]
+    st["w_equal"] = w / w.mean()
+    return st
+
+
+def heaviest(st: pd.DataFrame, outcome: str, k: int = 3) -> list:
+    """The k closures with the most reports in their affected neighbourhoods."""
+    a = st[st["treated"] == 1].groupby("stack")[f"n_{outcome}"].sum()
+    return list(a.sort_values(ascending=False).index[:k])
+
+
+def per_closure(st: pd.DataFrame, names: pd.Series, outcome: str = "flytip") -> pd.DataFrame:
+    """Years 1 to 4 after closure versus before, estimated separately for each closure."""
+    rows = []
+    for sid, s in st.groupby("stack"):
+        a = s[s["treated"] == 1]
+        base = {"site_id": sid, "name": names.get(sid), "event_year": int(s["year"].min() + WINDOW),
+                "n_affected_lsoas": a["LSOA21CD"].nunique(),
+                "n_comparison_lsoas": s.loc[s["treated"] == 0, "LSOA21CD"].nunique(),
+                "reports_affected": int(a[f"n_{outcome}"].sum()), "reports_all": int(s[f"n_{outcome}"].sum())}
+        try:
+            m, _ = fit(s, outcome, "years 1 to 4")
+            b, se = m.coef()["years_1_to_4_after"], m.se()["years_1_to_4_after"]
+            base.update(irr=np.exp(b), lo=np.exp(b - 1.96 * se), hi=np.exp(b + 1.96 * se))
+        except Exception as e:  # too few reports or no variation
+            base.update(irr=np.nan, lo=np.nan, hi=np.nan, note=str(e)[:80])
+        rows.append(base)
+    return pd.DataFrame(rows).sort_values("reports_affected", ascending=False)
+
+
+def robustness(st: pd.DataFrame, outcome: str = "flytip") -> pd.DataFrame:
+    big = heaviest(st, outcome)
+    res = []
+    for label, s, w in [("all verified closures", st, None),
+                        (f"without the 3 largest closures", st[~st["stack"].isin(big)], None),
+                        ("each closure weighted equally", equal_weights(st, outcome), "w_equal")]:
+        for es in (True, "years 1 to 4"):
+            m, df = fit(s, outcome, es, weights=w)
+            res.append(tidy(m, df, label, outcome).assign(
+                model={True: "event study"}.get(es, es), dropped=", ".join(map(str, big)) if "without" in label else ""))
+    return pd.concat(res)
 
 
 if __name__ == "__main__":
@@ -160,5 +209,14 @@ if __name__ == "__main__":
                 res.append(tidy(m, df, label, outcome).assign(model={False: "before/after", True: "event study"}.get(es, es)))
     res = pd.concat(res)
     res.to_csv(OUT / "closure_study.csv", index=False)
+    rob = robustness(st)
+    rob.to_csv(OUT / "closure_study_influence.csv", index=False)
+    names = pd.read_csv(INTERIM / "hwrc_england_history_verified.csv").set_index("site_id")["name"]
+    pc = per_closure(st, names)
+    pc.to_csv(OUT / "closure_study_per_closure.csv", index=False)
+    ok = pc.dropna(subset=["irr"])
+    print(rob[rob["model"] == "years 1 to 4"].round(3).to_string(index=False))
+    print(f"per closure: {len(ok)} of {len(pc)} estimable; median {ok['irr'].median():.3f}; "
+          f"{(ok['irr'] > 1).mean():.0%} above 1")
     pd.set_option("display.width", 220)
     print(res.round(3).to_string(index=False))
