@@ -1,0 +1,846 @@
+site_id,name,nation,postcode,council,district,first_year,last_year,domains
+0,St Erth Household Waste Recycling Centre,England,TR27 6JP,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+1,Dudnance Lane Recycling Centre & Transfer Station,England,TR15 3QT,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+2,Gays Hill,England,TR13 0QA,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+3,United Mines Civic Amenity Site,England,TR15 3QX,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+4,Falmouth Household Waste Recycling Centre,England,TR10 9DH,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+5,Trevenson Road Transfer Station,England,TR8 4NU,Cornwall,Cornwall,2012,2017,cornwall.gov.uk
+6,Wheal Prosper,England,PL30 5ET,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+7,St Austell Household Waste Recycling Centre,England,PL25 3TD,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+8,Bowithick Civic Amenity Site,England,PL33 9AA,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+9,Connon Bridge Civic Amenity Site,England,PL14 4NP,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+10,Tiscott Wood Civic Amenity Site,England,EX23 9PZ,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+11,Launceston H W R C And R T S,England,PL15 7PY,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+12,Anvil Corner Civic Amenity Site,England,EX22 6NR,Devon,Torridge,2012,2025,devon.gov.uk;torridge.gov.uk
+13,Tamar View Civic Amenity Site,England,PL12 6UA,Cornwall,Cornwall,2012,2025,cornwall.gov.uk
+14,Caddsdown Recycling Centre,England,EX39 9QT,Devon,Torridge,2012,2025,devon.gov.uk;torridge.gov.uk
+15,Weston Mill,England,PL5 2AR,Plymouth,Plymouth,2012,2025,plymouth.gov.uk
+16,Prince Rock Depot Waste Transfer Station,England,PL4 0RZ,Plymouth,Plymouth,2012,2019,plymouth.gov.uk
+17,Chelson Meadow Landfill,England,PL9 7JT,Plymouth,Plymouth,2012,2025,plymouth.gov.uk
+18,Deep Moor Landfill,England,EX38 7JA,Devon,Torridge,2012,9999,devon.gov.uk;torridge.gov.uk
+19,Killacleave Civic Amenity Site,England,EX34 9RH,Devon,North Devon,2012,2025,devon.gov.uk;northdevon.gov.uk
+20,Seven Brethren Civic Amenity Site,England,EX31 2AS,Devon,North Devon,2012,2025,devon.gov.uk;northdevon.gov.uk
+21,Crowndale Transfer Station & Civic Amenity Site,England,PL19 8JR,Devon,West Devon,2012,9999,devon.gov.uk;westdevon.gov.uk
+22,Okehampton Civic Amenity Site 3,England,EX20 1UD,Devon,West Devon,2012,2025,devon.gov.uk;westdevon.gov.uk
+23,Ivybridge Recycling Centre,England,PL21 9ES,Devon,South Hams,2012,2025,devon.gov.uk;south-hams-dc.gov.uk
+24,South Molton Civic Amenity Site,England,EX36 3EB,Devon,North Devon,2012,2025,devon.gov.uk;northdevon.gov.uk
+25,Lyndown Civic Amenity Site,England,EX35 6LD,Devon,North Devon,2012,9999,devon.gov.uk;northdevon.gov.uk
+26,Torr Quarry Household Waste Recycling Centre,England,TQ9 7QQ,Devon,South Hams,2012,2025,devon.gov.uk;south-hams-dc.gov.uk
+27,Punchbowl Transfer Station And Civic Amenity Site,England,EX17 5BP,Devon,Mid Devon,2012,2025,devon.gov.uk;middevon.gov.uk
+28,Totnes Civic Amenity Site,England,TQ9 5JA,Devon,South Hams,2012,2025,devon.gov.uk;south-hams-dc.gov.uk
+29,Torbay Transfer Station,England,TQ4 7QU,Torbay,Torbay,2012,2025,torbay.gov.uk
+30,Brunel Road Civic Amenity Site (new),England,TQ12 4PJ,Devon,Teignbridge,2012,2025,devon.gov.uk;teignbridge.gov.uk
+31,Exton Road Civic Amenity Site,England,EX2 8LX,Devon,Exeter,2012,2025,devon.gov.uk;exeter.gov.uk
+32,Dulverton Household Waste Recycling Centre,England,TA22 9AA,Somerset,Somerset,2012,2025,somerset.gov.uk
+33,Ashley Civic Amenity Site,England,EX16 5PD,Devon,Mid Devon,2012,2025,devon.gov.uk;middevon.gov.uk
+34,Pinbrook Road Recycling Centre,England,EX4 8HU,Devon,Exeter,2012,2025,devon.gov.uk;exeter.gov.uk
+35,Minehead Household Waste Recycling Centre,England,TA24 5BJ,Somerset,Somerset,2012,2025,somerset.gov.uk
+36,Clay Flats Workington C A,England,CA14 2TG,Cumberland,Cumberland,2012,9999,cumberland.gov.uk
+37,Maryport C A,England,CA15 8NT,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+38,Frizington C A,England,CA26 3QU,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+39,Knowle Hill Civic Amenity Site,England,EX8 5BP,Devon,East Devon,2012,2025,devon.gov.uk;eastdevon.gov.uk
+40,Williton Household Waste Recycling Centre,England,TA4 4RA,Somerset,Somerset,2012,2025,somerset.gov.uk
+41,Woods Farm Civic Amenity Site,England,EX10 0AX,Devon,East Devon,2012,2013,devon.gov.uk;eastdevon.gov.uk
+42,Poole H W R C,England,TA21 9HH,Somerset,Somerset,2012,2025,somerset.gov.uk
+43,Millom C A,England,LA18 4JZ,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+44,Project Furness Hosuehold Waste Recycling Centre,England,LA15 5UY,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+45,Sutton Barton Landfill & Civic Amenity Site,England,EX14 9SP,Devon,East Devon,2012,2025,devon.gov.uk;eastdevon.gov.uk
+46,West Kirkby Household Waste Recycling Centre,England,CH48 5HR,Wirral,Wirral,2012,2025,wirral.gov.uk;merseysidewda.gov.uk
+47,"Priorswood Transfer Station, Composting And H W R C",England,TA2 8QY,Somerset,Somerset,2012,2025,somerset.gov.uk
+48,Wigton C A,England,CA7 9NE,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+49,Neston Civic Amenity Site,England,CH1 6PA,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+50,Ulverston Civic Amenity Site,England,LA12 9BN,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+51,Oswestry Integrated Waste Management Facility,England,SY10 8GA,Shropshire,Shropshire,2012,2025,shropshire.gov.uk
+52,Saltlands Household Waste Recycling Centre,England,TA6 3JG,Somerset,Somerset,2012,2025,somerset.gov.uk
+53,Formby Household Waste Recycling Centre,England,L37 8DL,Sefton,Sefton,2012,2025,sefton.gov.uk;merseysidewda.gov.uk
+54,Clatterbridge Household Waste Recycling Centre,England,CH63 4JZ,Wirral,Wirral,2012,2025,wirral.gov.uk;merseysidewda.gov.uk
+55,Bristol Avenue H W R C,England,FY2 0JG,Blackpool,Blackpool,2012,2025,blackpool.gov.uk
+56,Highbridge Household Waste Recycling Centre,England,TA9 4PW,Somerset,Somerset,2012,2025,somerset.gov.uk
+57,Fleetwood Household Waste Recycling Centre,England,FY7 8TW,Lancashire,Wyre,2012,2025,lancashire.gov.uk;wyre.gov.uk
+58,Chard Household Waste Recycling Centre,England,TA20 1BB,Somerset,Somerset,2012,2025,somerset.gov.uk
+59,Aisecombe Way Civic Amenity Facility,England,BS22 8NA,North Somerset,North Somerset,2012,2025,n-somerset.gov.uk
+60,Southport Waste Transfer Station & H W R C,England,PR8 5LA,Sefton,Sefton,2012,2025,sefton.gov.uk;merseysidewda.gov.uk
+61,Sefton Meadows H W R C,England,L31 8BT,Sefton,Sefton,2012,2025,sefton.gov.uk;merseysidewda.gov.uk
+62,Ambleside C A,England,LA22 0EE,Sefton,Sefton,2012,2018,sefton.gov.uk;merseysidewda.gov.uk
+63,Otterspool Household Waste Recycling Centre,England,L17 5AR,Liverpool,Liverpool,2012,2025,liverpool.gov.uk;merseysidewda.gov.uk
+64,Lytham Household Waste Recycling Centre,England,FY8 4LS,Lancashire,Fylde,2012,2025,lancashire.gov.uk;fylde.gov.uk
+65,Middlezoy Community Recycling Site,England,TA7 9BP,Somerset,Somerset,2012,2014,somerset.gov.uk
+66,Chester Household Waste Recycling Centre,England,CH1 4LT,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+67,Grange C A,England,LA11 7EN,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+68,Bousteads Grassing Carlisle C A,England,CA2 5AR,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+69,Ellesmere Port Household Waste Recycling,England,CH65 4LB,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+70,Craven Arms HWRC,England,SY7 8DU,Shropshire,Shropshire,2012,2025,shropshire.gov.uk
+71,Burscough Household Waste Recycling Centre,England,L40 7SR,Lancashire,West Lancashire,2012,2025,lancashire.gov.uk;westlancsdc.gov.uk
+72,Kirkby Household Waste Recycling Centre,England,L33 3AR,Knowsley,Knowsley,2012,2025,knowsley.gov.uk;merseysidewda.gov.uk
+73,Crewkerne Household Waste Recycling Site,England,TA18 7HE,Somerset,Somerset,2012,2025,somerset.gov.uk
+74,Black Rock Quarry Civic Amenity Site,England,BS20 8PG,North Somerset,North Somerset,2012,2025,n-somerset.gov.uk
+75,Cheddar Household Waste Recycling Centre,England,BS27 3EB,Somerset,Somerset,2012,2025,somerset.gov.uk
+76,Lancaster Household Waste Recycling Centre,England,LA1 5JS,Lancashire,Lancaster,2012,2025,lancashire.gov.uk;lancaster.gov.uk
+77,Huyton H W R C,England,L36 6AD,Knowsley,Knowsley,2012,2025,knowsley.gov.uk;merseysidewda.gov.uk
+78,Flusco H W R C,England,CA11 0JB,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+79,Bridport B H W S,England,DT6 3PD,Dorset,Dorset,2012,9999,dorsetcouncil.gov.uk
+80,Skelmersdale Household Wate Recycling Centre,England,WN8 6JW,Lancashire,West Lancashire,2012,2025,lancashire.gov.uk;westlancsdc.gov.uk
+81,Somerton Household Waste Recycling Centre,England,TA11 6SB,Somerset,Somerset,2012,2025,somerset.gov.uk
+82,Street Household Waste Recycling Centre,England,BA16 9PB,Somerset,Somerset,2012,2025,somerset.gov.uk
+83,Backwell Quarry Civic Amenity Site,England,BS48 3JQ,North Somerset,North Somerset,2012,2025,n-somerset.gov.uk
+84,Leominster Household Waste Site & Transfer Station,England,HR6 8EA,"Herefordshire, County of","Herefordshire, County of",2012,2025,herefordshire.gov.uk
+85,Rainhill H W R C,England,L35 4NX,St. Helens,St. Helens,2012,2025,sthelens.gov.uk;merseysidewda.gov.uk
+86,Tattenhall Civic Amenity Site,England,CH3 9BD,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+87,Picow Farm H W R C,England,WA7  4UD,Halton,Halton,2012,2025,halton.gov.uk;merseysidewda.gov.uk
+88,Garstang Recycling Centre,England,PR3 0PZ,Lancashire,Wyre,2012,2025,lancashire.gov.uk;wyre.gov.uk
+89,Preston Household Waste Recycling Centre,England,PR2 1SG,Lancashire,Preston,2012,2025,lancashire.gov.uk;preston.gov.uk
+90,Carnforth Household Waste Recycling Centre,England,LA5 9RQ,Lancashire,Lancaster,2012,2025,lancashire.gov.uk;lancaster.gov.uk
+91,Veolia Battlefield I W M F,England,SY1 3TG,Shropshire,Shropshire,2012,2025,shropshire.gov.uk
+92,Burtonhead Road H W R C,England,WA9 5EA,St. Helens,St. Helens,2012,2025,sthelens.gov.uk;merseysidewda.gov.uk
+93,Frodsham Civic Amenity Site,England,WA6 6PN,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+94,Brampton Household Amenity Site,England,CA8 1SW,Cumberland,Cumberland,2012,2025,cumberland.gov.uk
+95,Kendal H W R C,England,LA9 7BY,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+96,Yeovil Household Waste Recycling Centre,England,BA22 8RP,Somerset,Somerset,2012,2025,somerset.gov.uk
+97,Coder Road Transfer Station,England,SY8 1XE,Shropshire,Shropshire,2012,9999,shropshire.gov.uk
+98,Farrington H W R C,England,PR26 6RA,Lancashire,South Ribble,2012,2025,lancashire.gov.uk;south-ribblebc.gov.uk
+99,"Rotherwas Household Waste Site, Transfer Station & M R F",England,HR2 6LD,"Herefordshire, County of","Herefordshire, County of",2012,9999,herefordshire.gov.uk
+100,Avonmouth Household Reuse & Recycling Centre,England,BS11 0YS,"Bristol, City of","Bristol, City of",2012,2025,bristol.gov.uk
+101,Johnsons Lane H W R C,England,WA8 0SJ,Halton,Halton,2012,2025,halton.gov.uk;merseysidewda.gov.uk
+102,Orrell Yard,England,WN5 8LZ,Wigan,Wigan,2012,2012,wigan.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+103,Farington Temporary H W R C,England,PR25 4GU,Lancashire,South Ribble,2012,9999,lancashire.gov.uk;south-ribblebc.gov.uk
+104,Whitchurch Transfer Station And Household Waste Recycling Centre,England,SY13 1TT,Shropshire,Shropshire,2012,2025,shropshire.gov.uk
+105,Dulcote Household Waste Recycling Centre,England,BA5 3PZ,Somerset,Somerset,2012,2025,somerset.gov.uk
+106,Chorley Household Waste Recycling Centre,England,PR7 3QN,Lancashire,Chorley,2012,2025,lancashire.gov.uk;main.chorley.gov.uk
+107,Newton Le Willows H W R C,England,WA12 8DN,St. Helens,St. Helens,2012,2025,sthelens.gov.uk;merseysidewda.gov.uk
+108,Gatewarth Community Recycling Centre,England,WA5 1DD,Warrington,Warrington,2012,2025,warrington.gov.uk
+109,Oak Quarry Household Waste Site,England,GL16 7EG,Gloucestershire,Forest of Dean,2012,2025,gloucestershire.gov.uk;fdean.gov.uk
+110,Tenbury Household Waste Site,England,WR15 8BB,Worcestershire,Malvern Hills,2012,9999,worcestershire.gov.uk;malvernhills.gov.uk
+111,Days Road Household Waste Recycling Centre,England,BS2 0QS,"Bristol, City of","Bristol, City of",2012,2025,bristol.gov.uk
+112,Longridge Household Waste Recycling Centre,England,PR3 3JY,Lancashire,Ribble Valley,2012,2025,lancashire.gov.uk;ribblevalley.gov.uk
+113,Ross On Wye Household Waste Site,England,HR9 7AQ,"Herefordshire, County of","Herefordshire, County of",2012,2025,herefordshire.gov.uk
+114,Station Road Civic Amenity Site,England,BS34 6HP,South Gloucestershire,South Gloucestershire,2012,2025,southglos.gov.uk
+115,Kirkless Recycling Centre,England,WN2 2PP,Wigan,Wigan,2012,2016,wigan.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+116,Blackrod H W R C,England,BL6 5EW,Bolton,Bolton,2012,2013,bolton.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+117,Dimmer Household Waste Recycling Centre,England,BA7 7NR,Somerset,Somerset,2012,9999,somerset.gov.uk
+118,Land Off Sandy Lane,England,WA4 2AY,Warrington,Warrington,2012,2025,warrington.gov.uk
+119,Slag Lane Household Waste Recycling Centre,England,WA3 1BT,Wigan,Wigan,2012,2025,wigan.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+120,Winsford Household Waste Recycling Centre,England,CW7 2RB,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+121,Sherborne H W R C,England,DT9 5NP,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+122,Woolston Household Waste And Recycling Centre,England,WA1 4AG,Warrington,Warrington,2012,2025,warrington.gov.uk
+123,Thornbury Household Waste Recycling Facility,England,BS35 3UT,South Gloucestershire,South Gloucestershire,2012,2025,southglos.gov.uk
+124,Whitton Household Recycling Centre,England,CW9 5LN,Cheshire West and Chester,Cheshire West and Chester,2012,2025,cheshirewestandchester.gov.uk
+125,Mangotsfield Transfer Station And H W R C,England,BS16 9LL,South Gloucestershire,South Gloucestershire,2012,2025,southglos.gov.uk
+126,Bromyard Household Waste Site,England,HR7 4QT,"Herefordshire, County of","Herefordshire, County of",2012,2025,herefordshire.gov.uk
+127,Ketley Civic Amenity Site,England,TF1 2DY,Telford and Wrekin,Telford and Wrekin,2012,2016,telford.gov.uk
+128,Pixash Lane Recycling Centre,England,BS31 1TP,Bath and North East Somerset,Bath and North East Somerset,2012,2025,bathnes.gov.uk
+129,George Street H W R C,England,BB2 1PQ,Blackburn with Darwen,Blackburn with Darwen,2012,2025,blackburn.gov.uk
+130,Old Welton Refuse Transfer Station And C A Site,England,BA3 2AA,Bath and North East Somerset,Bath and North East Somerset,2012,2025,bathnes.gov.uk
+131,Pyms Lane Civic Amenity Site,England,CW1 3PJ,Cheshire East,Cheshire East,2012,2025,cheshireeast.gov.uk
+132,Chanters Civic Amenity Site,England,M46 9BP,Westmorland and Furness,Westmorland and Furness,2012,2015,westmorlandandfurness.gov.uk
+133,Weymouth H W R C,England,DT4 7SX,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+134,Portland H W R C,England,DT5 1BW,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+135,Coleford Community Recycling Site,England,BA3 5RU,Somerset,Somerset,2012,2014,somerset.gov.uk
+136,Middlewich Household Waste Site,England,CW10 9EZ,Cheshire East,Cheshire East,2012,2024,cheshireeast.gov.uk
+137,Spring Vale Road HWRC,England,BB3 2ES,Blackburn with Darwen,Blackburn with Darwen,2012,2025,blackburn.gov.uk
+138,Roman Road Transfer Station,England,BB1 2LD,Blackburn with Darwen,Blackburn with Darwen,2012,2015,blackburn.gov.uk
+139,Yate Waste Transfer Station & Household Waste Recycling Centre,England,BS37 5NH,South Gloucestershire,South Gloucestershire,2012,2025,southglos.gov.uk
+140,Ledbury Household Waste Site,England,HR8 2DP,"Herefordshire, County of","Herefordshire, County of",2012,2025,herefordshire.gov.uk
+141,Lester Road H W R C,England,M38 0PT,Salford,Salford,2012,2013,salford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+142,Dorcester HWRC,England,DT1 1PE,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+143,Haltwhistle Household Waste Recycling Centre,England,NE49 0ET,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+144,Halesfield Community Recycling Centre,England,TF7 4LN,Telford and Wrekin,Telford and Wrekin,2012,2025,telford.gov.uk
+145,Raikes Lane Transfer Loading Station,England,BL3 2NH,Bolton,Bolton,2012,2025,bolton.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+146,Boysnope Wharf Household Waste Recycling Centre,England,M30 7RH,Salford,Salford,2012,9999,salford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+147,Midland Road Waste Transfer Station And Civic Amenity Site,England,BA1 3AT,Bath and North East Somerset,Bath and North East Somerset,2012,2025,bathnes.gov.uk
+148,Heys Lane  H W D C,England,BB6 7UA,Lancashire,Hyndburn,2012,2012,lancashire.gov.uk;hyndburnbc.gov.uk
+149,Newport Civic Amenity Site,England,TF10 7NB,Telford and Wrekin,Telford and Wrekin,2012,9999,telford.gov.uk
+150,Sinderland Road Household Waste Recycling Centre,England,WA14 5TB,Trafford,Trafford,2012,9999,trafford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+151,Barnsley Lane H W R C,England,WV15 5HG,Shropshire,Shropshire,2012,2012,shropshire.gov.uk
+152,Knutsford Civic Amenity Site,England,WA16 8HY,Cheshire East,Cheshire East,2012,2025,cheshireeast.gov.uk
+153,Kirkby Stephen H W R C,England,CA17 4RN,Westmorland and Furness,Westmorland and Furness,2012,2025,westmorlandandfurness.gov.uk
+154,Frome Household Waste Recycling Centre,England,BA11 4RN,Somerset,Somerset,2012,2025,somerset.gov.uk
+155,Cemetery Road Household Waste Recycling Centre,England,M26 4EU,Bury,Bury,2012,9999,bury.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+156,Hassall Road Household Waste Recycling Centre,England,ST7 2SJ,Cheshire East,Cheshire East,2012,2025,cheshireeast.gov.uk
+157,Arclid Household Waste Recycling Centre,England,CW11 2SP,Cheshire East,Cheshire East,2012,2017,cheshireeast.gov.uk
+158,Newcastle Household Waste Recycling Centre,England,ST5 6AD,Staffordshire,Newcastle-under-Lyme,2012,2025,staffordshire.gov.uk;newcastle-staffs.gov.uk
+159,Malvern Household Waste Site,England,WR14 1BE,Worcestershire,Malvern Hills,2012,2025,worcestershire.gov.uk;malvernhills.gov.uk
+160,Haslingden Household Waste Recycling Centre,England,BB4 5AN,Lancashire,Rossendale,2012,2025,lancashire.gov.uk;rossendale.gov.uk
+161,Lumns Lane Household Waste Recycling Centre,England,M27 8LN,Salford,Salford,2012,9999,salford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+162,Chester Road Civic Amenity Site,England,M32 ORL,Trafford,Trafford,2012,9999,trafford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+163,"Fernhill H W R C, T L S And Green Waste Processing Facility",England,BL9 5BE,Bury,Bury,2012,2025,bury.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+164,"Cobden Street HWRC, TLS and MBT Facility - EPR/GB3907CW",England,M6 6NA,Salford,Salford,2012,2025,salford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+165,Sudmeadow Household Waste Site,England,GL2 5FR,Gloucestershire,Gloucester,2012,2025,gloucestershire.gov.uk;gloucester.gov.uk
+166,Pyke Quarry Household Waste Site,England,GL1 0JW,Gloucestershire,Cotswold,2012,2025,gloucestershire.gov.uk;cotswold.gov.uk
+167,Settle H W R C,England,BD24 9AF,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+168,Bonemill Household Waste Site,England,DY13 8AS,Worcestershire,Wyre Forest,2012,2025,worcestershire.gov.uk;wyreforestdc.gov.uk
+169,Hoobrook Waste Recycling Centre,England,DY10 1HY,Worcestershire,Wyre Forest,2012,2025,worcestershire.gov.uk;wyreforestdc.gov.uk
+170,Allendale Household Waste Recycling Centre,England,NE47 9LQ,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+171,Rakehead Lane Civic Amenity Site,England,OL13 0PB,Lancashire,Rossendale,2012,2012,lancashire.gov.uk;rossendale.gov.uk
+172,Upton Upon Severn Household Waste Site,England,WR8 0HU,Worcestershire,Malvern Hills,2012,2025,worcestershire.gov.uk;malvernhills.gov.uk
+173,Congleton Household Waste Site,England,CW12 1LJ,Cheshire East,Cheshire East,2012,2021,cheshireeast.gov.uk
+174,Bilford Road Household Waste Site,England,WR3 8PU,Worcestershire,Worcester,2012,2025,worcestershire.gov.uk;worcester.gov.uk
+175,Trowbridge HWRC,England,BA14 8QU,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+176,Womborne Household Waste Recycling Centre,England,DY3 4RA,Staffordshire,South Staffordshire,2012,2025,staffordshire.gov.uk;sstaffs.gov.uk
+177,Burnley Household Waste Recycling Centre,England,BB10 2TJ,Lancashire,Burnley,2012,2025,lancashire.gov.uk;burnley.gov.uk
+178,Burslem H W R C,England,ST6 4HU,Stoke-on-Trent,Stoke-on-Trent,2012,2025,stoke.gov.uk
+179,Warminster Household Waste Recycling Centre,England,BA12 8PE,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+180,Shaftesbury H W R C,England,SP7 9QJ,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+181,Pendle T S,England,BB8 8LJ,Lancashire,Pendle,2012,2012,lancashire.gov.uk;pendle.gov.uk
+182,Middleton Civic Amenity Site,England,M24 2HQ,Rochdale,Rochdale,2012,9999,rochdale.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+183,Barnoldswick H W R C,England,BB18 5EN,Lancashire,Pendle,2012,2025,lancashire.gov.uk;pendle.gov.uk
+184,Hanford Household Waste Recycling Centre,England,ST4 4DX,Stoke-on-Trent,Stoke-on-Trent,2012,2025,stoke.gov.uk
+185,Adswood Road Household Waste Recycling Centre,England,SK8 5QY,Stockport,Stockport,2012,9999,stockport.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+186,Bemersley HWRC,England,ST8 7QT,Staffordshire,Staffordshire Moorlands,2012,2025,staffordshire.gov.uk;staffsmoorlands.gov.uk
+187,Sandfold Lane Civic Amenity Site,England,M19 3BJ,Manchester,Manchester,2012,9999,manchester.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+188,Bilbrook Household Waste Recycling Centre,England,WV8 1RR,Staffordshire,South Staffordshire,2012,2025,staffordshire.gov.uk;sstaffs.gov.uk
+189,All Seasons Ind Est,England,DT11 7TB,Dorset,Dorset,2012,2016,dorsetcouncil.gov.uk
+190,Ash Road Household Waste Recycling Centre,England,M43 6QU,Tameside,Tameside,2012,9999,tameside.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+191,Rainford H W R C,England,WA11 8EY,Rochdale,Rochdale,2012,2014,rochdale.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+192,Stone Street Sweeping Pad,England,ST15 0NN,Staffordshire,Stafford,2012,2025,staffordshire.gov.uk;staffordbc.gov.uk
+193,Danes Moss Household Waste Site,England,SK11 9QP,Cheshire East,Cheshire East,2012,2025,cheshireeast.gov.uk
+194,"Waithlands H W R C, T L S And I V C",England,OL16 2AU,Rochdale,Rochdale,2012,2025,rochdale.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+195,Stourbridge Household Waste Recycling Centre,England,DY8 1JL,Dudley,Dudley,2012,2025,dudley.gov.uk
+196,Melksham H R C,England,SN12 6QT,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+197,Arkwright Street Resource Recovery Centre,England,OL9 9LZ,Oldham,Oldham,2012,2025,oldham.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+198,Wareham H W R C,England,BH20 4SN,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+199,H W R C Site Shaw Road,England,WV10 9LA,Wolverhampton,Wolverhampton,2012,2025,wolverhampton.gov.uk
+200,Recycling Transfer Station,England,WV1 1QB,Wolverhampton,Wolverhampton,2012,2025,wolverhampton.gov.uk
+201,Bollington Household Waste Site,England,SK10 5HS,Cheshire East,Cheshire East,2012,2024,cheshireeast.gov.uk
+202,Stanton St Quintin Household Waste Recycling Centre,England,SN14 6BD,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+203,Stafford Household Waste Recycling Centre,England,ST16 3DR,Staffordshire,Stafford,2012,2025,staffordshire.gov.uk;staffordbc.gov.uk
+204,Droitwich Household Waste Site,England,WR9 7DX,Worcestershire,Wychavon,2012,2025,worcestershire.gov.uk;wychavon.gov.uk
+205,Wingmoor Farm Household Waste Site,England,GL52 7DG,Gloucestershire,Tewkesbury,2012,2025,gloucestershire.gov.uk;tewkesburybc.gov.uk
+206,Swindon Road Recycling Centre,England,GL51 9JZ,Gloucestershire,Cheltenham,2012,2025,gloucestershire.gov.uk;cheltenham.gov.uk
+207,H W R C Site Anchor Lane,England,WV14 9NE,Wolverhampton,Wolverhampton,2012,2025,wolverhampton.gov.uk
+208,"Bredbury Parkway H W R C, T L S, I V C & M B T Facility",England,SK6 2QN,Stockport,Stockport,2012,9999,stockport.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+209,Poynton Civic Amenity Site,England,SK12 5LA,Cheshire East,Cheshire East,2012,2024,cheshireeast.gov.uk
+210,Hexham Transfer Station And H W R C,England,NE46 4DL,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+211,Middleton Household Waste Recycling Centre,England,DL12 0NG,County Durham,County Durham,2012,2025,durham.gov.uk
+212,Rosehill Household Waste Recycling Centre,England,SK6 6HU,Stockport,Stockport,2012,9999,stockport.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+213,Bayley Street H W R C And T L S,England,SK15 1PY,Tameside,Tameside,2012,2025,tameside.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+214,Quantry Lane Household Recycling Centre,England,DY9 9UU,Worcestershire,Bromsgrove,2012,2025,worcestershire.gov.uk;bromsgrove.gov.uk
+215,Eastwood Household Waste And Recycling Centre,England,OL14 5RJ,Calderdale,Calderdale,2012,2025,calderdale.gov.uk
+216,Sandwell Household Waste & Recycling Centre,England,B69 2BP,Sandwell,Sandwell,2012,2025,sandwell.gov.uk
+217,Fowlchurch Waste Transfer Station & H W R C,England,ST13 6BH,Staffordshire,Staffordshire Moorlands,2012,2025,staffordshire.gov.uk;staffsmoorlands.gov.uk
+218,Berwick Transfer Station And H W R C,England,TD15 1UN,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+219,Cannock Household Waste Recycling Centre,England,WS11 8NQ,Staffordshire,Cannock Chase,2012,2025,staffordshire.gov.uk;cannockchasedc.gov.uk
+220,Fryers Road Household Waste Site & Transfer Station,England,WS2 7LZ,Walsall,Walsall,2012,2025,walsall.gov.uk
+221,Cheadle Household Waste Recycling Centre,England,ST10 1FB,Staffordshire,Staffordshire Moorlands,2012,2025,staffordshire.gov.uk;staffsmoorlands.gov.uk
+222,Wooler Civic Amenity Site,England,NE71 6QG,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+223,Glossop H W R C,England,SK13 6JQ,Derbyshire,High Peak,2012,2025,derbyshire.gov.uk;highpeak.gov.uk
+224,Nuffield Waste Transfer Station & Civic Amenity Site,England,BH17 0RS,"Bournemouth, Christchurch and Poole","Bournemouth, Christchurch and Poole",2012,9999,bcpcouncil.gov.uk
+225,Swanage H W R C,England,BH19 1EJ,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+226,"Honeyball Household Recycling Centre, Compton Bassett",England,SN11 8RE,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+227,Devizes Household Recycling Centre,England,SN10 2EU,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+228,Wimborne H W R C,England,BH21 2BJ,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+229,Burntwood Household Waste Recycling Centre,England,WS7 1JQ,Staffordshire,Lichfield,2012,2025,staffordshire.gov.uk;lichfielddc.gov.uk
+230,Rugeley Household Waste Recycling Centre,England,WS15 2HE,Staffordshire,Cannock Chase,2012,2025,staffordshire.gov.uk;cannockchasedc.gov.uk
+231,Sugden End H W S,England,BD21 5PT,Bradford,Bradford,2012,2024,bradford.gov.uk
+232,Merchants Way Household Waste Site,England,WS9 8SW,Walsall,Walsall,2012,2025,walsall.gov.uk
+233,Fosse Cross Civic Amenity Site,England,GL54 4NW,Gloucestershire,Cotswold,2012,2025,gloucestershire.gov.uk;cotswold.gov.uk
+234,Redditch Household Waste Site,England,B98 7SN,Worcestershire,Redditch,2012,2025,worcestershire.gov.uk;redditchbc.gov.uk
+235,Keighley H W S,England,BD21 4BZ,Bradford,Bradford,2012,2025,bradford.gov.uk
+236,Millhams Community Recycling Centre,England,BH10 7LQ,"Bournemouth, Christchurch and Poole","Bournemouth, Christchurch and Poole",2012,2025,bcpcouncil.gov.uk
+237,Milner Royd Household Waste Site,England,HX6 2AY,Calderdale,Calderdale,2012,2025,calderdale.gov.uk
+238,Stainton Grove Waste Transfer Station,England,DL12 8UH,County Durham,County Durham,2012,2025,durham.gov.uk
+239,Halifax Household Waste Recycling Centre,England,HX3 5PN,Calderdale,Calderdale,2012,2025,calderdale.gov.uk
+240,Purton H R C,England,SN5 9HG,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+241,Uttoxeter Household Waste Recycling Centre,England,ST14 7BW,Staffordshire,East Staffordshire,2012,9999,staffordshire.gov.uk;eaststaffsbc.gov.uk
+242,Ford Hill Household Waste Site,England,BD13 2NQ,Bradford,Bradford,2012,9999,bradford.gov.uk
+243,Leyburn H W R C,England,DL8 5LA,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+244,Prudhoe Household Waste Recycling Centre,England,NE42 5EJ,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+245,Meltham H W R C,England,HD9 4AP,Kirklees,Kirklees,2012,2025,kirklees.gov.uk
+246,Ainleys (Elland) HWRC,England,HX5 9JR,Calderdale,Calderdale,2012,2025,calderdale.gov.uk
+247,Dowley Gap Recycling Centre And Household Waste Site,England,BD16 1TP,Bradford,Bradford,2012,2025,bradford.gov.uk
+248,Golden Butts Household Waste Recycling Centre,England,LS29 8HS,Bradford,Bradford,2012,2024,bradford.gov.uk
+249,Veolia - Norris Way H W S,England,B75 7BB,Birmingham,Birmingham,2012,2025,birmingham.gov.uk
+250,Salisbury Hrc,England,SP2 7BU,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+251,Kirkley West Thorn Household Waste Recyling Centre,England,NE20 0AG,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+252,Brooms Dene Household Waste Disposal Compound,England,DH8 6RS,County Durham,County Durham,2012,2013,durham.gov.uk
+253,Fitzwilliam H W R C,England,WF9 5AZ,Kirklees,Kirklees,2012,2015,kirklees.gov.uk
+254,Cragwood Household Waste Disposal Compound,England,DL13 5AN,County Durham,County Durham,2012,2013,durham.gov.uk
+255,Atlas Mill Road Household Waste Site,England,HD6 1ES,Calderdale,Calderdale,2012,2025,calderdale.gov.uk
+256,Emerald Street Household Waste Site,England,HD1 6BY,Kirklees,Kirklees,2012,2025,kirklees.gov.uk
+257,City Of Bradford Metropolitan District Council,England,BD8 7DQ,Bradford,Bradford,2012,2025,bradford.gov.uk
+258,"Ranmore Road C A , Dorking",England,RH4 1TL,Wiltshire,Wiltshire,2012,2012,wiltshire.gov.uk
+259,Dealburn Road Household Waste Recycling Centre,England,BD12 0RG,Bradford,Bradford,2012,2025,bradford.gov.uk
+260,Amesbury Household Recycling Centre,England,SP4 7RX,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+261,Ashbourne Household Waste Recycling Centre,England,DE6 2BJ,Derbyshire,Derbyshire Dales,2012,2025,derbyshire.gov.uk;derbyshiredales.gov.uk
+262,Walbottle Road C A Site,England,NE15 8HY,Newcastle upon Tyne,Newcastle upon Tyne,2012,2025,newcastle.gov.uk
+263,Annfield Plain Household Waste Recycling Facility,England,DH9 7XW,County Durham,County Durham,2012,2025,durham.gov.uk
+264,Otley Household Waste Recycling Centre,England,LS21 3DM,Leeds,Leeds,2012,2025,leeds.gov.uk
+265,Burton Farm Recycling Centre,England,CV37 0RW,Warwickshire,Stratford-on-Avon,2012,2025,warwickshire.gov.uk;stratford.gov.uk
+266,Bradford H W S,England,BD4 8SZ,Bradford,Bradford,2012,2025,bradford.gov.uk
+267,Christchurch H W R C,England,BH23 3RU,"Bournemouth, Christchurch and Poole","Bournemouth, Christchurch and Poole",2012,2025,bcpcouncil.gov.uk
+268,Cowen Road Waste Reception & Recycling Centre,England,NE21 5TW,Gateshead,Gateshead,2012,2025,gateshead.gov.uk
+269,Everleigh Household Recycling Centre,England,SN9 6LZ,Wiltshire,Wiltshire,2012,2018,wiltshire.gov.uk
+270,Marlborough Household Recycling Centre,England,SN8 4AE,Wiltshire,Wiltshire,2012,2025,wiltshire.gov.uk
+271,Yeadon Household Waste Recycling Centre,England,LS19 7JE,Leeds,Leeds,2012,2025,leeds.gov.uk
+272,Alnwick Transfer Station,England,NE66 2HT,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+273,Romanway Household Waste Recycling Centre,England,DL14 9AW,County Durham,County Durham,2012,2025,durham.gov.uk
+274,Bickenhill H W R C,England,B92 0DY,Solihull,Solihull,2012,2025,solihull.gov.uk
+275,Todhills C A Site,England,DL14 8BB,County Durham,County Durham,2012,2013,durham.gov.uk
+276,North Sunderland Civic Amenity Site,England,NE68 7UP,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+277,Morpeth Household Waste Recovery Centre,England,NE61 3AB,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+278,Thorney Down Waste Transfer Station,England,SP5 1BN,Wiltshire,Wiltshire,2012,2013,wiltshire.gov.uk
+279,Bromley Farm H W R C,England,HD8 8PD,Kirklees,Kirklees,2012,2025,kirklees.gov.uk
+280,Shildon Transfer Station & Recycling Facility,England,DL4 1HF,County Durham,County Durham,2012,2016,durham.gov.uk
+281,Brunswick Waste Reception Site,England,NE13 7,Newcastle upon Tyne,Newcastle upon Tyne,2012,2025,newcastle.gov.uk
+282,Catterick Bridge H W R C,England,DL10 7JD,North Yorkshire,North Yorkshire,2012,9999,northyorks.gov.uk
+283,Burton Household Waste Recycling Centre,England,DE14 2AU,Staffordshire,East Staffordshire,2012,2025,staffordshire.gov.uk;eaststaffsbc.gov.uk
+284,Hett Hills Household Waste Recycling Centre,England,DH2 3JX,County Durham,County Durham,2012,2025,durham.gov.uk
+285,Thornhill Integrated Waste Management Facility,England,WF13 3RU,Kirklees,Kirklees,2012,2025,kirklees.gov.uk
+287,West Harrogate H W R C,England,HG3 2SN,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+288,Penistone Household Waste Recycling Centre,England,S36 6HJ,Barnsley,Barnsley,2012,2025,barnsley.gov.uk
+289,Northwood H W R C,England,DE4 2LF,Derbyshire,Derbyshire Dales,2012,2025,derbyshire.gov.uk;derbyshiredales.gov.uk
+290,Shipston Household Waste Recycling Centre,England,CV36 4PR,Warwickshire,Stratford-on-Avon,2012,2025,warwickshire.gov.uk;stratford.gov.uk
+291,Potterhouse Household Waste Recycling Centre,England,DH1 5RL,County Durham,County Durham,2012,2025,durham.gov.uk
+292,Shawcross Household Waste Site,England,WF5 9AU,Wakefield,Wakefield,2012,2015,wakefield.gov.uk
+293,Tudhoe Household Waste Recycling Centre,England,DL16 6TL,County Durham,County Durham,2012,2025,durham.gov.uk
+294,Byker Waste Reception Site,England,NE6 1BE,Newcastle upon Tyne,Newcastle upon Tyne,2012,2025,newcastle.gov.uk
+295,Wellesbourne Household Waste Recycling Centre,England,CV35 9JY,Warwickshire,Stratford-on-Avon,2012,2025,warwickshire.gov.uk;stratford.gov.uk
+296,Heighington Household Waste Recycling Centre,England,DL5 6AP,County Durham,County Durham,2012,2025,durham.gov.uk
+297,Kirkstall Household Waste Recycling Centre,England,LS4 2HR,Leeds,Leeds,2012,2025,leeds.gov.uk
+298,Grendon Household Waste Recycling Centre,England,CV9 2EX,Warwickshire,North Warwickshire,2012,2013,warwickshire.gov.uk;northwarks.gov.uk
+299,Campground Household Waste Recycling Centre,England,NE9 7XW,Sunderland,Sunderland,2012,2025,sunderland.gov.uk
+300,Bebside Household Amenity Site,England,NE24 4HN,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+301,Bretby Household Waste Site,England,DE11 0TP,Derbyshire,South Derbyshire,2012,2025,derbyshire.gov.uk;south-derbys.gov.uk
+302,Leeming Bar H W R C,England,DL7 9UJ,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+303,Drinkfield Household Waste Recycling Centre,England,DL3 0XE,Darlington,Darlington,2012,2025,darlington.gov.uk
+304,Deepcar H W R C,England,S36 2UU,Sheffield,Sheffield,2012,2025,sheffield.gov.uk
+305,North Seaton H W R C Facility,England,NE63 0YB,Northumberland,Northumberland,2012,2025,northumberland.gov.uk
+306,Cherry Orchard H W R C,England,CV8 2UB,Warwickshire,Warwick,2012,2025,warwickshire.gov.uk;warwickdc.gov.uk
+307,Meanwood Household Waste Recycling Centre,England,LS7 2LP,Leeds,Leeds,2012,2025,leeds.gov.uk
+308,Princes Drive Waste Transfer Station and HWRC,England,CV31 3PH,Warwickshire,Warwick,2012,2025,warwickshire.gov.uk;warwickdc.gov.uk
+309,Efford H W R C,England,SO41 8EZ,Hampshire,New Forest,2012,2025,hants.gov.uk;newforest.gov.uk
+310,Ripon H W R C,England,HG4 1TT,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+311,Stanley Road H W S S,England,LS9 7LP,Leeds,Leeds,2012,2013,leeds.gov.uk
+312,Denby Dale Road Transfer Loading Station,England,WF2 7AH,Wakefield,Wakefield,2012,2016,wakefield.gov.uk
+313,Stanford Waste Recycling And Reception Centre,England,SN7 8HE,Oxfordshire,Vale of White Horse,2012,9999,oxfordshire.gov.uk;whitehorsedc.gov.uk
+314,Coxhoe Household Waste Recycling Centre,England,DH6 4RT,County Durham,County Durham,2012,2025,durham.gov.uk
+315,Harrogate Stonefall H W R C,England,HG3 1DE,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+316,North Tyneside Transfer Station,England,NE29 7SH,North Tyneside,North Tyneside,2012,2025,northtyneside.gov.uk
+317,High Green H W R C,England,S35 4GR,Sheffield,Sheffield,2012,2025,sheffield.gov.uk
+318,Afton Marsh Household Waste Recycling Centre,England,PO40 9TT,Isle of Wight,Isle of Wight,2012,2025,iwight.com
+319,Douglas Road H W R C,England,S5 8,Sheffield,Sheffield,2012,2025,sheffield.gov.uk
+320,Bar Road Household Waste Site,England,CV3 4AN,Coventry,Coventry,2012,2025,coventry.gov.uk
+321,Smithies Lane Household Waste Recycling Centre,England,S71 1NL,Barnsley,Barnsley,2012,2025,barnsley.gov.uk
+322,Seacroft Household Waste Recycling Centre,England,LS14 1NR,Leeds,Leeds,2012,2025,leeds.gov.uk
+323,West Street Household Waste Recycling Centre,England,S70 5DJ,Barnsley,Barnsley,2012,2025,barnsley.gov.uk
+324,Middlefields Recycling Village,England,NE34 0NU,South Tyneside,South Tyneside,2012,2025,southtyneside.gov.uk
+325,Northallerton H W R C,England,DL7 0LG,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+326,Casbrook H W R C,England,SO51 0PG,Hampshire,Test Valley,2012,2025,hants.gov.uk;testvalley.gov.uk
+327,Blackstock H W R C,England,S14 1LW,Sheffield,Sheffield,2012,2025,sheffield.gov.uk
+328,Chesterfield Household Waste Recycling Centre,England,S41 9RT,Derbyshire,Chesterfield,2012,9999,derbyshire.gov.uk;chesterfield.gov.uk
+329,Welbeck Household Waste Site,England,WF6 2JA,Wakefield,Wakefield,2012,2017,wakefield.gov.uk
+330,Lount Recycling And Household Waste Site,England,LE65 1SD,Leicestershire,North West Leicestershire,2012,9999,leicestershire.gov.uk;nwleics.gov.uk
+331,City Depot,England,SO15 0LJ,Southampton,Southampton,2012,2025,southampton.gov.uk
+332,Alkerton W R R C,England,OX15 6HZ,Oxfordshire,Cherwell,2012,2025,oxfordshire.gov.uk;cherwell.gov.uk
+333,Andover H W R C,England,SP10 5NU,Hampshire,Test Valley,2012,2025,hants.gov.uk;testvalley.gov.uk
+334,Raynesway Civic Amenity Site,England,DE21 7BA,Derby,Derby,2012,2025,derby.gov.uk
+335,Marchwood H W R C,England,SO40 4PB,Hampshire,New Forest,2012,2025,hants.gov.uk;newforest.gov.uk
+336,Stonegravels,England,S41 7LF,Derbyshire,Chesterfield,2012,2025,derbyshire.gov.uk;chesterfield.gov.uk
+337,Beach Street Waste Reception Site,England,SR4 6BU,Sunderland,Sunderland,2012,2022,sunderland.gov.uk
+338,Thornley Household Waste Recycling Centre,England,DH6 2QA,County Durham,County Durham,2012,2025,durham.gov.uk
+339,Strangford Household Waste Recycling Centre,England,SR7 8QE,County Durham,County Durham,2012,2025,durham.gov.uk
+340,Coalville C A Site,England,LE67 3LH,Leicestershire,North West Leicestershire,2012,2025,leicestershire.gov.uk;nwleics.gov.uk
+341,Cinder Lane Household Waste Site,England,WF10 1LU,Wakefield,Wakefield,2012,2015,wakefield.gov.uk
+342,Carr Hill Household Waste Recycling Centre,England,S61 4QL,Rotherham,Rotherham,2012,2025,rotherham.gov.uk
+343,Loscoe Household Waste Recycling Centre,England,DE75 7TA,Derbyshire,Amber Valley,2012,2025,derbyshire.gov.uk;ambervalley.gov.uk
+344,South Kirkby Household Waste Recycling Centre,England,S72 9EX,Wakefield,Wakefield,2012,2015,wakefield.gov.uk
+345,Beighton H W R C,England,S20,Sheffield,Sheffield,2012,2025,sheffield.gov.uk
+346,Skippy Waste Services,England,TS18 3RU,Stockton-on-Tees,Stockton-on-Tees,2012,2025,stockton.gov.uk
+347,Sowerby H W R C,England,YO7 1FA,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+348,Kirkby Household Waste Recycling Centre,England,,Leicestershire,Hinckley and Bosworth,2012,2019,leicestershire.gov.uk;hinckleyandbosworthonline.org.uk
+349,Stockton Household Waste Recycling Centre,England,CV47 8LA,Warwickshire,Stratford-on-Avon,2012,2025,warwickshire.gov.uk;stratford.gov.uk
+350,Leicestershire C C - Barwell Household Waste Site,England,LE9 8HE,Leicestershire,Hinckley and Bosworth,2012,2025,leicestershire.gov.uk;hinckleyandbosworthonline.org.uk
+351,Horden Household Waste Recycling Centre,England,SR8 3SX,County Durham,County Durham,2012,2025,durham.gov.uk
+352,Warren Vale Household Waste Recycling Centre,England,S62 7RW,Rotherham,Rotherham,2012,2025,rotherham.gov.uk
+353,Former Coal Stocking Yard,England,S44 6BU,Derbyshire,Erewash,2012,2018,derbyshire.gov.uk;erewash.gov.uk
+354,Eastleigh H W R C,England,SO50 9ER,Hampshire,Eastleigh,2012,9999,hants.gov.uk;eastleigh.gov.uk
+355,Wetherby Household Waste Recycling Centre,England,LS23 7BJ,Leeds,Leeds,2012,2025,leeds.gov.uk
+356,Goldthorpe Household Waste Recycling Centre,England,S63 9AS,Barnsley,Barnsley,2012,2025,barnsley.gov.uk
+357,Ilkeston Civic Amenity Site,England,DE7 8EF,Derbyshire,Erewash,2012,2025,derbyshire.gov.uk;erewash.gov.uk
+358,Netley H W R C,England,SO31 8GD,Hampshire,Eastleigh,2012,2025,hants.gov.uk;eastleigh.gov.uk
+359,Isle Of Wight Waste Recovery Park,England,PO30 5YS,Isle of Wight,Isle of Wight,2012,9999,iwight.com
+360,Newtown Road H W R C,England,RG20 9BB,West Berkshire,West Berkshire,2012,2025,westberks.gov.uk
+361,Drayton W R R C,England,OX14 4HH,Oxfordshire,Vale of White Horse,2012,2025,oxfordshire.gov.uk;whitehorsedc.gov.uk
+362,Tholthorpe H W R C,England,YO61 1SG,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+363,H W R C  At Garnier Road,England,SO23 9QG,Hampshire,Winchester,2012,2012,hants.gov.uk;winchester.gov.uk
+364,Haverton Hill H W R C And Transfer Station,England,TS23 1PY,Stockton-on-Tees,Stockton-on-Tees,2012,2025,stockton.gov.uk
+365,Tadcaster H W R C,England,LS24 9SG,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+366,Ferrybridge Household Waste Site,England,WF11 8PH,Wakefield,Wakefield,2012,2015,wakefield.gov.uk
+367,Giltbrook Household Waste Site,England,NG16 2HR,Nottinghamshire,Broxtowe,2012,2025,nottinghamshire.gov.uk;broxtowe.gov.uk
+368,Winchester H W R C,England,SO23 9NP,Hampshire,Winchester,2012,9999,hants.gov.uk;winchester.gov.uk
+369,Shepshed C A Site,England,LE12 9RP,Leicestershire,Charnwood,2012,2025,leicestershire.gov.uk;charnwood.gov.uk
+370,Hedge End H W R C,England,SO30 2FN,Hampshire,Eastleigh,2012,2025,hants.gov.uk;eastleigh.gov.uk
+371,Hunters Lane Household Waste Recycling Centre,England,CV21 1EA,Warwickshire,Rugby,2012,2025,warwickshire.gov.uk;rugby.gov.uk
+372,Fair Oak H W R C,England,SO50 7DZ,Hampshire,Eastleigh,2012,2025,hants.gov.uk;eastleigh.gov.uk
+373,Lidget Lane Household Waste Recycling Centre,England,S65 4LY,Rotherham,Rotherham,2012,2025,rotherham.gov.uk
+374,Magilla Household Waste Recycling Centre,England,S25 4AH,Rotherham,Rotherham,2012,2025,rotherham.gov.uk
+375,Kirkby H W C,England,NG17 7JZ,Nottinghamshire,Ashfield,2012,2025,nottinghamshire.gov.uk;ashfield.gov.uk
+376,Burn Road Household Waste Site,England,TS25 1PL,Hartlepool,Hartlepool,2012,2025,hartlepool.gov.uk
+377,Redbridge W R R C,England,OX1 4XS,Oxfordshire,Oxford,2012,2025,oxfordshire.gov.uk;oxford.gov.uk
+378,Farthinghoe Recycling & Reuse Centre,England,NN13 5PB,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+379,Conisbrough H W R C,England,DN12 2AE,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+380,Kestral Park Household Waste & Recycling Centre,England,NG18 5FT,Nottinghamshire,Mansfield,2012,2025,nottinghamshire.gov.uk;mansfield.gov.uk
+381,Stokesley H W R C,England,TS9 5PT,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+382,Lynnbottom HWRC & Compost Site,England,PO30 2PD,Isle of Wight,Isle of Wight,2012,2025,iwight.com
+383,Lutterworth H W S,England,LE17 4JD,Leicestershire,Harborough,2012,2025,leicestershire.gov.uk;harborough.gov.uk
+384,Segensworth H W R C,England,PO15 5TT,Hampshire,Fareham,2012,2025,hants.gov.uk;fareham.gov.uk
+385,Lilac Grove Household Waste Centre,England,NG9 1PF,Nottinghamshire,Broxtowe,2012,2025,nottinghamshire.gov.uk;broxtowe.gov.uk
+386,Loughborough R H W S,England,LE11 1HW,Leicestershire,Charnwood,2012,2025,leicestershire.gov.uk;charnwood.gov.uk
+387,Hucknall Household Waste Recycling Centre,England,NG15 7SZ,Nottinghamshire,Ashfield,2012,2025,nottinghamshire.gov.uk;ashfield.gov.uk
+388,Bishops Waltham H W R C,England,SO32 1BH,Hampshire,Winchester,2012,2025,hants.gov.uk;winchester.gov.uk
+389,Lenton Household Waste Recycling Centre,England,NG7 2UJ,Nottingham,Nottingham,2012,2025,nottinghamcity.gov.uk
+390,Carcroft H W R C Site,England,DN6 7BD,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+391,Daventry H W R C,England,NN11 4NS,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+392,Springwell Lane Household Waste Recycling Centre,England,DN4 9AX,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+393,Oakfield Lane Household Waste Centre,England,NG20 0JG,Nottinghamshire,Mansfield,2012,2025,nottinghamshire.gov.uk;mansfield.gov.uk
+394,Beckfield Lane Household Amenity Site,England,YO26 5JP,York,York,2012,2012,york.gov.uk
+395,Worksop Waste Transfer Station,England,S81 7BQ,Nottinghamshire,Bassetlaw,2012,9999,nottinghamshire.gov.uk;bassetlaw.gov.uk
+396,Mountsorrel Recycling & Household Waste Site,England,LE12 7TZ,Leicestershire,Charnwood,2012,2025,leicestershire.gov.uk;charnwood.gov.uk
+397,Greythorne Drive Household Waste Centre,England,NG2 7HX,Nottinghamshire,Rushcliffe,2012,2025,nottinghamshire.gov.uk;rushcliffe.gov.uk
+398,Warrenby Waste Transfer Station,England,TS10 5AW,Redcar and Cleveland,Redcar and Cleveland,2012,2014,redcar-cleveland.gov.uk
+399,Alresford H W R C,England,SO24 9QF,Hampshire,Winchester,2012,2025,hants.gov.uk;winchester.gov.uk
+400,Gosport H W R C,England,PO13 8AS,Hampshire,Gosport,2012,2025,hants.gov.uk;gosport.gov.uk
+401,Paices Hill Civic Amenity Site,England,RG7 4PG,West Berkshire,West Berkshire,2012,2013,westberks.gov.uk
+402,Freemens Common Transfer Station,England,LE2 7SQ,Leicester,Leicester,2012,2025,leicester.gov.uk
+403,Wilmot Lane Depot,England,PO12 3RY,Hampshire,Gosport,2012,2025,hants.gov.uk;gosport.gov.uk
+404,Calverton Household Waste Recycling Centre,England,NG14 6NR,Nottinghamshire,Gedling,2012,9999,nottinghamshire.gov.uk;gedling.gov.uk
+405,Rossington Household Waste Recycling Centre,England,DN11 0PS,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+406,Bridge Road C A Site,England,LE5 3LB,Leicester,Leicester,2012,2015,leicester.gov.uk
+407,Carlin Howe Farm Civic Amenity Site,England,TS14 6RG,Redcar and Cleveland,Redcar and Cleveland,2012,2025,redcar-cleveland.gov.uk
+408,Armthorpe Household Waste Recycing Centre,England,DN2 5QB,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+409,Hazel Court Household Waste Recycling Centre,England,YO10 3DS,York,York,2012,2025,york.gov.uk
+410,Oadby Recycling And Household Waste Site,England,LE2 5JE,Leicestershire,Oadby and Wigston,2012,2025,leicestershire.gov.uk;oadby-wigston.gov.uk
+411,Selby H W R C,England,YO8 8AG,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+412,Paulsgrove H W R C,England,PO6 4UD,Portsmouth,Portsmouth,2012,2025,portsmouth.gov.uk
+413,Oakley Wood Recycling Centre,England,OX10 6QQ,Oxfordshire,South Oxfordshire,2012,2025,oxfordshire.gov.uk;southoxon.gov.uk
+414,Towthorpe Household Amenity Site,England,YO32 9ST,York,York,2012,2025,york.gov.uk
+415,Basingstoke H W R C,England,RG24 8PL,Hampshire,Basingstoke and Deane,2012,2025,hants.gov.uk;basingstoke.gov.uk
+416,Bilsthorpe H W R C,England,NG22 8UA,Nottinghamshire,Newark and Sherwood,2012,2025,nottinghamshire.gov.uk;newark-sherwooddc.gov.uk
+417,Bootham Lane H W R C,England,DN7 4JT,Doncaster,Doncaster,2012,2025,doncaster.gov.uk
+418,Wombleton H W R C,England,YO62 7RJ,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+419,Waterlooville H W R C,England,PO7 7UL,Hampshire,Havant,2012,9999,hants.gov.uk;havant.gov.uk
+420,Towcester H W R C,England,NN12 8AW,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+421,Retford H W R C,England,DN22 7LB,Nottinghamshire,Bassetlaw,2012,2025,nottinghamshire.gov.uk;bassetlaw.gov.uk
+422,Buckingham Household Waste Recycling Centre,England,MK18 1RZ,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+423,Havant Household Waste Recycling Centre,England,PO9 1JN,Hampshire,Havant,2012,2025,hants.gov.uk;havant.gov.uk
+424,Airmyn Household Waste Recycling Site,England,DN14 8JZ,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+425,Fiskerton Household Waste Recycling Centre,England,NG25 0TU,Nottinghamshire,Newark and Sherwood,2012,2015,nottinghamshire.gov.uk;newark-sherwooddc.gov.uk
+426,Alton Household Waste Recycling Centre,England,GU34 2QE,Hampshire,East Hampshire,2012,2025,hants.gov.uk;easthants.gov.uk
+427,Sixfields Household Waste Recycling Centre,England,NN5 5QL,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+428,Langar Household Waste Recycling Centre,England,NG13 9HP,Nottinghamshire,Rushcliffe,2012,2015,nottinghamshire.gov.uk;rushcliffe.gov.uk
+429,H W R C,England,PO11 9NR,Hampshire,Havant,2012,2025,hants.gov.uk;havant.gov.uk
+430,Petersfield H W R C,England,GU32 3QG,Hampshire,East Hampshire,2012,2025,hants.gov.uk;easthants.gov.uk
+431,Market Harborough H W R C,England,LE16 7PT,Leicestershire,Harborough,2012,2025,leicestershire.gov.uk;harborough.gov.uk
+432,Melton C A Site,England,LE13 0BZ,Leicestershire,Melton,2012,2025,leicestershire.gov.uk;melton.gov.uk
+433,Brixworth H W R C,England,NN6 9RB,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+434,Hartley Wintney H W R C,England,RG27 8BW,Hampshire,Hart,2012,2025,hants.gov.uk;hart.gov.uk
+435,Worksop Civic Amenity Site,England,S80 3HA,Nottinghamshire,Bassetlaw,2012,9999,nottinghamshire.gov.uk;bassetlaw.gov.uk
+436,Hambrook Mobile Civic Amenity Site,England,PO10 8RB,West Sussex,Chichester,2012,2016,westsussex.gov.uk;chichester.gov.uk
+437,Belton Civic Amenity Site,England,DN9 1NY,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+438,Bledlow Ridge Household Waste Recycling Centre,England,HP14 4BQ,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+439,Malton H W R C,England,YO17 6BT,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+440,The Wittering Mobile H W R C,England,PO20 8HE,West Sussex,Chichester,2012,2025,westsussex.gov.uk;chichester.gov.uk
+441,Bordon H W R C,England,GU35 0LR,Hampshire,East Hampshire,2012,2025,hants.gov.uk;easthants.gov.uk
+442,Aylesbury Household Waste Recycling Centre,England,HP19 8RS,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+443,Somerby C A Site,England,LE15 8DR,Leicestershire,Melton,2012,9999,leicestershire.gov.uk;melton.gov.uk
+444,Bottesford Recycling & Household Waste Site,England,NG13 0EL,Leicestershire,Melton,2012,2025,leicestershire.gov.uk;melton.gov.uk
+445,Newark H W R C,England,NG24 2DE,Nottinghamshire,Newark and Sherwood,2012,2025,nottinghamshire.gov.uk;newark-sherwooddc.gov.uk
+446,Northampton - Ecton Lane H W R C,England,NN3 5HQ,West Northamptonshire,West Northamptonshire,2012,2025,westnorthants.gov.uk
+447,Gainsborough Household Waste Recycling Centre,England,DN21 1AF,Lincolnshire,West Lindsey,2012,9999,lincolnshire.gov.uk;west-lindsey.gov.uk
+448,Pocklington Household Waste Recycling Centre,England,YO42 1UL,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+449,High Wycombe Household Waste Recycling Centre,England,SL7 3DJ,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+450,New Bradwell H W R C,England,MK6 0AA,Milton Keynes,Milton Keynes,2012,2025,miltonkeynes.gov.uk
+451,Market Weighton Household Waste Disposal Site,England,YO43 4ED,East Riding of Yorkshire,East Riding of Yorkshire,2012,2018,eastriding.gov.uk
+452,Longshot Lane Waste Management Centre,England,RG12 1RL,Bracknell Forest,Bracknell Forest,2012,2025,bracknell-forest.gov.uk
+453,Bourne Mill  Community Recycling Centre,England,GU9 9PS,Surrey,Waverley,2012,2025,surreycc.gov.uk;waverley.gov.uk
+454,Bleak Hall H W R C,England,MK6 1LY,Milton Keynes,Milton Keynes,2012,2025,miltonkeynes.gov.uk
+455,Kettering H W R C,England,NN16 8TD,North Northamptonshire,North Northamptonshire,2012,2025,northnorthants.gov.uk
+456,Farnborough H W R C,England,GU14 7QN,Hampshire,Rushmoor,2012,2025,hants.gov.uk;rushmoor.gov.uk
+457,Selsey Mobile H W R C,England,PO20 0SZ,West Sussex,Chichester,2012,2025,westsussex.gov.uk;chichester.gov.uk
+458,Wilton Road Civic Amenity Site,England,GU15 2QW,Surrey,Surrey Heath,2012,2025,surreycc.gov.uk;surreyheath.gov.uk
+459,Aston Clinton Household Waste Recycling Centre,England,HP22 5EZ,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+460,Midhurst Civic Amenity Site,England,GU29 9QX,West Sussex,Chichester,2012,2025,westsussex.gov.uk;chichester.gov.uk
+461,Westhampnett Civic Amenity Site,England,PO18 0NX,West Sussex,Chichester,2012,2025,westsussex.gov.uk;chichester.gov.uk
+462,Aldershot H W R C,England,GU12 4TX,Hampshire,Rushmoor,2012,2025,hants.gov.uk;rushmoor.gov.uk
+463,Braywick Civic Amenity Site,England,SL6 1AY,Windsor and Maidenhead,Windsor and Maidenhead,2012,2025,rbwm.gov.uk
+464,North Crawley Road,England,MK16 9HG,Milton Keynes,Milton Keynes,2012,2025,miltonkeynes.gov.uk
+465,Whisby Civic Amenity Site,England,LN6 9DD,Lincolnshire,North Kesteven,2012,2016,lincolnshire.gov.uk;n-kesteven.gov.uk
+466,Wollaston Household Recycling Centre,England,NN29 7PR,North Northamptonshire,North Northamptonshire,2012,2017,northnorthants.gov.uk
+467,Wellingborough H W R C,England,NN8 4BZ,North Northamptonshire,North Northamptonshire,2012,2025,northnorthants.gov.uk
+468,Wharton Skips Transfer Site,England,YO22 4EF,North Yorkshire,North Yorkshire,2012,2013,northyorks.gov.uk
+469,Cottage Beck Civic Amenity,England,DN16 1TS,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+470,Grantham Household Waste Recycling Centre,England,NG31 7AS,Lincolnshire,South Kesteven,2012,2025,lincolnshire.gov.uk;southkesteven.gov.uk
+471,Whitby H W R C,England,YO22 4PZ,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+472,Corby H W R C,England,NN17 3JG,North Northamptonshire,North Northamptonshire,2012,2025,northnorthants.gov.uk
+473,Swift Lane Civic Amenity Site,England,GU19 5NJ,Surrey,Surrey Heath,2012,2025,surreycc.gov.uk;surreyheath.gov.uk
+474,Luffenham H W R C,England,LE15 9DY,Rutland,Rutland,2012,2025,rutland.gov.uk
+475,Winterton C A Site,England,DN15 9QN,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+476,Leighton Buzzard HWRC,England,LU7 3BT,Central Bedfordshire,Central Bedfordshire,2012,2025,centralbedfordshire.gov.uk
+477,Bognor Regis H W R C,England,PO22 9PP,West Sussex,Arun,2012,2025,westsussex.gov.uk;arun.gov.uk
+478,Rushden H W R C,England,NN10 6BW,North Northamptonshire,North Northamptonshire,2012,2025,northnorthants.gov.uk
+479,Kirton Lindsey C A Site,England,DN21 4NW,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+480,Whitley Household Waste Amenity Site,England,GU8 5QW,Surrey,Waverley,2012,2025,surreycc.gov.uk;waverley.gov.uk
+481,Burnham Household Waste Recycling Centre,England,SL2 3TG,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+482,Beaconsfield Household Waste Recycling Centre,England,HP9 2XB,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+483,Leadenham Landfill & Household Waste Site - EPR/XP3798NK,England,LN5 0QF,Lincolnshire,North Kesteven,2012,2021,lincolnshire.gov.uk;n-kesteven.gov.uk
+484,"Chalvey Ca, Chalvey, Sl1",England,SL1 2SF,Slough,Slough,2012,9999,slough.gov.uk
+485,Broughton C A Site,England,DN20 0BZ,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+486,Chesham Household Waste Recycling Centre,England,HP5 1TL,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+487,Berkhamsted H W R C,England,HP4 1TL,Hertfordshire,Dacorum,2012,2025,hertfordshire.gov.uk;dacorum.gov.uk
+488,Amersham Household Waste Recycling Centre,England,HP7 9DT,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+489,Great Northern Terrace Household Waste Recycling Centre,England,LN5 8HJ,Lincolnshire,Lincoln,2012,2025,lincolnshire.gov.uk;lincoln.gov.uk
+490,Dunstable Tidy Tip,England,LU6 1BH,Central Bedfordshire,Central Bedfordshire,2012,9999,centralbedfordshire.gov.uk
+491,Slyfield Refuse Transfer Station & Civic Amenity Site,England,GU1 1RU,Surrey,Guildford,2012,2025,surreycc.gov.uk;guildford.gov.uk
+492,Humberfield Quarry Household Waste Disposal Site,England,HU13 0JD,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+493,Driffield Household Waste Recycling Centre,England,YO25 9DJ,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+494,Lyne Lane Civic Amenity Site,England,KT16 0AN,Surrey,Runnymede,2012,9999,surreycc.gov.uk;runnymede.gov.uk
+495,Langley Household Waste Recycling Centre,England,SL3 6DD,Buckinghamshire,Buckinghamshire,2012,2025,buckinghamshire.gov.uk
+496,Barton C A Site,England,DN18 1LL,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+497,Martyrs Lane Civic Amenity Site,England,GU21 5NJ,Surrey,Woking,2012,2025,surreycc.gov.uk;woking.gov.uk
+498,Burniston H W R C,England,YO13 0DA,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+499,Littlehampton Household Waste Recycling Site,England,BN17 7PH,West Sussex,Arun,2012,2025,westsussex.gov.uk;arun.gov.uk
+500,"Nanhurst Ca, Elmbridge Road",England,GU6 8JX,Surrey,Waverley,2012,2025,surreycc.gov.uk;waverley.gov.uk
+501,Seamer Carr H W R C,England,YO12 4QA,North Yorkshire,North Yorkshire,2012,2025,northyorks.gov.uk
+502,Ampthill HWRC,England,MK45 2SA,Central Bedfordshire,Central Bedfordshire,2012,2025,centralbedfordshire.gov.uk
+503,Progress Way Household Waste Recycling Centre,England,LU4 9TR,Luton,Luton,2012,2025,luton.gov.uk
+504,Weel Household Waste Recycling Centre,England,HU17 0SQ,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+505,Rickmansworth H W R C,England,WD3 1FS,Hertfordshire,Three Rivers,2012,2025,hertfordshire.gov.uk;threerivers.gov.uk
+506,New Years Green Lane Civic Amenity Site,England,UB9 6LX,Hillingdon,Hillingdon,2012,2025,hillingdon.gov.uk
+507,Wiltshire Road Transfer Station,England,HU4 6PA,"Kingston upon Hull, City of","Kingston upon Hull, City of",2012,2025,hullcc.gov.uk
+508,Barnetby C A Site,England,DN38 6JB,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+509,Barkers Lane Household Recycling Centre,England,MK41 9SB,Bedford,Bedford,2012,2025,bedford.gov.uk
+510,Hemel Hempstead H W R C,England,HP2 7DU,Hertfordshire,Dacorum,2012,9999,hertfordshire.gov.uk;dacorum.gov.uk
+511,Sleaford Household Waste Recycling Centre,England,NG34 8SU,Lincolnshire,North Kesteven,2012,9999,lincolnshire.gov.uk;n-kesteven.gov.uk
+512,Billingshurst Household Waste Recycling Site,England,RH14 9HZ,West Sussex,Horsham,2012,9999,westsussex.gov.uk;horsham.gov.uk
+513,Goxhill C A Site,England,DN19 7LP,North Lincolnshire,North Lincolnshire,2012,2025,northlincs.gov.uk
+514,Market Rasen Household Waste Recycling Centre,England,LN8 3HA,Lincolnshire,West Lindsey,2012,2025,lincolnshire.gov.uk;west-lindsey.gov.uk
+515,Bourne Waste Transfer Station & Civic Amenity Site,England,PE10 9HT,Lincolnshire,South Kesteven,2012,9999,lincolnshire.gov.uk;southkesteven.gov.uk
+516,Space Waye Civic Amenity Site,England,TW14 0TH,Hounslow,Hounslow,2012,2025,hounslow.gov.uk
+517,Sutton Fields Household Waste Recycling Centre,England,HU7 0XF,"Kingston upon Hull, City of","Kingston upon Hull, City of",2012,2025,hullcc.gov.uk
+518,"Victoria Road, South Ruislip",England,HA4 0YP,Hillingdon,Hillingdon,2012,2014,hillingdon.gov.uk
+519,Eaton Green Household Waste Recycling Centre,England,LU2 9HB,Luton,Luton,2012,2025,luton.gov.uk
+520,Southall Waste & Recycling Centre,England,UB2  5QE,Ealing,Ealing,2012,2012,ealing.gov.uk
+521,Burma Drive Household Waste Recycling Centre,England,HU9 5SD,"Kingston upon Hull, City of","Kingston upon Hull, City of",2012,2025,hullcc.gov.uk
+522,Greenford Depot Civic Amenity Site,England,UB6 9AP,Ealing,Ealing,2012,2025,ealing.gov.uk
+523,Harpenden H W R C,England,AL5 1QB,Hertfordshire,St Albans,2012,2025,hertfordshire.gov.uk;stalbans.gov.uk
+524,Worthing H W R C,England,BN14 8NW,West Sussex,Worthing,2012,9999,westsussex.gov.uk;adur-worthing.gov.uk
+525,"Forward Drive C A Site, Harrow",England,HA3 8NT,Harrow,Harrow,2012,2025,harrow.gov.uk
+526,St Albans H W R C,England,AL1 4AP,Hertfordshire,St Albans,2012,2025,hertfordshire.gov.uk;stalbans.gov.uk
+527,Horsham Civic Amenity Site,England,RH13 7AR,West Sussex,Horsham,2012,2025,westsussex.gov.uk;horsham.gov.uk
+528,Staithes Road Household Waste Disposal Site,England,HU12 8DN,East Riding of Yorkshire,East Riding of Yorkshire,2012,2022,eastriding.gov.uk
+529,Elstree H W R C,England,WD6 3LS,Hertfordshire,Hertsmere,2012,2025,hertfordshire.gov.uk;hertsmere.gov.uk
+530,Biggleswade HWRC,England,SG18 0NA,Central Bedfordshire,Central Bedfordshire,2012,2025,centralbedfordshire.gov.uk
+531,Kingston Civic Amenity Site,England,KT1 3GZ,Kingston upon Thames,Kingston upon Thames,2012,2025,kingston.gov.uk
+532,Alconbury Household Waste Recycling Centre,England,PE28 4LH,Cambridgeshire,Huntingdonshire,2012,2025,cambridgeshire.gov.uk;huntsdc.gov.uk
+533,St Neots HWRC,England,PE19 2HB,Cambridgeshire,Huntingdonshire,2012,2025,cambridgeshire.gov.uk;huntsdc.gov.uk
+534,Hornsea Household Waste Recycling Centre,England,HU18 1EJ,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+535,Acton Waste & Recycling Centre,England,W3 8DJ,Ealing,Ealing,2012,9999,ealing.gov.uk
+536,Townmead Civic Amenity Site,England,TW9 4EL,Richmond upon Thames,Richmond upon Thames,2012,2025,richmond.gov.uk
+537,Immingham Household Waste Amenity Site,England,DN40 1QR,North East Lincolnshire,North East Lincolnshire,2012,2025,nelincs.gov.uk
+538,Dogsthorpe Household Recycling Centre,England,PE1 3DT,Peterborough,Peterborough,2012,2018,peterborough.gov.uk
+539,Buckden Recycling Centre,England,PE18 9UH,Cambridgeshire,Huntingdonshire,2012,2025,cambridgeshire.gov.uk;huntsdc.gov.uk
+540,Epsom Transfer Station And Community Recycling Centre,England,KT19 9DL,Surrey,Epsom and Ewell,2012,2025,surreycc.gov.uk;epsom-ewell.gov.uk
+541,Shoreham H W R C,England,BN43 6RJ,West Sussex,Adur,2012,2025,westsussex.gov.uk;adur.gov.uk
+542,Stevenage H W R C,England,SG1 2DF,Hertfordshire,Stevenage,2012,2025,hertfordshire.gov.uk;stevenage.gov.uk
+543,Garth Road Civic Amenity Site,England,SM4 4AX,Sutton,Sutton,2012,2025,sutton.gov.uk
+544,Kirkby On Bain Civic Amenity Site,England,LN10 6YN,Lincolnshire,East Lindsey,2012,2022,lincolnshire.gov.uk;e-lindsey.gov.uk
+545,Letchworth H W R C,England,SG6 1HB,Hertfordshire,North Hertfordshire,2012,2025,hertfordshire.gov.uk;north-herts.gov.uk
+546,Potters Bar H W R C,England,EN6 3JN,Hertfordshire,Hertsmere,2012,2025,hertfordshire.gov.uk;hertsmere.gov.uk
+547,Kimpton Park Way H R R C,England,SM3 9QP,Sutton,Sutton,2012,9999,sutton.gov.uk
+548,Grimsby Household Waste Amenity Site,England,DN31 2UD,North East Lincolnshire,North East Lincolnshire,2012,2025,nelincs.gov.uk
+549,Spalding Household Waste Recycling Centre,England,PE11 2BB,Lincolnshire,South Holland,2012,2025,lincolnshire.gov.uk;sholland.gov.uk
+550,Crawley Household Waste Recycling Site & Waste Transfer Station,England,RH11 7XN,West Sussex,Crawley,2012,2025,westsussex.gov.uk;crawley.gov.uk
+552,Civic Amenity & Waste Recycling Centre,England,N12 0ED,Barnet,Barnet,2012,2025,barnet.gov.uk
+553,Earlswood C A,England,RH1 6PN,Surrey,Reigate and Banstead,2012,9999,surreycc.gov.uk;reigate-banstead.gov.uk
+554,Hove H W S & Transfer Station,England,BN3 7ES,Brighton and Hove,Brighton and Hove,2012,9999,brighton-hove.gov.uk
+555,Whittlesey Household Recycling Centre,England,PE7 1SZ,Cambridgeshire,Fenland,2012,2025,cambridgeshire.gov.uk;fenland.gov.uk
+556,Endeavour Way Transfer Station,England,CR0 4XB,Sutton,Sutton,2012,2013,sutton.gov.uk
+557,Hornsey Road Civic Amenity Site,England,N8 7QB,Haringey,Haringey,2012,2014,haringey.gov.uk
+558,Hornsey Street Re-use & Recycling Centre,England,N7 8HU,Islington,Islington,2012,9999,islington.gov.uk
+559,Burgess Hill Household Waste Recycling Site & Waste Transfer Station,England,RH15 8AR,West Sussex,Mid Sussex,2012,2025,westsussex.gov.uk;midsussex.gov.uk
+560,Enfield Community Recycling Centre,England,N21 3AU,Enfield,Enfield,2012,2025,enfield.gov.uk
+561,Purley Oaks Civic Amenity Site,England,CR8 2BG,Croydon,Croydon,2012,2025,croydon.gov.uk
+562,Vale Street Civic Amenity Centre,England,SE27 9PA,Lambeth,Lambeth,2012,2025,lambeth.gov.uk
+563,Louth Non-hazardous & Hazardous Household Waste Amenity Site,England,LN11 0WA,Lincolnshire,East Lindsey,2012,2025,lincolnshire.gov.uk;e-lindsey.gov.uk
+564,Chaldon Road Civic Amenity Site,England,CR3 5PG,Surrey,Tandridge,2012,2025,surreycc.gov.uk;tandridge.gov.uk
+565,Withernsea Household Waste Recycling Centre,England,HU19 2EG,East Riding of Yorkshire,East Riding of Yorkshire,2012,2025,eastriding.gov.uk
+566,Brighton Household Waste Site,England,BN2 5PA,Brighton and Hove,Brighton and Hove,2012,2025,brighton-hove.gov.uk
+567,Boston Hwrc/transfer Station/mrf,England,PE21 7AA,Lincolnshire,Boston,2012,9999,lincolnshire.gov.uk;boston.gov.uk
+568,Ware H W R C,England,SG12 0EL,Hertfordshire,East Hertfordshire,2012,2025,hertfordshire.gov.uk;eastherts.gov.uk
+569,Park View Re- Use & Recycling Centre,England,N17 9AY,Haringey,Haringey,2012,2017,haringey.gov.uk
+570,Bluntisham Household Waste Recycling Centre,England,PE28 3LQ,Cambridgeshire,Huntingdonshire,2012,2025,cambridgeshire.gov.uk;huntsdc.gov.uk
+571,Royston H W R C,England,SG8 5HF,Hertfordshire,North Hertfordshire,2012,2025,hertfordshire.gov.uk;north-herts.gov.uk
+572,Turnford H W R C,England,EN8 0NP,Hertfordshire,Broxbourne,2012,2025,hertfordshire.gov.uk;broxbourne.gov.uk
+573,Bond Road C A,England,CR6 9SD,Surrey,Tandridge,2012,2025,surreycc.gov.uk;tandridge.gov.uk
+574,Civic Amenity Site,England,E17 8AX,Waltham Forest,Waltham Forest,2012,2025,walthamforest.gov.uk
+576,Bywaters (1986) Limited,England,E10 5BY,Waltham Forest,Waltham Forest,2012,2025,walthamforest.gov.uk
+577,East Grinstead Household Waste Recycling Site & Waste Transfer Station,England,RH19 1TZ,West Sussex,Mid Sussex,2012,2025,westsussex.gov.uk;midsussex.gov.uk
+578,Waltham Abbey RCHW,England,EN9 1JH,Essex,Epping Forest,2012,2025,essex.gov.uk;eppingforestdc.gov.uk
+579,Fishers Farm,England,CR0 0LF,Croydon,Croydon,2012,2025,croydon.gov.uk
+580,Hoddesdon H W R C,England,EN11 0BZ,Hertfordshire,Broxbourne,2012,2025,hertfordshire.gov.uk;broxbourne.gov.uk
+581,Kings Road Recycling Centre,England,E4 7HR,Waltham Forest,Waltham Forest,2012,2025,walthamforest.gov.uk
+582,March Household Recycling Centre,England,PE15 8QJ,Cambridgeshire,Fenland,2012,2025,cambridgeshire.gov.uk;fenland.gov.uk
+583,Chigwell Road Re-use & Recycling Centre,England,IG8 8PT,Redbridge,Redbridge,2012,9999,redbridge.gov.uk
+584,Bromley Civic Amenity Site,England,BR2 9RB,Bromley,Bromley,2012,2025,bromley.gov.uk
+585,Lewes Household Waste Site,England,BN7 3PS,East Sussex,Lewes,2012,2025,eastsussex.gov.uk;lewes.gov.uk
+586,Chigwell RCHW,England,IG7 5AA,Essex,Epping Forest,2012,2025,essex.gov.uk;eppingforestdc.gov.uk
+587,Forest Row Civic Amenity Site,England,RH18 5DW,East Sussex,Wealden,2012,2018,eastsussex.gov.uk;wealden.gov.uk
+589,Ilford Recycling Centre,England,IG1 4TG,Redbridge,Redbridge,2012,2025,redbridge.gov.uk
+590,Thriplow HWRC,England,SG8 7HZ,Cambridgeshire,South Cambridgeshire,2012,2025,cambridgeshire.gov.uk;scambs.gov.uk
+591,Newhaven Household Waste Site,England,BN9 0EH,East Sussex,Lewes,2012,2025,eastsussex.gov.uk;lewes.gov.uk
+592,Maresfield Camp Waste Transfer Station,England,TN22 2HN,East Sussex,Wealden,2012,2025,eastsussex.gov.uk;wealden.gov.uk
+593,Wisbech Household Recycling Centre,England,PE13 2RB,Cambridgeshire,Fenland,2012,2025,cambridgeshire.gov.uk;fenland.gov.uk
+594,Ringmer Depot,England,BN8 5NP,East Sussex,Lewes,2012,9999,eastsussex.gov.uk;lewes.gov.uk
+595,Milton HWRC,England,CB4 6DQ,Cambridgeshire,South Cambridgeshire,2012,2025,cambridgeshire.gov.uk;scambs.gov.uk
+596,Harlow RCHW,England,CM20 2DY,Essex,Harlow,2012,2025,essex.gov.uk;harlow.gov.uk
+597,Foots Cray Reuse & Recycling Centre,England,DA14 5HS,Bexley,Bexley,2012,9999,bexley.gov.uk
+598,Dunbrik Depot Civic Amenity Site,England,TN14 6EP,Kent,Sevenoaks,2012,2025,visitkent.co.uk;sevenoaks.gov.uk
+599,Frizlands Lane Reuse & Recycling Centre,England,RM10 7HX,Barking and Dagenham,Barking and Dagenham,2012,2025,lbbd.gov.uk
+600,Seaford Household Waste Site,England,BN25 3JE,East Sussex,Lewes,2012,2025,eastsussex.gov.uk;lewes.gov.uk
+601,Bishops Stortford H W R C,England,CM23 5RG,Hertfordshire,East Hertfordshire,2012,2025,hertfordshire.gov.uk;eastherts.gov.uk
+602,Witchford Household Recycling Centre,England,CB6 3NR,Cambridgeshire,East Cambridgeshire,2012,2025,cambridgeshire.gov.uk;eastcambs.gov.uk
+603,Pedham Place,England,BR8 8TE,Kent,Sevenoaks,2012,2025,visitkent.co.uk;sevenoaks.gov.uk
+604,Thames Road Depot,England,DA1 5QJ,Bexley,Bexley,2012,2020,bexley.gov.uk
+605,Crowborough Household Waste Site,England,TN6 2JP,East Sussex,Wealden,2012,2025,eastsussex.gov.uk;wealden.gov.uk
+606,Dartford Heath,England,DA1 3QU,Kent,Dartford,2012,9999,visitkent.co.uk;dartford.gov.uk
+607,Skegness Household Waste Recycling Centre,England,PE25 2JS,Lincolnshire,East Lindsey,2012,2025,lincolnshire.gov.uk;e-lindsey.gov.uk
+608,Saffron Walden RCHW,England,CB10 2UR,Essex,Uttlesford,2012,2025,essex.gov.uk;uttlesford.gov.uk
+609,Gerpins Lane Reuse & Recycling Centre,England,RM14 2XR,Havering,Havering,2012,2025,havering.gov.uk
+610,"Mill Lane Civic Amenity Site, High Ongar",England,CM5 9RH,Essex,Epping Forest,2012,2012,essex.gov.uk;eppingforestdc.gov.uk
+611,Brentwood RCHW,England,CM14 5PN,Essex,Brentwood,2012,2025,essex.gov.uk;brentwood.gov.uk
+612,Heathfield Ca Site,England,TN21 8RA,East Sussex,Wealden,2012,2025,eastsussex.gov.uk;wealden.gov.uk
+613,Hailsham H W R S,England,BN27 2BY,East Sussex,Wealden,2012,2025,eastsussex.gov.uk;wealden.gov.uk
+614,North Farm Transfer Station,England,TN2 3UY,Kent,Tunbridge Wells,2012,2015,visitkent.co.uk;tunbridgewells.gov.uk
+615,Wadhurst Household Waste Recycling Site,England,TN5 6BX,East Sussex,Wealden,2012,2018,eastsussex.gov.uk;wealden.gov.uk
+616,Pepperhill Waste Transfer Station,England,DA13 9PA,Kent,Dartford,2012,2025,visitkent.co.uk;dartford.gov.uk
+617,Kings Lynn Household Waste Recycling Centre,England,PE34 3RD,Norfolk,King's Lynn and West Norfolk,2012,9999,norfolk.gov.uk;west-norfolk.gov.uk
+618,Eastbourne Household Waste Site,England,BN22 8NB,East Sussex,Eastbourne,2012,2025,eastsussex.gov.uk;lewes-eastbourne.gov.uk
+619,Mountnessing Civic Amenity & Recycling Centre,England,CM4 9AU,Essex,Brentwood,2012,2025,essex.gov.uk;brentwood.gov.uk
+620,Wereham Household Waste Recycling Centre,England,PE33 9EB,Norfolk,King's Lynn and West Norfolk,2012,2025,norfolk.gov.uk;west-norfolk.gov.uk
+621,Haverhill Recycling And Transfer Station,England,CB9 8QP,Suffolk,West Suffolk,2012,2025,suffolk.gov.uk;westsuffolk.gov.uk
+622,Buckingham Hill Civic Amenity Site,England,SS17 0PP,Thurrock,Thurrock,2012,2025,thurrock.gov.uk
+623,Haverhill Household Waste Recycling Centre,England,CB9 7UR,Suffolk,West Suffolk,2012,9999,suffolk.gov.uk;westsuffolk.gov.uk
+624,Heacham H W R C,England,PE31 7JE,Norfolk,King's Lynn and West Norfolk,2012,2025,norfolk.gov.uk;west-norfolk.gov.uk
+625,Barleylands Depot,England,CM11 2UF,Essex,Basildon,2012,2025,essex.gov.uk;basildon.gov.uk
+626,Cuxton H W R C,England,ME2 1LF,Medway,Medway,2012,2025,medway.gov.uk
+627,Mildenhall Household Waste Recycling Centre,England,IP28 7JQ,Suffolk,West Suffolk,2012,2025,suffolk.gov.uk;westsuffolk.gov.uk
+628,Chelmsford RCHW,England,CM2 5PP,Essex,Chelmsford,2012,2025,essex.gov.uk;chelmsford.gov.uk
+629,Pitsea RCHW,England,SS14 4UH,Essex,Basildon,2012,2025,essex.gov.uk;basildon.gov.uk
+630,Mountfield Household Waste Site,England,TN32 5LX,East Sussex,Rother,2012,2025,eastsussex.gov.uk;rother.gov.uk
+631,Braintree Recycling Centre For Household Waste,England,CM7 2YN,Essex,Braintree,2012,2025,essex.gov.uk;braintree.gov.uk
+632,Kent County Council H W R C,England,ME15 6RJ,Kent,Maidstone,2012,2025,visitkent.co.uk;maidstone.gov.uk
+633,Pebsham H W R S,England,TN38 8AY,East Sussex,Rother,2012,2025,eastsussex.gov.uk;rother.gov.uk
+635,Capstone Household Waste Recycling Centre,England,ME7 3JL,Medway,Medway,2012,2025,medway.gov.uk
+636,Canvey Island,England,SS8 0QX,Essex,Castle Point,2012,2025,essex.gov.uk;castlepoint.gov.uk
+637,Docking H W R C,England,PE31 8PX,Norfolk,King's Lynn and West Norfolk,2012,9999,norfolk.gov.uk;west-norfolk.gov.uk
+638,Hoath Way Household Waste Recycling Centre,England,ME8 0PU,Medway,Medway,2012,2025,medway.gov.uk
+639,South Woodham Ferrers RCHW,England,CM3 5XH,Essex,Chelmsford,2012,2025,essex.gov.uk;chelmsford.gov.uk
+640,Rayleigh RCHW,England,SS6 7QF,Essex,Rochford,2012,2025,essex.gov.uk;rochford.gov.uk
+641,Witham RCHW,England,CM8 3UD,Essex,Braintree,2012,2025,essex.gov.uk;braintree.gov.uk
+642,Leigh Marsh Civic Amenity Site,England,SS9 2ET,Southend-on-Sea,Southend-on-Sea,2012,2025,southend.gov.uk
+643,Anti Waste Ltd - Thetford C A Site,England,IP24 3RW,Norfolk,Breckland,2012,2014,norfolk.gov.uk;breckland.gov.uk
+644,Sudbury Household Waste Recycling Centre,England,CO10 7HG,Suffolk,Babergh,2012,2025,suffolk.gov.uk;babergh.gov.uk
+645,Maldon RCHW,England,CM9 5UR,Essex,Maldon,2012,2025,essex.gov.uk;maldon.gov.uk
+646,Thetford H W R C,England,IP24 1HU,Norfolk,Breckland,2012,2025,norfolk.gov.uk;breckland.gov.uk
+647,Bury St Endmunds Household Waste Recycling Centre,England,IP33 2RN,Suffolk,West Suffolk,2012,2019,suffolk.gov.uk;westsuffolk.gov.uk
+648,Ashill H W R C,England,IP25 7BT,Norfolk,Breckland,2012,2025,norfolk.gov.uk;breckland.gov.uk
+649,Stock Road Recycling Centre,England,SS2 5QF,Southend-on-Sea,Southend-on-Sea,2012,2025,southend.gov.uk
+650,Hempton Recycling Centre,England,NR21 7DY,Norfolk,North Norfolk,2012,2025,norfolk.gov.uk;north-norfolk.gov.uk
+651,Sittingbourne Waste Transfer Station & HWRC,England,ME10 2QD,Kent,Swale,2012,2025,visitkent.co.uk;swale.gov.uk
+652,Stoneyard HWRC,England,ME12 1RH,Kent,Swale,2012,2025,visitkent.co.uk;swale.gov.uk
+653,Wells H W R C,England,NR23 1NE,Norfolk,North Norfolk,2012,2025,norfolk.gov.uk;north-norfolk.gov.uk
+654,Burnham on Crouch,England,CM0 8AU,Essex,Maldon,2012,2025,essex.gov.uk;maldon.gov.uk
+655,Colchester RCHW,England,CO3 4RN,Essex,Colchester,2012,2025,essex.gov.uk;colchester.gov.uk
+656,Ashford Household Waste Transfer Station & HWRC,England,TN23 1EN,Kent,Ashford,2012,2025,visitkent.co.uk;ashford.gov.uk
+657,Dereham Household Waste Recycling Centre,England,NR19 1JG,Norfolk,Breckland,2012,2025,norfolk.gov.uk;breckland.gov.uk
+658,Cobbs Wood Transfer Station,England,TN23 1EL,Kent,Ashford,2012,2025,visitkent.co.uk;ashford.gov.uk
+659,Snetterton H W R C,England,NR16 2JU,Norfolk,Breckland,2012,2025,norfolk.gov.uk;breckland.gov.uk
+660,Mersea Island RCHW,England,CO5 8DR,Essex,Colchester,2012,2025,essex.gov.uk;colchester.gov.uk
+661,Faversham Household Waste Recycling Centre,England,ME13 8YD,Kent,Swale,2012,2025,visitkent.co.uk;swale.gov.uk
+662,Hadleigh Household Waste Recycling Centre,England,IP7 6AH,Suffolk,Babergh,2012,2025,suffolk.gov.uk;babergh.gov.uk
+663,Stowmarket Household Waste Recycling Centre,England,IP14 1JQ,Suffolk,Mid Suffolk,2012,2025,suffolk.gov.uk;midsuffolk.gov.uk
+664,New Romney Household Waste Recycling Centre,England,TN28 8JH,Kent,Folkestone and Hythe,2012,2025,visitkent.co.uk;shepway.gov.uk
+665,Lawford RCHW,England,CO11 1UW,Essex,Tendring,2012,2025,essex.gov.uk;tendringdc.gov.uk
+666,Wymondham H W R C,England,NR18 9NA,Norfolk,South Norfolk,2012,2025,norfolk.gov.uk;south-norfolk.gov.uk
+667,Bramford Civic Amenity Site,England,IP8 4NS,Suffolk,Mid Suffolk,2012,2012,suffolk.gov.uk;midsuffolk.gov.uk
+668,Martins Farm Civic Amenity Site,England,CO16 8HN,Essex,Tendring,2012,2012,essex.gov.uk;tendringdc.gov.uk
+669,Brome Civic Amenity Site,England,IP23 7HN,Suffolk,Mid Suffolk,2012,2025,suffolk.gov.uk;midsuffolk.gov.uk
+670,Ipswich Household Waste Recycling Centre,England,IP1 2DW,Suffolk,Ipswich,2012,2025,suffolk.gov.uk;ipswich.gov.uk
+671,Herne Bay Household Waste Recycling Centre,England,CT6 8DD,Kent,Canterbury,2012,2025,visitkent.co.uk;canterbury.gov.uk
+672,Clacton Civic Amenity Site,England,CO16 7AD,Essex,Tendring,2012,2025,essex.gov.uk;tendringdc.gov.uk
+673,Sheringham H W R C,England,NR26 8TW,Norfolk,North Norfolk,2012,2025,norfolk.gov.uk;north-norfolk.gov.uk
+674,Canterbury Household Waste Recycling Centre,England,CT1 1XL,Kent,Canterbury,2012,2025,visitkent.co.uk;canterbury.gov.uk
+675,Ketteringham Recycling Centre,England,NR9 3AZ,Norfolk,South Norfolk,2012,2021,norfolk.gov.uk;south-norfolk.gov.uk
+676,Shornecliffe Household Waste Recycling Centre,England,CT20 3UJ,Kent,Folkestone and Hythe,2012,2025,visitkent.co.uk;shepway.gov.uk
+677,Penninsula Community Recycling Centre,England,IP9 1EF,Suffolk,Babergh,2012,2012,suffolk.gov.uk;babergh.gov.uk
+678,Morningthorpe H W R C,England,NR15 2ST,Norfolk,South Norfolk,2012,2025,norfolk.gov.uk;south-norfolk.gov.uk
+679,Kirby Le Soken RCHW,England,CO13 0EH,Essex,Tendring,2012,2025,essex.gov.uk;tendringdc.gov.uk
+680,Hawkinge Transfer Station,England,CT18 7AW,Kent,Dover,2012,2013,visitkent.co.uk;dover.gov.uk
+681,Foxhall Civic Amenity Site,England,IP10 0HT,Suffolk,East Suffolk,2012,2025,suffolk.gov.uk;eastsuffolk.gov.uk
+682,Mayton Wood Civic Amenity Site,England,NR12 7JX,Norfolk,Broadland,2012,9999,norfolk.gov.uk;broadland.gov.uk
+683,Dovercourt RCHW,England,CO12 3TA,Essex,Tendring,2012,2025,essex.gov.uk;tendringdc.gov.uk
+684,Felixstowe Household Waste Recycling Centre,England,IP11 3RX,Suffolk,East Suffolk,2012,2025,suffolk.gov.uk;eastsuffolk.gov.uk
+685,Worstead H W R C,England,NR28 9LX,Norfolk,North Norfolk,2012,2025,norfolk.gov.uk;north-norfolk.gov.uk
+686,Bergh Apton C A Site,England,NR15 1AU,Norfolk,South Norfolk,2012,9999,norfolk.gov.uk;south-norfolk.gov.uk
+687,Whitfield Transfer Station,England,CT16 3EH,Kent,Dover,2012,2025,visitkent.co.uk;dover.gov.uk
+688,Sandwich Household Waste Recycling Centre,England,CT13 9NW,Kent,Dover,2012,2025,visitkent.co.uk;dover.gov.uk
+689,Margate Household Waste & Recycling Centre,England,CT9 4LX,Kent,Thanet,2012,2025,visitkent.co.uk;thanet.gov.uk
+690,Strumpshaw Household Waste Recycling Centre,England,NR13 4HR,Norfolk,Broadland,2012,2025,norfolk.gov.uk;broadland.gov.uk
+691,Deal H W R C,England,CT14 9XH,Kent,Dover,2012,2025,visitkent.co.uk;dover.gov.uk
+692,Leiston Household Waste Recycling Centre,England,IP16 4UJ,Suffolk,East Suffolk,2012,2025,suffolk.gov.uk;eastsuffolk.gov.uk
+693,Sole Bay Recycling Centre,England,IP18 6AZ,Suffolk,East Suffolk,2012,2013,suffolk.gov.uk;eastsuffolk.gov.uk
+694,Caister H W R C,England,NR30 5TE,Norfolk,Great Yarmouth,2012,2025,norfolk.gov.uk;great-yarmouth.gov.uk
+695,Salford Road Household Waste Recycling Centre and Transfer Loading Station,England,BL5 1DG,Bolton,Bolton,2012,2025,bolton.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+696,Lichfield  Household Waste Recycling Centre,England,WS13 6EU,Staffordshire,Lichfield,2012,2025,staffordshire.gov.uk;lichfielddc.gov.uk
+697,Lower House Farm H W R C,England,CV9 2QA,Warwickshire,North Warwickshire,2013,2025,warwickshire.gov.uk;northwarks.gov.uk
+698,Calder Vale Road Household Waste Recycling Centre,England,WF1 5PE,Wakefield,Wakefield,2013,2015,wakefield.gov.uk
+700,Humberside Excavations Ltd,England,HU14 3HH,East Riding of Yorkshire,East Riding of Yorkshire,2013,2025,eastriding.gov.uk
+701,Powerday H W R C,England,UB7 7RD,Hillingdon,Hillingdon,2013,2025,hillingdon.gov.uk
+703,Waterdale H W R C,England,WD25 0PR,Hertfordshire,Three Rivers,2013,2025,hertfordshire.gov.uk;threerivers.gov.uk
+704,"Ranmore Road C A , Dorking",England,RH4 1TL,Surrey,Mole Valley,2013,2025,surreycc.gov.uk;molevalley.gov.uk
+706,Regis Road Recycling Centre,England,NW5 3EW,Camden,Camden,2013,2025,camden.gov.uk
+707,Kings Lynn Household Waste Recycling Centre,England,PE34 3RD,Norfolk,King's Lynn and West Norfolk,2013,2025,norfolk.gov.uk;west-norfolk.gov.uk
+708,Blackborough End Recycling Centre,England,PE32 1SW,Norfolk,King's Lynn and West Norfolk,2013,2016,norfolk.gov.uk;west-norfolk.gov.uk
+709,Bergh Apton Recycling Centre,England,NR15 1AU,Norfolk,North Norfolk,2013,9999,norfolk.gov.uk;north-norfolk.gov.uk
+710,Sidmouth Recycling Centre,England,EX10 0NF,Devon,East Devon,2012,2025,devon.gov.uk;eastdevon.gov.uk
+711,Cromer Road Materials Recycling Facility,England,ST1 6QN,Stoke-on-Trent,Stoke-on-Trent,2014,2025,stoke.gov.uk
+712,Lifford Lane Waste Transfer Station And H R C,England,B30 3JJ,Birmingham,Birmingham,2014,2025,birmingham.gov.uk
+713,Perry Barr Waste Transfer Station And H R C,England,B42 2TU,Birmingham,Birmingham,2014,2025,birmingham.gov.uk
+714,Judkins Household Waste Recycling Centre,England,CV10 0HU,Warwickshire,Nuneaton and Bedworth,2012,2025,warwickshire.gov.uk;nuneatonandbedworth.gov.uk
+715,T D E Enterprises Limited,England,S61 2NF,Rotherham,Rotherham,2014,2025,rotherham.gov.uk
+716,Dix Pit H W R C,England,OX29 5BB,Oxfordshire,West Oxfordshire,2012,2025,oxfordshire.gov.uk;westoxon.gov.uk
+717,Sleaford Household Waste Recycling Centre,England,NG34 8GL,Lincolnshire,North Kesteven,2012,2025,lincolnshire.gov.uk;n-kesteven.gov.uk
+718,Western Road H W R C,England,N22 6UG,Haringey,Haringey,2012,9999,haringey.gov.uk
+719,Northumberland Wharf Transfer Station,England,E14  9RG,Tower Hamlets,Tower Hamlets,2014,2025,towerhamlets.gov.uk
+721,Old Swan H W R C,England,L13 3AF,Liverpool,Liverpool,2015,2025,liverpool.gov.uk;merseysidewda.gov.uk
+723,Green Street Depot  Kidderminster,England,DY10 1HA,Worcestershire,Wyre Forest,2015,2025,worcestershire.gov.uk;wyreforestdc.gov.uk
+724,Northacre Resource Recovery Centre - EPR/LP3491EE,England,BA13 4WD,Wiltshire,Wiltshire,2015,2025,wiltshire.gov.uk
+725,Glasshoughton Household Waste Recycling Centre,England,WF10 5JW,Wakefield,Wakefield,2015,2025,wakefield.gov.uk
+726,Carcraft Recycling Centre,England,DN6 7BA,Doncaster,Doncaster,2015,2025,doncaster.gov.uk
+728,Gypsum Close Household Waste Recycling Centre,England,LE4 9AB,Leicester,Leicester,2015,2025,leicester.gov.uk
+729,Gainsborough H W R C,England,DN21 1QB,Lincolnshire,West Lindsey,2012,2025,lincolnshire.gov.uk;west-lindsey.gov.uk
+731,Cottesmore H W R C,England,LE15 7BZ,Rutland,Rutland,2012,9999,rutland.gov.uk
+733,Kington Household Recycling Centre,England,HR5 3HB,"Herefordshire, County of","Herefordshire, County of",2012,2025,herefordshire.gov.uk
+735,Chanters Household Waste Recycling Centre,England,M46 9BP,Wigan,Wigan,2012,2025,wigan.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+736,Chester Road Civic Amenity Site,England,M32 ORL,Shropshire,Shropshire,2016,2016,shropshire.gov.uk
+737,Severn Waste Transfer Station,England,WR2 6BZ,Worcestershire,Worcester,2016,2025,worcestershire.gov.uk;worcester.gov.uk
+739,Somerley B H W S,England,BH23 3QE,Hampshire,New Forest,2012,2025,hants.gov.uk;newforest.gov.uk
+740,Middlefields Waste Reception Site,England,NE34 0NT,South Tyneside,South Tyneside,2016,2025,southtyneside.gov.uk
+741,Eastleigh Household Waste Recycling Centre,England,SO53 3YU,Hampshire,Eastleigh,2012,2025,hants.gov.uk;eastleigh.gov.uk
+742,Works Depot,England,GU15 3DF,Surrey,Surrey Heath,2012,2025,surreycc.gov.uk;surreyheath.gov.uk
+746,Burgess Hill Household Waste Recycling Site & Waste Transfer Station,England,RH15 8AR,West Sussex,Horsham,2016,9999,westsussex.gov.uk;horsham.gov.uk
+747,Cole Green H W R C,England,SG14 2NL,Hertfordshire,East Hertfordshire,2012,2023,hertfordshire.gov.uk;eastherts.gov.uk
+751,Jenkins Lane Reuse And Recycling Centre,England,IG11 0AD,Newham,Newham,2012,2025,newham.gov.uk
+752,Clitheroe Household Waste Recycling Centre,England,BB7 3BY,Lancashire,Ribble Valley,2012,2025,lancashire.gov.uk;ribblevalley.gov.uk
+753,Chester Road Civic Amenity Site,England,M32 ORL,Trafford,Trafford,2012,9999,trafford.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+754,Hickman Avenue Waste And Recycling Depot,England,WV1 2BY,Wolverhampton,Wolverhampton,2017,2018,wolverhampton.gov.uk
+755,Skibeden Quarry Landfill Site,England,BD23 6AB,North Yorkshire,North Yorkshire,2017,2025,northyorks.gov.uk
+756,"Lewisham Recycling & Waste Reception Centre, Landmann Way",England,SE14 5RS,Lewisham,Lewisham,2012,2025,lewisham.gov.uk
+757,Portsmouth M R Fand H W R C,England,PO3 5QH,Portsmouth,Portsmouth,2012,9999,portsmouth.gov.uk
+758,Thorn Turn Home Waste Recycling Centre,England,LU5 6GL,Central Bedfordshire,Central Bedfordshire,2018,2025,centralbedfordshire.gov.uk
+760,Buntingford Depot,England,SG9 9ER,Hertfordshire,East Hertfordshire,2012,2025,hertfordshire.gov.uk;eastherts.gov.uk
+761,Truro Household Waste Recycling Centre,England,TR1 1RH,Cornwall,Cornwall,2019,2025,cornwall.gov.uk
+762,Crowndale Transfer Station & Civic Amenity Site,England,PL19 8JR,Devon,West Devon,2012,2025,devon.gov.uk;westdevon.gov.uk
+764,Ambleside C A,England,LA22 0EE,Westmorland and Furness,Westmorland and Furness,2019,2025,westmorlandandfurness.gov.uk
+767,"Bredbury Parkway H W R C, T L S, I V C And M B T Facility",England,SK6 2QN,Stockport,Stockport,2012,9999,stockport.gov.uk;recycleforgreatermanchester.com;gmwda.gov.uk
+769,Pudsey Household Waste Recycling,England,LS28 6LG,Leeds,Leeds,2012,2025,leeds.gov.uk
+771,Nab Lane H W S,England,WF17 0HU,Kirklees,Kirklees,2012,2024,kirklees.gov.uk
+772,Middleton Household Waste Recycling Centre,England,LS10 1LP,Leeds,Leeds,2012,2025,leeds.gov.uk
+775,Former Coal Stocking Yard,England,S44 6AE,Derbyshire,North East Derbyshire,2019,2025,derbyshire.gov.uk;ne-derbyshire.gov.uk
+778,Oadby Recycling And Household Waste Site,England,LE2 5JE,Oxfordshire,South Oxfordshire,2019,2019,oxfordshire.gov.uk;southoxon.gov.uk
+779,Gallymoor Household Waste Recycling Centre,England,YO43 4ED,East Riding of Yorkshire,East Riding of Yorkshire,2019,2025,eastriding.gov.uk
+780,Caulklands Quarry Landfill Site,England,YO18 7JA,North Yorkshire,North Yorkshire,2015,2025,northyorks.gov.uk
+784,Peterborough Household Waste Recycling Centre,England,PE1 5XG,Peterborough,Peterborough,2012,2025,peterborough.gov.uk
+786,Dartford Heath,England,DA1 3QU,Kent,Dartford,2012,2025,visitkent.co.uk;dartford.gov.uk
+788,Haverton Hill H W R C And Transfer Station,England,TS23 1PY,Isles of Scilly,Isles of Scilly,2020,2020,scilly.gov.uk
+789,Blandford H W R C,England,DT11 7TB,Dorset,Dorset,2012,2025,dorsetcouncil.gov.uk
+790,Haverton Hill H W R C And Transfer Station,England,TS23 1PY,Oxfordshire,Cherwell,2021,9999,oxfordshire.gov.uk;cherwell.gov.uk
+791,Norwich North Recycling Centre,England,NR10 3JX,Norfolk,Broadland,2012,2025,norfolk.gov.uk;broadland.gov.uk
+792,Norwich South Recycling Centre,England,NR4 6FA,Norfolk,South Norfolk,2012,2025,norfolk.gov.uk;south-norfolk.gov.uk
+793,Hartcliffe Household Reuse And Recycling Centre,England,BS3 5RN,"Bristol, City of","Bristol, City of",2012,2025,bristol.gov.uk
+794,Pallion HWRC,England,SR4 6SN,Sunderland,Sunderland,2012,2025,sunderland.gov.uk
+795,Haverton Hill H W R C And Transfer Station,England,TS23 1PY,Hartlepool,Hartlepool,2022,2023,hartlepool.gov.uk
+796,Tattershall Household Waste Recycling Centre,England,LN4 4PD,Lincolnshire,East Lindsey,2022,2025,lincolnshire.gov.uk;e-lindsey.gov.uk
+797,Kibworth Recycling And Household Waste Site,England,LE8 0EX,Leicestershire,Harborough,2012,2025,leicestershire.gov.uk;harborough.gov.uk
+798,Somerby C A Site,England,LE14 2QP,Leicestershire,Melton,2012,9999,leicestershire.gov.uk;melton.gov.uk
+799,Train Loading Bay,England,HA4 6NS,Hillingdon,Hillingdon,2023,2023,hillingdon.gov.uk
+800,Preston Household Waste Recycling Centre,England,HU12 8DX,East Riding of Yorkshire,East Riding of Yorkshire,2023,2025,eastriding.gov.uk
+801,Tewin Road Household Waste Recycling Centre,England,AL7 1BD,Hertfordshire,Welwyn Hatfield,2023,2025,hertfordshire.gov.uk;welhat.gov.uk
+802,Allington Household Waste Recycling Centre,England,ME16 0LE,Kent,Tonbridge and Malling,2012,2025,visitkent.co.uk;tmbc.gov.uk
+803,Altham Household Waste Recycling Centre,England,BB5 5UU,Lancashire,Hyndburn,2012,2025,lancashire.gov.uk;hyndburnbc.gov.uk
+804,Phoenix Yard,England,SS13 1EF,Essex,Basildon,2024,2025,essex.gov.uk;basildon.gov.uk
+805,Bath Recycling Centre,England,BA1 3EL,Bath and North East Somerset,Bath and North East Somerset,2012,2025,bathnes.gov.uk
+W0,St Davids Civic Amenity and recyciling centre,Wales,SA62 6XE,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W1,Pembrokeshire Eco Park,Wales,SA73 3FB,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W2,Winsel Civic Amenity & Recycling Site,Wales,SA61 1XG,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W3,Manorowen Civic Amenity and recycling centre,Wales,SA65 9QE,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W4,Waterloo Recycling Centre,Wales,SA72 4RT,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W5,Crane Cross Civic Amenity & Recycling Centre,Wales,SA69 9EE,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W6,Whitland Recycling Centre & Civic Amenity Site,Wales,SA34 0AE,Carmarthenshire,Carmarthenshire,2012,9999,carmarthenshire.gov.uk
+W7,Hermon Civic Amenity and recycling centre,Wales,SA41 3QT,Pembrokeshire,Pembrokeshire,2012,9999,pembrokeshire.gov.uk
+W8,Cilmaenllwyd Civic Amenity Site,Wales,SA43 1RD,Ceredigion,Ceredigion,2012,9999,ceredigion.gov.uk
+W9,Gwalchmai Civic Amenity Site,Wales,LL65 4PW,Isle of Anglesey,Isle of Anglesey,2012,9999,anglesey.gov.uk
+W10,Pwllheli Civic Amenity Site,Wales,LL53 6YT,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W11,Rhydeinon Civic Amenity Site,Wales,SA47 0QP,Ceredigion,Ceredigion,2012,9999,ceredigion.gov.uk
+W12,Rhwngyddwyryd Civic Amenity Site,Wales,LL51 9LQ,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W13,Caergylchu Waste Management Facility,Wales,LL55 2BD,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W14,Trostre Civic Amenity / Transfer Station,Wales,SA14 9UU,Carmarthenshire,Carmarthenshire,2012,9999,carmarthenshire.gov.uk
+W15,Penhesgyn House Waste Recycling Centre,Wales,LL59 5UR,Isle of Anglesey,Isle of Anglesey,2012,9999,anglesey.gov.uk
+W16,Ffridd Rasus Waste Management Facility,Wales,LL46 2UW,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W17,Llandygai Civic Amenity Site,Wales,LL57 4YH,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W18,Glan Yr Afon Civic Amenity Site,Wales,SY23 3JQ,Ceredigion,Ceredigion,2012,9999,ceredigion.gov.uk
+W19,Clyne Civic Amenity Site,Wales,SA2 8DY,Swansea,Swansea,2012,9999,swansea.gov.uk
+W20,Penlan Civic Amenity Site,Wales,SA5 7BX,Swansea,Swansea,2012,9999,swansea.gov.uk
+W21,Wernddu Civic Amenity And Transfer Station,Wales,SA18 2UR,Carmarthenshire,Carmarthenshire,2012,9999,carmarthenshire.gov.uk
+W22,Swansea Baling Plant,Wales,SA6 8QN,Swansea,Swansea,2012,9999,swansea.gov.uk
+W23,Tir John Civic Amenity Site,Wales,SA1 7HG,Swansea,Swansea,2012,9999,swansea.gov.uk
+W24,Recycling Centre At Blaenau Ffestiniog,Wales,LL41 3LU,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W25,Gwynedd Council,Wales,LL40 2YF,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W26,Briton Ferry Household Waste Recycling Centre,Wales,SA11 2HZ,Neath Port Talbot,Neath Port Talbot,2012,9999,neath-porttalbot.gov.uk
+W27,Lower Cwmtwrch HWRC,Wales,SA9 2HW,Powys,Powys,2012,9999,powys.gov.uk
+W28,Mochdre Civic Amenity Site,Wales,LL28 4YL,Conwy,Conwy,2012,9999,conwy.gov.uk
+W29,Pyle Community Recycling Centre,Wales,CF33 6BZ,Bridgend,Bridgend,2012,9999,bridgend.gov.uk
+W30,Heol Ty Gwyn Civic Amenity Site,Wales,CF34 0BQ,Bridgend,Bridgend,2012,9999,bridgend.gov.uk
+W31,Tythegston Civic Amenity Site,Wales,CF32 0NE,Bridgend,Bridgend,2012,9999,bridgend.gov.uk
+W32,Garngoch Civic Amenity Site,Wales,SA4 9WF,Neath Port Talbot,Neath Port Talbot,2012,9999,neath-porttalbot.gov.uk
+W33,Cymmer Household Waste Recycling Centre,Wales,SA13 3EE,Neath Port Talbot,Neath Port Talbot,2012,9999,neath-porttalbot.gov.uk
+W34,Brynmenyn Household Waste Recycling Centre,Wales,CF32 9TQ,Bridgend,Bridgend,2012,9999,bridgend.gov.uk
+W35,Bala Civic Amenity Site,Wales,LL23 7NL,Gwynedd,Gwynedd,2012,9999,gwynedd.llyw.cymru
+W36,Treherbert Community Recycling Centre,Wales,CF42 5HZ,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W37,Llandow Household Waste Recycling Centre,Wales,CF71 7PB,Vale of Glamorgan,Vale of Glamorgan,2012,9999,valeofglamorgan.gov.uk
+W38,Abergele Civic Amenity Site,Wales,LL22 9SE,Conwy,Conwy,2012,9999,conwy.gov.uk
+W39,Gelli C A Site,Wales,CF41 7TL,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W40,Ferndale Community Recycling Centre,Wales,CF43 4RF,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W41,Rhyl Recycling Park,Wales,LL18 2AD,Denbighshire,Denbighshire,2012,9999,denbighshire.gov.uk
+W42,Dinas Community Recycling Centre,Wales,CF39 3BL,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W43,Brecon Recycling Centre,Wales,LD3 8LA,Powys,Powys,2012,9999,powys.gov.uk
+W44,Llantrisant Community Recycling Centre,Wales,CF72 8LP,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W45,Denbigh Civic Amenity Site,Wales,LL16 3EA,Denbighshire,Denbighshire,2012,9999,denbighshire.gov.uk
+W46,Llandrindod Wells Household Waste Recycling Centre,Wales,LD1 6BH,Powys,Powys,2012,9999,powys.gov.uk
+W47,Dowlais Household Waste and Recycling Centre,Wales,CF48 3DA,Merthyr Tydfil,Merthyr Tydfil,2012,9999,merthyr.gov.uk
+W48,Aberfan Household Waste And Recycling Centre,Wales,CF48 4QE,Merthyr Tydfil,Merthyr Tydfil,2012,9999,merthyr.gov.uk
+W49,Treforest Civic Amenity Site,Wales,CF37 5YR,Rhondda Cynon Taf,Rhondda Cynon Taf,2012,9999,rctcbc.gov.uk
+W50,Lawn Civic Amenity Site,Wales,NP22 5PW,Caerphilly,Caerphilly,2012,9999,caerphilly.gov.uk
+W51,Ruthin Civic Amenity Site,Wales,LL15 1NJ,Denbighshire,Denbighshire,2012,9999,denbighshire.gov.uk
+W52,Court Road Civic Amenity Site,Wales,CF63 1ET,Vale of Glamorgan,Vale of Glamorgan,2012,9999,valeofglamorgan.gov.uk
+W53,Newtown Household Waste Recycling Centre,Wales,SY16 3AJ,Powys,Powys,2012,9999,powys.gov.uk
+W54,Y Ffaldau Waste Recycling Centre,Wales,LD1 5UD,Powys,Powys,2012,9999,powys.gov.uk
+W55,Atlantic Household Waste Recycling Centre,Wales,CF63 3RF,Vale of Glamorgan,Vale of Glamorgan,2012,9999,valeofglamorgan.gov.uk
+W56,Penallta Civic Amenity Site,Wales,CF82 7ST,Caerphilly,Caerphilly,2012,9999,caerphilly.gov.uk
+W57,Trehir Civic Amenity Site,Wales,CF83 3RP,Caerphilly,Caerphilly,2012,9999,caerphilly.gov.uk
+W58,New Vale HWRC,Wales,NP23 6PL,Blaenau Gwent,Blaenau Gwent,2012,9999,blaenau-gwent.gov.uk
+W59,Bessemer Close Household And Commercial Waste Recycling Centre,Wales,CF11 8XA,Vale of Glamorgan,Vale of Glamorgan,2012,9999,valeofglamorgan.gov.uk
+W60,Aberbargoed Civic Amenity Site,Wales,CF81 9EP,Caerphilly,Caerphilly,2012,9999,caerphilly.gov.uk
+W61,Penmaen Civic Amenity Site,Wales,NP12 2XZ,Caerphilly,Caerphilly,2012,9999,caerphilly.gov.uk
+W62,Roseheyworth Household Waste Recycling Centre,Wales,NP13 1SP,Blaenau Gwent,Blaenau Gwent,2012,9999,blaenau-gwent.gov.uk
+W63,Lamby Way Depot,Wales,CF3 2HP,Cardiff,Cardiff,2012,9999,cardiff.gov.uk
+W64,Potters Yard,Wales,SY21 7YE,Powys,Powys,2012,9999,powys.gov.uk
+W65,Mold Recycling Park,Wales,CH7 4ED,Flintshire,Flintshire,2012,9999,flintshire.gov.uk
+W66,Oakenholt Household Waste Recycling Centre,Wales,CH6 5SF,Flintshire,Flintshire,2012,9999,flintshire.gov.uk
+W67,Globe Way Recycling Park,Wales,CH7 3LY,Flintshire,Flintshire,2012,9999,flintshire.gov.uk
+W68,Plas Madoc Household Waste Recycling Centre,Wales,LL14 3 ES,Wrexham,Wrexham,2012,9999,wrexham.gov.uk
+W69,New Inn Waste Transfer Station,Wales,NP4 0LS,Torfaen,Torfaen,2012,9999,torfaen.gov.uk
+W70,Brymbo Household Waste Recycling Centre,Wales,LL11 5NR,Wrexham,Wrexham,2012,9999,wrexham.gov.uk
+W71,Sandycroft Recycling Park,Wales,CH5 2PX,Flintshire,Flintshire,2012,9999,flintshire.gov.uk
+W72,Bryn Lane Civic Amenity Site,Wales,LL13 9UT,Wrexham,Wrexham,2012,9999,wrexham.gov.uk
+W73,Five Lanes Transfer Station And H W R C,Wales,NP26 3AY,Monmouthshire,Monmouthshire,2012,9999,monmouthshire.gov.uk
+W74,Mitchell Troy Household Waste Recycling Centre,Wales,NP25 4HX,Monmouthshire,Monmouthshire,2012,9999,monmouthshire.gov.uk

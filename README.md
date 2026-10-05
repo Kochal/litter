@@ -62,6 +62,23 @@ is ignored and lets an interrupted run resume). `site_evidence.csv` gives each s
 verdict such as "confirmed closure" or "still open after EA records end", with the
 years its name appeared on the council's list of centres and a snippet of the text.
 
+## Opening hours, booking and DIY charges (run locally)
+
+`scripts/wayback_hwrc_rules.py` reads archived council pages year by year (2014 to
+2025) for every recycling centre in England and Wales (`data/wayback/hwrc_sites_all.csv`,
+built by `src/wayback_inputs.py`) and keeps the text about opening hours, booking,
+van permits and charges for DIY waste. It shares the cache with the closure check,
+so pages already read are not fetched again.
+
+```
+python scripts/wayback_hwrc_rules.py --domains leeds.gov.uk kent.gov.uk   # quick trial
+python scripts/wayback_hwrc_rules.py                                     # everything; many hours, resumable
+```
+
+Results go to `data/wayback/out/rules/` (commit and push that folder). The run
+resumes where it stopped (finished councils are listed in `done_domains.txt`), and
+councils that run the most centres go first, so a partial run is already useful.
+
 ## Licences
 
 Contains Environment Agency information © Environment Agency and/or database
