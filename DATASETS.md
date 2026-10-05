@@ -36,7 +36,25 @@ Notes:
 |---|---|---|
 | **FixMyStreet** (mySociety) | UK | Citizen reports with lat/long and category (fly-tipping is one of the largest). Browse at <https://www.fixmystreet.com/reports>; per-council RSS/Open311 feeds. mySociety has released multi-year report-location data for research (contact mySociety for bulk access). Reporting bias towards digitally engaged areas. |
 | Individual council open data | Varies | Several councils publish incident-level fly-tipping/street cleansing requests (search data.gov.uk for "fly tipping", plus portals such as London Datastore, Camden, Leeds, Birmingham). Good for city-level case studies. |
+| Council incident-level open data with locations | York, Leeds, Bradford, Calderdale, Bassetlaw | York (by neighbourhood): <https://data.yorkopendata.org/dataset/fly-tipping-all-incidents>; Leeds environmental service requests (by ward): <https://datamillnorth.org/dataset/environmental-service-requests-e61k0>; Bradford: <https://datahub.bradford.gov.uk/datasets/street-cleansing/bradford-fly-tipping>; Calderdale: <https://dataworks.calderdale.gov.uk/dataset/2w73y/fly-tipping>; Bassetlaw: <https://data.bassetlaw.gov.uk/fly-tipping/>. Barnsley has released ward data under FOI. Council-recorded, so not limited to public reports; useful to check FixMyStreet patterns. Not yet downloaded. |
+| mySociety FixMyStreet geographic dataset | UK | Aggregated FixMyStreet reports by area: <https://data.mysociety.org/datasets/fms-geographic/>. |
 | FOI requests to councils | E/W | Councils hold incident-level location data from their WasteDataFlow returns. Feasible for a targeted sample of LAs. |
+
+### Related work: IECR fly-tipping map (October 2026)
+
+The Institute for Environmental and Civic Research published *Mapping fly-tipping
+in England* on 2 October 2026: <https://iecr.org.uk/research/fly-tipping-map/>.
+It shares each council's Defra total across its 33,755 neighbourhoods with a model
+trained on FixMyStreet reports (allowing for how readily residents report) and on
+the six councils' incident records above, and adds an estimate of fly-tipping on
+farms (about 108,000 incidents in 2024/25). Its access findings agree with ours:
+within councils, drive distance to the nearest recycling centre shows no
+association (1.02 per standard deviation), while crowding at the nearest centre
+(households per opening hour) goes with about 17% more; between councils, no car
+(1.21), private renting (1.16) and residents who moved in (1.10) go with more
+recorded fly-tipping. The neighbourhood figures are model estimates, not counts,
+so they should not be used as an outcome in our models; their method and source
+list are a useful reference.
 
 ### Litter
 

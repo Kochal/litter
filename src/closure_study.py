@@ -92,7 +92,7 @@ def build_stacks(d: pd.DataFrame, ev: pd.DataFrame) -> pd.DataFrame:
     return pd.concat(stacks, ignore_index=True)
 
 
-def fit(df: pd.DataFrame, outcome: str, event_study: bool, weights: str | None = None):
+def fit(df: pd.DataFrame, outcome: str, event_study: bool, weights: str | None = None, cluster: str = "stack"):
     df = df.copy()
     df["log_res"] = np.log(df["residents"])
     df["s_lsoa"] = df["stack"].astype(str) + "_" + df["LSOA21CD"]
@@ -114,7 +114,7 @@ def fit(df: pd.DataFrame, outcome: str, event_study: bool, weights: str | None =
         df["after_closure"] = ((df["rel"] >= 0) & (df["treated"] == 1)).astype(int)
         rhs = "after_closure"
     m = pf.fepois(f"n_{outcome} ~ {rhs} | s_lsoa + s_lad_year", data=df, offset="log_res",
-                  vcov={"CRV1": "stack"}, weights=weights)
+                  vcov={"CRV1": cluster}, weights=weights)
     return m, df
 
 
@@ -165,8 +165,11 @@ def per_closure(st: pd.DataFrame, names: pd.Series, outcome: str = "flytip") -> 
                 "n_comparison_lsoas": s.loc[s["treated"] == 0, "LSOA21CD"].nunique(),
                 "reports_affected": int(a[f"n_{outcome}"].sum()), "reports_all": int(s[f"n_{outcome}"].sum())}
         try:
-            m, _ = fit(s, outcome, "years 1 to 4")
+            # One closure is one cluster, so cluster by neighbourhood instead
+            m, _ = fit(s, outcome, "years 1 to 4", cluster="LSOA21CD")
             b, se = m.coef()["years_1_to_4_after"], m.se()["years_1_to_4_after"]
+            if abs(b) > 5 or not np.isfinite(se):  # no reports on one side: not a usable estimate
+                raise ValueError("degenerate fit (no reports before or after in affected areas)")
             base.update(irr=np.exp(b), lo=np.exp(b - 1.96 * se), hi=np.exp(b + 1.96 * se))
         except Exception as e:  # too few reports or no variation
             base.update(irr=np.nan, lo=np.nan, hi=np.nan, note=str(e)[:80])

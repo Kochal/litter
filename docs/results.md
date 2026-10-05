@@ -35,6 +35,24 @@ Code is in `src/` (see the [README](../README.md)); estimates are in
 
 ## Data and design
 
+### The two fly-tipping records
+
+| | Official council counts | FixMyStreet reports |
+|---|---|---|
+| Who records it | Council staff, for every incident the council deals with, whether a resident reported it or a crew found it; sent yearly to Defra (England) or the Welsh Government | Members of the public, through mySociety's website and app; each report is passed to the council |
+| What one record is | A yearly total for a whole council; individual incidents are not published | One report from one person, with a date |
+| Location | None below the council. The only "where" is the type of land (highway, footpath, back alley, council land, agricultural, private or residential, and so on) | An exact point, so each report can be placed in a neighbourhood |
+| Type of waste and size | Recorded by officers in fixed categories (black bags, bulky household, construction, green waste, tyres and others; single bag to tipper lorry load) | Not recorded in a standard way; we sorted reports by keywords in their text, which gave a waste type for 57% |
+| How many | 13,222,032 incidents, 2012/13 to 2024/25, 318 councils | 904,027 reports in England and Wales, 2012 to 2025; 674,572 in the neighbourhood models (212 councils) |
+| What it misses | Fly-tipping on private land the owner clears, including most on farms; councils differ in how thoroughly they record, and some count only what the public reports | Most fly-tipping: about 1 in 20 of the incidents councils record, shaped by who chooses to report through this website |
+| What we use it for | Comparing councils, and the type of land waste was dumped on | Comparing neighbourhoods within the same council and year, where recording and website use cancel out |
+
+Councils hold the location of each incident in their own systems, and a few
+publish it as open data (York, Leeds, Bradford, Calderdale and Bassetlaw; see
+DATASETS.md). Those could be used to check the FixMyStreet neighbourhood results.
+
+### Variables and models
+
 - **Outcome:** incidents reported by councils to WasteDataFlow (Defra for England,
   StatsWales for Wales), harmonised to December 2025 council boundaries: 318
   councils, 13 years. Split by waste type, size and land type (groupings in
