@@ -318,38 +318,57 @@ appeared on the council's list of recycling centres, year by year.
 So about 4 in 10 apparent closures and about half of apparent openings were not
 real changes. We built two corrected histories: **verified** (sites shown to be
 open are kept open; confirmed, likely and unclear cases keep their EA dates) and
-**strict** (only confirmed or likely closures and confirmed openings count). The
-verified history has 92 closures before 2024 instead of 166; the strict one has 46.
+**strict** (only confirmed or likely closures and confirmed openings count).
 
-**With verified closures, the neighbourhood result holds and becomes more
-precise.** When a neighbourhood's drive time to its nearest recycling centre
-gets 5 minutes longer, its FixMyStreet fly-tipping reports go up by 15% (rate
-ratio 1.15, 95% CI 1.06 to 1.23), based on 1,874 neighbourhoods whose drive time
-changed by at least a minute (842 by 3 minutes or more), within 146,508
+**Two further corrections** (`src/verified_history.py`):
+
+- *Duplicate records.* 35 sites appear under two records: the same name within
+  1.5 km, one record ending as the other carries on, usually because the grid
+  reference changed. These are merged into one site that stays open. One of them,
+  Landmann Way, was among the three closures that drove the earlier closure result:
+  it is Lewisham's recycling centre, still open, recorded at a rounded grid
+  reference until 2016.
+- *Checks by hand* of the closures with the most FixMyStreet reports nearby
+  (`data/wayback/manual_checks.csv`, with sources):
+
+| Site | Archive check | Checked by hand | Correction |
+|---|---|---|---|
+| Foots Cray, Bexley | unclear | Still open: on Bexley's list of recycling centres in 2026 | Kept open |
+| Landmann Way, Lewisham | unclear | Duplicate record of a site that is still open | Merged |
+| Dogsthorpe, Peterborough | confirmed | Closed 17 February 2019, replaced the next day by a larger centre at Fengate, 3 km away | Closure moved from 2020 to 2019 |
+| Haverton Hill, Stockton-on-Tees | unclear (the archive search used the wrong council) | Still open in 2025 and 2026 | Kept open |
+| Park View Road, Haringey | unclear | No longer on Haringey's list in 2026, but no closure date found | EA date kept, flagged as uncertain |
+
+After these corrections the verified history has 83 closures before 2024 (166 in
+the uncorrected records) and the strict one 45.
+
+**With verified closures, the neighbourhood estimate shrinks and is no longer
+clearly above zero.** When a neighbourhood's drive time to its nearest recycling
+centre gets 5 minutes longer, its FixMyStreet fly-tipping reports go up by 14%
+(rate ratio 1.14, 95% CI 0.99 to 1.30), based on 1,692 neighbourhoods whose drive
+time changed by at least a minute (814 by 3 minutes or more), within 146,508
 neighbourhood-years in 212 councils.
 
 | Closure history | Rate ratio per 5 min (95% CI) | Neighbourhoods whose drive time changed by 1+ min |
 |---|---|---|
 | Uncorrected EA records | 1.30 (1.02 to 1.64) | 3,068 |
 | Recent disappearances treated as open | 1.21 (1.03 to 1.44) | 2,698 |
-| Verified with archived council pages | 1.15 (1.06 to 1.23) | 1,874 |
-| Verified, excluding 2020 and 2021 | 1.19 (1.11 to 1.28) | 1,874 |
-| Strict: only confirmed or likely closures | 1.15 (0.86 to 1.55) | 495 |
+| Verified (archive, duplicates and hand checks) | 1.14 (0.99 to 1.30) | 1,692 |
+| Verified, excluding 2020 and 2021 | 1.24 (1.04 to 1.48) | 1,692 |
+| Strict: only confirmed or likely closures | 1.17 (0.86 to 1.60) | 496 |
 
-The strict history gives the same size of effect but with only 495 neighbourhoods
-changing, too few for a precise estimate. Two doubts remain. Adding next year's
-drive time still splits the effect between this year (1.08) and next year (1.07),
-so an earlier trend cannot be ruled out. And litter reports still fall when access
-worsens (0.84, 0.82 to 0.87), although that rests on only 65 neighbourhoods in the
-22 councils with enough litter reports.
+Each correction of the closure history has made the estimate smaller. Adding next
+year's drive time splits it evenly between this year (1.09) and next year (1.10),
+so an earlier trend cannot be ruled out. Litter is too thin to act as a check:
+only 17 neighbourhoods with litter reports saw their drive time change.
 
 **At council level the corrected histories do not change the picture.** Council
-averages of drive time show no link with recorded fly-tipping (verified: 0.87,
-p = 0.47; strict: 0.98, p = 0.94, 3,814 council-years from 296 English councils).
-The placebo waste types no longer move (p = 0.24 and 0.50), so the earlier placebo
-problem was likely caused by false closures. The 19 councils with a verified rise
-in drive time of at least a minute still record about 16% to 24% less fly-tipping
-in the years after, which points to recording changes rather than behaviour.
+averages of drive time show no link with recorded fly-tipping (verified: 0.97,
+p = 0.91; strict: 0.98, p = 0.94, 3,814 council-years from 296 English councils).
+The placebo waste types do not move (p = 0.25 and 0.52). The 17 councils with a
+verified rise in drive time of at least a minute record about 7% to 20% less
+fly-tipping in the years after (clearly so only in the first two years), which
+points to recording changes rather than behaviour.
 
 ### Closure by closure
 
@@ -357,8 +376,8 @@ The models above pool all changes in drive time. Here each recycling centre
 closure is studied on its own and then combined (`src/closure_study.py`), which
 shows directly whether affected areas were already changing before a closure.
 
-**How it works.** For each of the 82 closures in the verified history that
-affected at least one neighbourhood between 2013 and 2024:
+**How it works.** For each of the 76 closures in the corrected verified history
+that affected at least one neighbourhood between 2013 and 2024:
 
 - *Affected neighbourhoods* are those whose drive time to the nearest recycling
   centre rose by at least a minute in the year the site disappeared, within 15 km
@@ -375,36 +394,51 @@ affected at least one neighbourhood between 2013 and 2024:
 
 | Sample | Closures | Affected areas | Comparison areas | Closure year | Years 1 to 4 after |
 |---|---|---|---|---|---|
-| All verified closures | 82 | 2,182 | 21,630 | 0.86 (0.76 to 0.96) | 1.12 (1.00 to 1.25) |
-| Confirmed or likely closures only | 42 | 1,008 | 11,984 | 0.85 (0.74 to 0.98) | 1.28 (0.98 to 1.68) |
-| Only areas whose drive rose by 3+ minutes | 82 | 1,063 | 21,630 | 0.82 (0.72 to 0.92) | 1.18 (1.09 to 1.27) |
-| Without the 3 closures with most reports | 79 | 1,922 | 21,108 | 0.86 (0.71 to 1.04) | 0.95 (0.78 to 1.15) |
+| All verified closures | 76 | 1,865 | 21,225 | 1.00 (0.83 to 1.20) | 1.13 (0.92 to 1.39) |
+| Confirmed or likely closures only | 41 | 1,002 | 11,562 | 1.01 (0.78 to 1.31) | 1.24 (0.94 to 1.63) |
+| Only areas whose drive rose by 3+ minutes | 76 | 985 | 21,225 | 1.03 (0.82 to 1.29) | **1.28 (1.07 to 1.53)** |
+| Without the 3 closures with most reports | 73 | 1,727 | 20,518 | 0.91 (0.75 to 1.11) | 0.95 (0.78 to 1.16) |
+| Each closure weighted equally | 76 | 1,865 | 21,225 | 0.80 (0.61 to 1.04) | 0.95 (0.73 to 1.23) |
 
-Rate ratios with 95% confidence intervals. The "years 1 to 4 after" summary was
-chosen after seeing the year-by-year pattern, so treat it as a description.
+Rate ratios with 95% confidence intervals; bold where the interval excludes 1. The
+"years 1 to 4 after" summary was chosen after seeing the year-by-year pattern, so
+treat it as a description. The three closures with most reports are now Dogsthorpe
+(Peterborough), Park View Road (Haringey) and Oadby (Leicestershire).
+
+**Each closure on its own.** We also estimated years 1 to 4 after against the years
+before separately for every closure (`outputs/closure_study_per_closure.csv`). 57
+of the 76 have enough reports for an estimate. The typical closure shows no change
+(median rate ratio 1.02); 29 of the 57 point up and 28 down. Five show a clear rise
+and nine a clear fall.
+
+**Why weighting matters.** In the pooled model each closure counts in proportion to
+its number of FixMyStreet reports, so a few closures in councils where residents use
+FixMyStreet heavily carry most of the weight. Weighting every closure equally asks
+instead what happens after a typical closure.
 
 **What it shows.**
 
-1. **Before a closure, affected and comparison areas track each other.** In the
-   main sample, the years before closure are all close to 1 (1.05, 1.02 and 0.96),
-   so there is no sign of a trend that started earlier.
-2. **In the closure year, reports dip by about 14%,** then rise to about 20% above
-   the comparison areas three and four years later (1.21 and 1.19, both p < 0.05).
-3. **That rise depends on three closures.** Dropping the three closures with the
-   most FixMyStreet reports (Dogsthorpe in Peterborough, Foots Cray in Bexley,
-   Landmann Way in Southwark) removes it: years 1 to 4 after become 0.95 (0.78 to
-   1.15). Dropping only Foots Cray gives 1.08 (0.91 to 1.30). Two of the three were
-   rated "unclear" by the archive check, so they may not be real closures, and two
-   are in councils that use FixMyStreet as their official reporting system, where
-   residents report far more.
-4. **Litter cannot serve as a placebo here.** Only 26 closures have any litter
-   reports in their affected areas, and 82% of those come from one closure.
+1. **No clear rise after a typical closure.** Pooled, the rise in years 1 to 4 is
+   13% and not clearly different from zero (0.92 to 1.39). Weighted equally, or
+   without the three heaviest-reporting closures, it is about 5% *lower*. Closure
+   by closure, rises and falls are about equally common.
+2. **The earlier positive result rested partly on closures that were not real.**
+   Before the hand checks the pooled estimate was 1.12 (1.00 to 1.25) and depended
+   on three closures. Two of them, Foots Cray and Landmann Way, turned out to be a
+   centre that is still open and a duplicate record.
+3. **One result points the other way.** Where drive time rose by 3 minutes or more,
+   reports are 28% higher in years 1 to 4 (1.07 to 1.53). That is the sample where
+   an effect should be largest, so a moderate effect for large losses of access
+   cannot be ruled out. It has not been checked for dependence on a few closures.
+4. **Litter cannot serve as a placebo here.** Only 48 closures have any litter
+   reports in their affected areas, and litter in affected areas was already very
+   different four years before closure.
 
-**Conclusion.** Studied closure by closure, the evidence that losing a recycling
-centre raises fly-tipping nearby is weak. Across most closures there is no rise;
-the pooled increase comes from a handful of places with very heavy FixMyStreet
-use, some of which may not be real closures. Together with the council-level
-results, the data rule out large effects but cannot confirm a small one.
+**Conclusion.** Studied closure by closure, with the closure dates checked, the
+evidence that losing a recycling centre raises fly-tipping nearby is weak. A
+typical closure is followed by no change. A rise remains possible where the extra
+drive is large, but it would need to be confirmed with more closures or another
+source of incident locations, such as councils' own records.
 
 ### Is there a drive time beyond which fly-tipping jumps?
 
@@ -417,11 +451,11 @@ car ownership, density and rural or urban (`src/cutoff_analysis.py`).
 ![Fly-tipping by drive-time band](../outputs/fig_cutoff_bands.png)
 
 **There is no cutoff.** Relative to neighbourhoods under 2 minutes from a centre,
-those 2 to 10 minutes away have slightly more fly-tipping reports (1.17 to 1.22,
+those 2 to 10 minutes away have slightly more fly-tipping reports (1.18 to 1.25,
 none significant), and beyond about 12 minutes every band is below 1. Searching
 for a single break point gives the best fit at 6 minutes, with reports falling by
-18% for every 5 minutes beyond it (rate ratio 0.82, 95% CI 0.75 to 0.89), the
-opposite of a jump. Based on 183,563 neighbourhood-years in 212 councils; bands
+19% for every 5 minutes beyond it (rate ratio 0.81, 95% CI 0.74 to 0.89), the
+opposite of a jump. Based on 183,603 neighbourhood-years in 212 councils; bands
 beyond 20 minutes hold under 2,000 neighbourhood-years each.
 
 One caution: FixMyStreet counts where waste is dumped, assigned to that
@@ -506,15 +540,14 @@ reports could not be given a waste type.
 
 In order of expected value:
 
-1. **Build a verified HWRC history.** Cross-check WDI site disappearances against
-   council web pages (current and Wayback Machine) or FOI, and collect booking
-   system dates, DIY charges and opening hours at the same time. This fixes the
-   main measurement problem and enables the DIY-ban difference-in-differences
-   and booking-system event study.
-2. **Test the closure result with verified closures.** The FixMyStreet
-   neighbourhood estimate (+21% per 5 minutes) is the strongest lead. Verified
-   closure dates, and an event study around each confirmed closure with
-   neighbouring unaffected areas as the comparison, would show whether it holds.
+1. **Check FixMyStreet patterns against councils' own incident records.** York,
+   Leeds, Bradford, Calderdale and Bassetlaw publish where each fly-tipping
+   incident was found (see DATASETS.md). These are complete council records rather
+   than public reports, so they test whether the renting, car ownership and
+   closure results hold outside FixMyStreet.
+2. **Large losses of access.** The only clearly positive closure result is a rise
+   where drive time grew by 3 minutes or more. Check whether it depends on a few
+   closures, as the earlier pooled result did.
 3. **Housing mechanisms.** Test the private-renting association more sharply
    with HMO licensing registers, tenancy turnover and student term dates
    (seasonality needs the WasteDataFlow quarterly returns).
