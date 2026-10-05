@@ -388,6 +388,43 @@ the pooled increase comes from a handful of places with very heavy FixMyStreet
 use, some of which may not be real closures. Together with the council-level
 results, the data rule out large effects but cannot confirm a small one.
 
+### Is there a drive time beyond which fly-tipping jumps?
+
+Drive time is measured from each neighbourhood's population-weighted centre (where
+most residents live) along the road network to the nearest recycling centre,
+using the verified closure history. Here neighbourhoods are compared in narrow
+2-minute bands, within the same council and year, allowing for private renting,
+car ownership, density and rural or urban (`src/cutoff_analysis.py`).
+
+![Fly-tipping by drive-time band](../outputs/fig_cutoff_bands.png)
+
+**There is no cutoff.** Relative to neighbourhoods under 2 minutes from a centre,
+those 2 to 10 minutes away have slightly more fly-tipping reports (1.17 to 1.22,
+none significant), and beyond about 12 minutes every band is below 1. Searching
+for a single break point gives the best fit at 6 minutes, with reports falling by
+18% for every 5 minutes beyond it (rate ratio 0.82, 95% CI 0.75 to 0.89), the
+opposite of a jump. Based on 183,563 neighbourhood-years in 212 councils; bands
+beyond 20 minutes hold under 2,000 neighbourhood-years each.
+
+One caution: FixMyStreet counts where waste is dumped, assigned to that
+neighbourhood, while drive time is from where its residents live. For most
+household dumping these are the same area.
+
+### The type of fly-tipping differs by driver
+
+In the council comparison (Figure in the first section), the two strongest
+drivers go with different kinds of waste:
+
+| Driver | Bulky household | Household black bags | Construction / demolition | Tipper lorry or larger |
+|---|---|---|---|---|
+| Private renting (+10 pts) | **1.80** | **2.07** | 1.13 | 1.54 |
+| No car (+10 pts) | 1.22 | 0.87 | **2.15** | **2.05** |
+
+Bold: 95% confidence interval excludes 1 (950 council-years, 317 councils).
+Private renting goes with household clear-out waste; households without a car go
+with builders' rubble and lorry-sized loads, which points to paid waste carriers
+("man with a van") rather than residents dumping their own waste.
+
 ## What to do next
 
 In order of expected value:

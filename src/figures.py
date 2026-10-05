@@ -141,6 +141,32 @@ def closure_plot(path: Path):
     plt.close(fig)
 
 
+def cutoff_plot(path: Path):
+    """Fly-tipping reports by 2-minute drive-time band (cutoff_analysis.py), with
+    neighbourhood-years per band under each point."""
+    b = pd.read_csv(OUT / "cutoff_bands.csv")
+    b = b[(b["outcome"] == "flytip") & (b["lsoa_years"] >= 100)].reset_index(drop=True)
+    fig, ax = plt.subplots(figsize=(9, 3.8))
+    x = np.arange(len(b))
+    ax.vlines(x, b["lo"], b["hi"], color=SERIES, lw=2)
+    ax.plot(x, b["irr"], "o", color=SERIES, ms=6, mec=SURFACE, mew=1.5)
+    ax.axhline(1, color=INK2, lw=1)
+    ax.set_yscale("log")
+    ax.yaxis.set_minor_locator(NullLocator())
+    ax.yaxis.set_minor_formatter(NullFormatter())
+    ax.set_yticks([0.25, 0.5, 1, 2], ["0.25", "0.5", "1", "2"])
+    ax.set_ylim(0.3, 2.5)
+    ax.grid(axis="y", color=GRID, lw=0.8)
+    ax.set_xticks(x, [f"{r.band}\n{int(r.lsoa_years):,}" for r in b.itertuples()], fontsize=8)
+    ax.set_xlabel("Drive time to nearest recycling centre (minutes) / neighbourhood-years in band")
+    ax.set_ylabel("Fly-tipping reports vs 0-2 min")
+    ax.set_title(f"Same council and year; {int(b['lsoa_years'].sum()):,} neighbourhood-years in "
+                 f"{int(b['n_councils'].iloc[0])} councils (bands with 100+ shown)", fontsize=9, loc="left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     res = pd.read_csv(OUT / "model_results.csv")
     ev = pd.read_csv(OUT / "event_study.csv")
