@@ -425,6 +425,65 @@ Private renting goes with household clear-out waste; households without a car go
 with builders' rubble and lorry-sized loads, which points to paid waste carriers
 ("man with a van") rather than residents dumping their own waste.
 
+### Where each kind of fly-tipping happens
+
+Two ideas to test: private renting leads to bags left near the home; households
+without a car either leave large items outside their home, or hand waste to paid
+carriers who dump it somewhere else.
+
+**How.** FixMyStreet report titles and descriptions were sorted by keyword into
+waste types (bags; bulky items such as mattresses, sofas and fridges; construction
+or DIY waste; garden waste) and, where the text says so, the setting (doorstep or
+street, for example "outside no. 12" or "on the pavement"; or an out-of-the-way
+place such as a layby, field, hedgerow or canal). 57% of reports get a waste type,
+22% a doorstep or street setting and 12% an out-of-the-way one (`src/fms_types.py`;
+the text is used only to make counts). For each type, reports per neighbourhood
+were compared within the same council and year against two sets of drivers: the
+neighbourhood's own shares of private renters and car-less households, and the
+same shares across the surrounding area (other neighbourhoods within 8 km,
+weighted by households), allowing for density and rural or urban
+(`src/location_analysis.py`).
+
+| Waste found (reports) | Private renting, own area | No car, own area | Private renting, surrounding area | No car, surrounding area |
+|---|---|---|---|---|
+| Bags (163,713) | **1.22** | **1.24** | 1.52 | 0.86 |
+| Bags, doorstep or street (43,251) | **1.28** | **1.23** | 0.93 | 1.18 |
+| Bulky items (184,519) | **1.14** | **1.24** | **1.95** | 0.73 |
+| Bulky items, doorstep or street (47,913) | **1.22** | **1.16** | **2.23** | 0.71 |
+| Bulky items, out-of-the-way place (20,650) | 1.06 | **1.26** | **1.67** | 0.83 |
+| Construction / DIY (54,405) | **1.12** | **1.16** | **1.59** | 0.91 |
+| Construction, out-of-the-way place (10,350) | 1.03 | **1.10** | **1.54** | 1.01 |
+
+Rate ratios per 10 percentage points; bold: 95% CI excludes 1. About 183,700
+neighbourhood-years in 212 councils (slightly fewer for rarer types).
+
+**What it shows.**
+
+1. **Bags are a local problem.** They rise with private renting and with car-less
+   households in the neighbourhood itself (22% and 24% more per 10 points, 28% and
+   23% for bags found on doorsteps or streets), not with the surrounding area.
+2. **The car-less effect is local for every type of waste.** Bulky items and even
+   construction waste rise with the share of car-less households in the same
+   neighbourhood, and never with car-less households in the surrounding area.
+   This fits large items being left out near the home better than waste being
+   handed to carriers who dump it elsewhere.
+3. **Bulky and construction waste also rise next to areas with a lot of private
+   renting** (1.6 to 2.2 times per 10 points of private renting in the surrounding
+   area). One explanation is end-of-tenancy and refurbishment waste from landlords
+   or clearance firms dumped a short distance away.
+
+**The official council counts agree** (950 council-years, 317 councils, by land
+type): fly-tipping in back alleyways rises with both private renting (2.35 per 10
+points, p = 0.04) and car-less households (2.18, p = 0.03); on private and
+residential land with private renting (2.28, p = 0.01); and on agricultural land,
+where carriers typically dump, there is no link with car-less households (1.09,
+p = 0.86).
+
+**Caveats.** FixMyStreet under-represents remote rural dumping, which is where
+carriers would most likely go, so the carrier explanation cannot be ruled out for
+large-scale dumping. The own and surrounding shares are correlated, and 43% of
+reports could not be given a waste type.
+
 ## What to do next
 
 In order of expected value:
