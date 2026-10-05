@@ -167,6 +167,51 @@ def cutoff_plot(path: Path):
     plt.close(fig)
 
 
+def council_records_plot(path: Path):
+    """Council records versus FixMyStreet: rate ratios per driver by council
+    (council_records.py), and the Leeds closure year by year."""
+    r = pd.read_csv(OUT / "council_records_models.csv")
+    r = r[(r["model"] == "same council and year") & (r["outcome"] == "n_council")]
+    f = pd.read_csv(OUT / "fms_model_results.csv")
+    f = f[(f["outcome"] == "flytip") & (f["spec"] == "plus housing and cars")].set_index("term")
+    ev = pd.read_csv(OUT / "council_records_leeds_closure.csv")
+    ev = ev[ev["outcome"] == "n_council"]
+    terms = [("t_hwrc_5", "Drive time to recycling centre\n(per 5 extra minutes)"),
+             ("private_rent_10", "Private renting\n(per 10 points)"), ("no_car_10", "No car\n(per 10 points)")]
+    councils = ["York", "Bassetlaw", "Bradford", "Leeds"]
+    fig, axes = plt.subplots(1, 4, figsize=(15, 3.8), gridspec_kw={"width_ratios": [1, 1, 1, 1.5]})
+    for ax, (t, label) in zip(axes[:3], terms):
+        d = r[r["term"] == t].set_index("council").reindex(councils)
+        y = np.arange(len(councils))[::-1]
+        ax.hlines(y, d["lo"], d["hi"], color=SERIES, lw=2)
+        ax.plot(d["irr"], y, "o", color=SERIES, ms=6, mec=SURFACE, mew=1.5)
+        ax.axvline(f.loc[t, "irr"], color="#d98a1f", lw=1.5, ls="--")
+        _ratio_axis(ax, 0.5, 4)
+        ax.set_title(label, fontsize=9, loc="left")
+        ax.set_yticks(y, [f"{c}\n{int(d.loc[c, 'n_records']):,} records" for c in councils] if t == "t_hwrc_5" else [])
+    axes[0].text(0.02, -0.22, "Dashed: FixMyStreet, 212 councils", transform=axes[0].transAxes, fontsize=8, color="#d98a1f")
+    ax = axes[3]
+    e = pd.concat([ev, pd.DataFrame({"year": [2013], "irr": [1.0], "lo": [1.0], "hi": [1.0]})]).sort_values("year")
+    ax.fill_between(e["year"], e["lo"], e["hi"], color=SERIES, alpha=0.15, lw=0)
+    ax.plot(e["year"], e["irr"], "-o", color=SERIES, lw=2, ms=5, mec=SURFACE, mew=1.2)
+    ax.axhline(1, color=INK2, lw=1)
+    ax.axvline(2013.5, color=GRID, lw=1, ls="--")
+    ax.axvline(2016.5, color="#d98a1f", lw=1, ls=":")
+    ax.text(2016.6, 3.3, "new recording\nsystem", fontsize=7, color="#d98a1f", va="top")
+    ax.set_yscale("log")
+    ax.yaxis.set_minor_locator(NullLocator())
+    ax.yaxis.set_minor_formatter(NullFormatter())
+    ax.set_yticks([0.5, 1, 2, 4], ["0.5", "1", "2", "4"])
+    ax.set_ylim(0.45, 4.2)
+    ax.grid(axis="y", color=GRID, lw=0.8)
+    n = ev.iloc[0]
+    ax.set_title(f"Leeds closure: {int(n.n_treated_sectors)} sectors lost access in 2014,\n"
+                 f"vs {int(n.n_comparison_sectors)} other sectors (2013 = 1)", fontsize=9, loc="left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     res = pd.read_csv(OUT / "model_results.csv")
     ev = pd.read_csv(OUT / "event_study.csv")
@@ -180,5 +225,7 @@ if __name__ == "__main__":
                OUT / "fig_event_study.png")
     if (OUT / "closure_study.csv").exists():
         closure_plot(OUT / "fig_closure_study.png")
+    if (OUT / "council_records_models.csv").exists():
+        council_records_plot(OUT / "fig_council_records.png")
     spec_plot(res, {"hwrc_type": "Bulky / HWRC-type household", "total": "All incidents",
                     "placebo": "Placebo"}, OUT / "fig_within_specs.png")

@@ -536,15 +536,97 @@ carriers would most likely go, so the carrier explanation cannot be ruled out fo
 large-scale dumping. The own and surrounding shares are correlated, and 43% of
 reports could not be given a waste type.
 
+## Checking against councils' own records
+
+FixMyStreet holds only the incidents members of the public choose to report through
+one website. Five councils publish their own records of where each fly-tipping
+incident they dealt with was found, which include what council crews find
+themselves (`src/council_records.py`; sources in DATASETS.md). Four have enough
+detail to place incidents in neighbourhoods:
+
+| Council | Years | How incidents are placed | Records used | Areas |
+|---|---|---|---|---|
+| York | 2019 to 2024 | exact point, with waste type | 12,727 | 121 neighbourhoods |
+| Bassetlaw (mostly rural) | 2012 to 2017 | exact point, with waste type | 5,134 | 69 neighbourhoods |
+| Bradford | 2012 to 2017 | street name, matched to the OS road network (68% placed) | 23,168 | 312 neighbourhoods |
+| Leeds | 2012 to 2024 | postcode sector (about 3,000 households) | 196,528 | 120 sectors |
+
+Calderdale publishes only yearly totals. The models are the same as the
+FixMyStreet neighbourhood models: areas compared within the same council and year,
+per resident, allowing for private renting, car ownership, density, rural or urban
+and drive time to the nearest recycling centre.
+
+![Council records](../outputs/fig_council_records.png)
+
+**1. FixMyStreet is a thin and uneven sample in these councils.** For every 100
+incidents the council recorded there were between 0.4 (Leeds) and 2.6 (Bassetlaw)
+FixMyStreet reports, and areas with high council counts are only loosely the
+areas with many FixMyStreet reports (rank correlation per resident 0.17 to 0.48).
+These councils were mostly outside the main FixMyStreet models, which need 50
+reports a year, so they are a genuinely independent check.
+
+**2. Households without a car: confirmed everywhere.** In all four councils, areas
+with 10 percentage points more car-less households have more recorded fly-tipping:
+York 1.52 (1.25 to 1.84), Bassetlaw 1.75 (1.36 to 2.27), Bradford 1.33 (1.24 to
+1.44), Leeds 1.56 (1.35 to 1.79). In Leeds this holds both for incidents found by
+council staff (1.84) and for those reported by the public (1.43), so it is not a
+reporting effect. It is larger than the FixMyStreet estimate (1.23).
+
+**3. Private renting: mixed.** Positive in York (1.18, 0.98 to 1.43; for black bags
+1.45, 1.17 to 1.81) and Bassetlaw (1.26, 1.01 to 1.58), close to zero in Bradford
+(1.05) and negative in Leeds (0.82, 0.74 to 0.90). Allowing also for deprivation,
+social renting, flats and terraced housing, it becomes positive in Bradford (1.32)
+and Bassetlaw (1.68), zero in Leeds (1.05) and negative but unclear in York (0.83).
+The bags-near-home link with private renting holds in York's records; the general
+private-renting link is less robust than the car-ownership one.
+
+**4. Drive time: a positive link in the three urban councils, unlike in
+FixMyStreet.** Within the same council and year, areas 5 minutes further from a
+recycling centre have more recorded fly-tipping in York (2.49, 1.40 to 4.42),
+Bradford (1.36, 1.05 to 1.75) and Leeds (2.08, 1.47 to 2.94), but not in rural
+Bassetlaw (0.88, 0.56 to 1.37). It survives allowing for deprivation, social
+renting, flats and terraces in York (2.72) and Leeds (1.88), and weakens in
+Bradford (1.25, 0.99 to 1.57). In Leeds it is stronger for incidents found by
+council staff (3.52) than for those the public reported (1.54). Across the 212
+councils in the FixMyStreet models the same comparison shows nothing (0.93).
+
+This is a comparison between places, so it may reflect where recycling centres
+are, not what distance does: incidents are counted where waste is dumped, and in
+these cities the areas far from a centre include urban fringes with lanes and
+industrial land where dumping, and crews' patrols, concentrate (rural areas in
+Leeds record more: 3.04, and 5.21 for staff-found incidents).
+
+**5. The one closure in these records shows no clear effect.** After 2013 Leeds
+lost its Stanley Road site in Harehills (a confirmed closure in the archive check),
+and drive time rose by 1 to 3.5 minutes in 15 postcode sectors in inner east
+Leeds. Compared with 101 sectors whose drive time never changed, and with 2013 as
+the reference year:
+
+| Year | 2012 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 to 2024 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Rate ratio | 1.38 | 1.12 | 0.71 | 0.80 | 2.40 | 2.04 | 2.75 | 1.82 | 0.97 | 0.79 to 0.86 |
+
+In the three years after the closure, recorded fly-tipping in the affected sectors
+did not rise (it fell). It then doubled from 2017 to 2020, the years Leeds moved to
+a new recording system, and fell back from 2021. A rise that starts three years
+late, with the change of system, and then disappears, is more likely a change in
+recording or in where crews worked than an effect of the closure. The affected
+sectors were also already different in 2012 (1.38).
+
+**What this adds.** The car-ownership finding is the most robust result in the
+project: it holds in official records, in records of what crews find, and in
+FixMyStreet. The drive-time question remains open: places far from a centre record
+more fly-tipping in three city councils, but the one closure we can follow over
+time in these records does not show a lasting effect.
+
 ## What to do next
 
 In order of expected value:
 
-1. **Check FixMyStreet patterns against councils' own incident records.** York,
-   Leeds, Bradford, Calderdale and Bassetlaw publish where each fly-tipping
-   incident was found (see DATASETS.md). These are complete council records rather
-   than public reports, so they test whether the renting, car ownership and
-   closure results hold outside FixMyStreet.
+1. **Recycling centre opening hours, booking and DIY charges.** Collect them year
+   by year with `scripts/wayback_hwrc_rules.py` (run locally), then test whether
+   fly-tipping changes when a centre cuts its hours or introduces booking, and the
+   England ban on DIY charges from January 2024, with Wales as the comparison.
 2. **Large losses of access.** The only clearly positive closure result is a rise
    where drive time grew by 3 minutes or more. Check whether it depends on a few
    closures, as the earlier pooled result did.
