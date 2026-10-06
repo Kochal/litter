@@ -169,7 +169,7 @@ def cutoff_plot(path: Path):
 
 def council_records_plot(path: Path):
     """Council records versus FixMyStreet: rate ratios per driver by council
-    (council_records.py), and the Leeds closure year by year."""
+    (council_records.py), pooled rows, and the Leeds closure year by year."""
     r = pd.read_csv(OUT / "council_records_models.csv")
     r = r[(r["model"] == "same council and year") & (r["outcome"] == "n_council")]
     f = pd.read_csv(OUT / "fms_model_results.csv")
@@ -178,26 +178,35 @@ def council_records_plot(path: Path):
     ev = ev[ev["outcome"] == "n_council"]
     terms = [("t_hwrc_5", "Drive time to recycling centre\n(per 5 extra minutes)"),
              ("private_rent_10", "Private renting\n(per 10 points)"), ("no_car_10", "No car\n(per 10 points)")]
-    councils = ["York", "Bassetlaw", "Bradford", "Leeds"]
-    fig, axes = plt.subplots(1, 4, figsize=(15, 3.8), gridspec_kw={"width_ratios": [1, 1, 1, 1.5]})
-    for ax, (t, label) in zip(axes[:3], terms):
-        d = r[r["term"] == t].set_index("council").reindex(councils)
-        y = np.arange(len(councils))[::-1]
-        ax.hlines(y, d["lo"], d["hi"], color=SERIES, lw=2)
-        ax.plot(d["irr"], y, "o", color=SERIES, ms=6, mec=SURFACE, mew=1.5)
+    tot = r[r["term"] == "no_car_10"].set_index("council")["n_records"]
+    single = tot[~tot.index.str.startswith("All")].sort_values(ascending=False).index.tolist()
+    pooled = ["All except Leeds (pooled)", "All except Leeds and Newham (pooled)"]
+    rows = single + pooled
+    labels = {"All except Leeds (pooled)": "Pooled, 11 councils", "All except Leeds and Newham (pooled)": "Pooled, without Newham"}
+    fig = plt.figure(figsize=(15, 6.2))
+    gs = fig.add_gridspec(2, 3, height_ratios=[1.55, 1], hspace=0.55)
+    for k, (t, label) in enumerate(terms):
+        ax = fig.add_subplot(gs[0, k])
+        d = r[r["term"] == t].set_index("council").reindex(rows)
+        y = np.arange(len(rows))[::-1]
+        col = [INK if c in pooled else SERIES for c in rows]
+        ax.hlines(y, d["lo"], d["hi"], color=col, lw=2)
+        ax.scatter(d["irr"], y, color=col, s=36, edgecolor=SURFACE, linewidth=1.2, zorder=3)
         ax.axvline(f.loc[t, "irr"], color="#d98a1f", lw=1.5, ls="--")
-        _ratio_axis(ax, 0.5, 4)
+        ax.axhline(1.5, color=GRID, lw=1)
+        _ratio_axis(ax, 0.4, 4)
+        ax.set_xticks([0.5, 1, 2, 4], ["0.5", "1", "2", "4"])
         ax.set_title(label, fontsize=9, loc="left")
-        ax.set_yticks(y, [f"{c}\n{int(d.loc[c, 'n_records']):,} records" for c in councils] if t == "t_hwrc_5" else [])
-    axes[0].text(0.02, -0.22, "Dashed: FixMyStreet, 212 councils", transform=axes[0].transAxes, fontsize=8, color="#d98a1f")
-    ax = axes[3]
+        ax.set_yticks(y, [f"{labels.get(c, c)} ({int(tot[c]):,})" for c in rows] if k == 0 else [], fontsize=8)
+    fig.text(0.01, 0.43, "Dashed: FixMyStreet, 212 councils. Records per council in brackets.", fontsize=8, color="#d98a1f")
+    ax = fig.add_subplot(gs[1, :2])
     e = pd.concat([ev, pd.DataFrame({"year": [2013], "irr": [1.0], "lo": [1.0], "hi": [1.0]})]).sort_values("year")
     ax.fill_between(e["year"], e["lo"], e["hi"], color=SERIES, alpha=0.15, lw=0)
     ax.plot(e["year"], e["irr"], "-o", color=SERIES, lw=2, ms=5, mec=SURFACE, mew=1.2)
     ax.axhline(1, color=INK2, lw=1)
     ax.axvline(2013.5, color=GRID, lw=1, ls="--")
     ax.axvline(2016.5, color="#d98a1f", lw=1, ls=":")
-    ax.text(2016.6, 3.3, "new recording\nsystem", fontsize=7, color="#d98a1f", va="top")
+    ax.text(2016.6, 3.3, "new recording system", fontsize=7, color="#d98a1f", va="top")
     ax.set_yscale("log")
     ax.yaxis.set_minor_locator(NullLocator())
     ax.yaxis.set_minor_formatter(NullFormatter())
@@ -205,10 +214,9 @@ def council_records_plot(path: Path):
     ax.set_ylim(0.45, 4.2)
     ax.grid(axis="y", color=GRID, lw=0.8)
     n = ev.iloc[0]
-    ax.set_title(f"Leeds closure: {int(n.n_treated_sectors)} sectors lost access in 2014,\n"
-                 f"vs {int(n.n_comparison_sectors)} other sectors (2013 = 1)", fontsize=9, loc="left")
-    fig.tight_layout()
-    fig.savefig(path, dpi=160)
+    ax.set_title(f"Leeds closure: {int(n.n_treated_sectors)} sectors lost access in 2014, vs "
+                 f"{int(n.n_comparison_sectors)} other sectors (2013 = 1)", fontsize=9, loc="left")
+    fig.savefig(path, dpi=160, bbox_inches="tight")
     plt.close(fig)
 
 

@@ -32,7 +32,13 @@ import pyfixest as pf
 from fms_analysis import INTERIM, OUT, RAW, lsoa_panel
 
 SRC = RAW / "council_incidents"
-LADS = {"York": "E06000014", "Bassetlaw": "E07000171", "Bradford": "E08000032", "Leeds": "E08000035"}
+LADS = {"York": "E06000014", "Bassetlaw": "E07000171", "Bradford": "E08000032", "Leeds": "E08000035",
+        # public ArcGIS Online layers (council_layers.py)
+        "Newham": "E09000025", "Epping Forest": "E07000072", "Darlington": "E06000005",
+        "Wolverhampton": "E08000031", "Stratford-on-Avon": "E07000221", "Kingston upon Thames": "E09000021",
+        "West Oxfordshire": "E07000181", "Cotswold": "E07000079"}
+ARCGIS = SRC / "arcgis"
+LAST_PANEL_YEAR = 2024  # drive times and FixMyStreet panel end here; later years reuse 2024 values
 TYPES = [("bags", r"bag"), ("construction", r"constr|build|rubble|demol|diy"),
          ("bulky", r"furniture|white goods|electric|fridge|mattress|sofa"), ("garden", r"garden|green"),
          ("tyres", r"tyre")]
@@ -120,14 +126,14 @@ def extra_covariates(codes: list) -> pd.DataFrame:
     out = {}
     for name, dim in (("tenure", "hh_tenure_9a"), ("deprivation", "hh_deprivation"),
                       ("accommodation", "accommodation_type")):
-        cache = RAW / f"census_lsoa_4councils_{dim}.csv"
-        if cache.exists():
-            d = pd.read_csv(cache)
-        else:
+        cache = RAW / f"census_lsoa_councils_{dim}.csv"
+        d = pd.read_csv(cache) if cache.exists() else pd.DataFrame(columns=["area", "option_id", "option", "n"])
+        missing = sorted(set(codes) - set(d["area"]))
+        if missing:
             rows = []
-            for i in range(0, len(codes), 300):
-                rows += _get("HH", "lsoa," + ",".join(codes[i:i + 300]), dim)
-            d = pd.DataFrame(rows, columns=["area", "option_id", "option", "n"])
+            for i in range(0, len(missing), 300):
+                rows += _get("HH", "lsoa," + ",".join(missing[i:i + 300]), dim)
+            d = pd.concat([d, pd.DataFrame(rows, columns=["area", "option_id", "option", "n"])], ignore_index=True)
             d.to_csv(cache, index=False)
         d = d[d["option_id"].astype(str) != "-8"]
         w = d.pivot_table(index="area", columns="option", values="n", aggfunc="sum")
@@ -145,6 +151,15 @@ def extra_covariates(codes: list) -> pd.DataFrame:
 
 EXTRA = ["social_rent_share", "deprived_share", "flat_share", "terraced_share"]
 EXTRA_RHS = "social_rent_10 + deprived_10 + flat_10 + terraced_10"
+
+
+def load_arcgis(council: str) -> pd.DataFrame:
+    d = pd.read_csv(ARCGIS / f"{council}.csv")
+    if council == "Darlington":  # this layer also holds litter jobs
+        d = d[d["wtype"].str.contains("flytip", case=False, na=False)]
+    wt = waste_type(d["wtype"]) if "wtype" in d and council != "Darlington" else "unknown"
+    d = pd.DataFrame({"year": d["year"], "x": d["x"], "y": d["y"], "wtype": wt})
+    return to_lsoa(d.dropna(subset=["year"]).astype({"year": int}), "x", "y").assign(council=council)
 
 
 def lsoa_base() -> pd.DataFrame:
@@ -165,8 +180,15 @@ def add_steps(d: pd.DataFrame) -> pd.DataFrame:
 
 
 def lsoa_panel_for(rec: pd.DataFrame, base: pd.DataFrame, council: str) -> pd.DataFrame:
-    years = sorted(set(rec["year"]) & set(base["year"]))
-    d = base[(base["LAD25CD"] == LADS[council]) & base["year"].isin(years)].copy()
+    rec = rec[rec["year"].between(2012, 2026)]  # drops mistyped years
+    b = base[base["LAD25CD"] == LADS[council]]
+    years = sorted(set(rec["year"]) & set(b["year"]))
+    d = b[b["year"].isin(years)].copy()
+    later = sorted(y for y in set(rec["year"]) if y > LAST_PANEL_YEAR)
+    if later:  # covariates and drive times from 2024; no FixMyStreet panel for these years
+        last = b[b["year"] == LAST_PANEL_YEAR]
+        d = pd.concat([d] + [last.assign(year=y, n_flytip=np.nan, lad_year=LADS[council] + "_" + str(y))
+                             for y in later], ignore_index=True)
     cnt = rec.groupby(["LSOA21CD", "year"]).size().rename("n_council")
     d = d.merge(cnt, on=["LSOA21CD", "year"], how="left")
     if (rec["wtype"] != "unknown").any():
@@ -214,7 +236,12 @@ def leeds_panel(rec: pd.DataFrame, base: pd.DataFrame) -> pd.DataFrame:
 
 
 def fit(d: pd.DataFrame, y: str, rhs: str, fe: str, label: dict) -> list[dict]:
-    d = d[d.groupby(fe.split(" + ")[0])[y].transform("sum") > 0] if "unit" in fe else d
+    for g in fe.split(" + "):  # groups with no records add nothing and can crash the solver
+        d = d[d.groupby(g)[y].transform("sum") > 0]
+    rhs_vars = [v.strip() for v in rhs.split("+")]
+    d = d.dropna(subset=[y, "log_residents"] + rhs_vars)
+    if d.empty or d[y].sum() < 20 or d["unit"].nunique() < 10:
+        return [{**label, "outcome": y, "term": "not estimable", "note": "too few records"}]
     try:
         m = pf.fepois(f"{y} ~ {rhs} | {fe}", data=d, offset="log_residents", vcov={"CRV1": "unit"})
     except Exception as e:  # e.g. no reports of this type
@@ -271,20 +298,37 @@ def run(panels: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
         lab = {"council": council, "area": unit}
         outcomes = ["n_council", "n_flytip"] + sorted(c for c in d.columns if c.startswith("n_council_"))
         for y in outcomes:
-            rows += fit(d, y, cross, "lad_year", {**lab, "model": "same council and year"})
+            dd = d.dropna(subset=["n_flytip"]) if y == "n_flytip" else d
+            if dd.empty:
+                continue
+            rows += fit(dd, y, cross, "lad_year", {**lab, "model": "same council and year"})
         for y in ("n_council", "n_flytip"):
-            rows += fit(d, y, f"{cross} + {EXTRA_RHS}", "lad_year",
+            dd = d.dropna(subset=["n_flytip"]) if y == "n_flytip" else d
+            if dd.empty:
+                continue
+            rows += fit(dd, y, f"{cross} + {EXTRA_RHS}", "lad_year",
                         {**lab, "model": "same council and year, plus deprivation and housing type"})
         changed = (d.groupby("unit")["t_hwrc_min"].agg(lambda s: s.max() - s.min()) >= 1).sum()
+        real = d[d["year"] <= LAST_PANEL_YEAR]
         for y in ("n_council", "n_flytip"):
+            if real["year"].nunique() < 2:
+                continue
             rows += [{**r, "areas_drive_time_changed": int(changed)}
-                     for r in fit(d, y, "t_hwrc_5", "unit + year", {**lab, "model": "same area over time"})]
-        tot = d.groupby("unit")[["n_council", "n_flytip", "residents"]].agg(
+                     for r in fit(real, y, "t_hwrc_5", "unit + year", {**lab, "model": "same area over time"})]
+        both = d.dropna(subset=["n_flytip"])  # years with both sources
+        if both.empty:
+            val.append({"council": council, "area": unit, "n_areas": d["unit"].nunique(),
+                        "years": f"{int(d['year'].min())} to {int(d['year'].max())}",
+                        "council_records": int(d["n_council"].sum())})
+            continue
+        tot = both.groupby("unit")[["n_council", "n_flytip", "residents"]].agg(
             {"n_council": "sum", "n_flytip": "sum", "residents": "first"})
         val.append({"council": council, "area": unit, "years": f"{int(d['year'].min())} to {int(d['year'].max())}",
-                    "n_areas": len(tot), "council_records": int(tot["n_council"].sum()),
+                    "n_areas": len(tot), "council_records": int(d["n_council"].sum()),
+                    "council_records_fms_years": int(tot["n_council"].sum()),
                     "fixmystreet_reports": int(tot["n_flytip"].sum()),
                     "fms_per_100_council_records": 100 * tot["n_flytip"].sum() / tot["n_council"].sum(),
+                    "fms_years": f"{int(both['year'].min())} to {int(both['year'].max())}",
                     "rank_correlation_per_resident": (tot["n_council"] / tot["residents"]).corr(
                         tot["n_flytip"] / tot["residents"], method="spearman")})
     return pd.DataFrame(rows), pd.DataFrame(val)
@@ -292,10 +336,23 @@ def run(panels: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 if __name__ == "__main__":
     base = lsoa_base()
-    recs = {"York": load_york(), "Bassetlaw": load_bassetlaw(), "Bradford": load_bradford()}
+    recs = {"York": load_york(), "Bassetlaw": load_bassetlaw(), "Bradford": load_bradford(),
+            **{c: load_arcgis(c) for c in ("Newham", "Epping Forest", "Darlington", "Wolverhampton",
+                                           "Stratford-on-Avon", "Kingston upon Thames", "West Oxfordshire",
+                                           "Cotswold")}}
     panels = {c: lsoa_panel_for(r, base, c) for c, r in recs.items()}
     panels["Leeds"] = leeds_panel(load_leeds(), base)
     res, val = run(panels)
+    # All councils placed by point or street, pooled: still compared only within the same council and year
+    pooled_rows = []
+    for name, drop in (("All except Leeds (pooled)", {"Leeds"}), ("All except Leeds and Newham (pooled)", {"Leeds", "Newham"})):
+        pooled = pd.concat([p for c, p in panels.items() if c not in drop], ignore_index=True)
+        lab = {"council": name, "area": "LSOA", "n_councils": pooled["council"].nunique()}
+        pooled_rows += fit(pooled, "n_council", f"t_hwrc_5 + {CONTROLS} + rural", "lad_year",
+                           {**lab, "model": "same council and year"})
+        pooled_rows += fit(pooled, "n_council", f"t_hwrc_5 + {CONTROLS} + rural + {EXTRA_RHS}", "lad_year",
+                           {**lab, "model": "same council and year, plus deprivation and housing type"})
+    res = pd.concat([res, pd.DataFrame(pooled_rows)])
     res.to_csv(OUT / "council_records_models.csv", index=False)
     ev = leeds_closure_event(panels["Leeds"])
     ev.to_csv(OUT / "council_records_leeds_closure.csv", index=False)

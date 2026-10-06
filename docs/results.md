@@ -539,68 +539,109 @@ reports could not be given a waste type.
 ## Checking against councils' own records
 
 FixMyStreet holds only the incidents members of the public choose to report through
-one website. Five councils publish their own records of where each fly-tipping
+one website. Some councils publish their own records of where each fly-tipping
 incident they dealt with was found, which include what council crews find
-themselves (`src/council_records.py`; sources in DATASETS.md). Four have enough
-detail to place incidents in neighbourhoods:
+themselves (`src/council_records.py`; sources in DATASETS.md). Twelve English
+councils have enough detail to place incidents in neighbourhoods:
 
 | Council | Years | How incidents are placed | Records used | Areas |
 |---|---|---|---|---|
-| York | 2019 to 2024 | exact point, with waste type | 12,727 | 121 neighbourhoods |
-| Bassetlaw (mostly rural) | 2012 to 2017 | exact point, with waste type | 5,134 | 69 neighbourhoods |
-| Bradford | 2012 to 2017 | street name, matched to the OS road network (68% placed) | 23,168 | 312 neighbourhoods |
 | Leeds | 2012 to 2024 | postcode sector (about 3,000 households) | 196,528 | 120 sectors |
+| Newham (London) | Jul 2021 to Jun 2022 | point, with waste and land type | 89,915 | 185 neighbourhoods |
+| Bradford | 2012 to 2017 | street name, matched to the OS road network (68% placed) | 23,168 | 312 |
+| York | 2019 to 2026 | point, with waste type | 19,505 | 121 |
+| Epping Forest | 2016 to 2025 | point, with waste and land type | 17,999 | 78 |
+| Darlington | 2014 to 2016 | point | 6,761 | 66 |
+| Wolverhampton | Apr 2024 to 2025 | point | 6,561 | 161 |
+| West Oxfordshire | 2021 to 2026 | point | 5,270 | 68 |
+| Bassetlaw (mostly rural) | 2012 to 2017 | point, with waste type | 5,134 | 69 |
+| Stratford-on-Avon | Apr 2024 to 2026 | point | 4,420 | 77 |
+| Kingston upon Thames (London) | 2019 | point | 2,417 | 99 |
+| Cotswold | Aug 2025 to 2026 | point | 1,027 | 56 |
 
-Calderdale publishes only yearly totals. The models are the same as the
-FixMyStreet neighbourhood models: areas compared within the same council and year,
-per resident, allowing for private renting, car ownership, density, rural or urban
-and drive time to the nearest recycling centre.
+York, Leeds, Bradford and Bassetlaw publish these as open data. The other eight
+were found by searching ArcGIS Online, where councils publish them as public map
+layers without a stated licence (`src/council_layers.py`). Some of those layers
+include staff names and addresses; only the date, point, waste type, land type and
+size were downloaded, and only counts per area and year are used. Calderdale, South
+Lakeland and the Greater London Authority publish only totals, and the Environment
+Agency's illegal dumping file gives only its 16 regions. For years after 2024,
+drive times and census measures are those of 2024.
+
+The models are the same as the FixMyStreet neighbourhood models: areas compared
+within the same council and year, per resident, allowing for private renting, car
+ownership, density, rural or urban and drive time to the nearest recycling centre.
+The pooled rows put all councils placed by point or street together, still
+comparing areas only within the same council and year.
 
 ![Council records](../outputs/fig_council_records.png)
 
-**1. FixMyStreet is a thin and uneven sample in these councils.** For every 100
-incidents the council recorded there were between 0.4 (Leeds) and 2.6 (Bassetlaw)
-FixMyStreet reports, and areas with high council counts are only loosely the
-areas with many FixMyStreet reports (rank correlation per resident 0.17 to 0.48).
-These councils were mostly outside the main FixMyStreet models, which need 50
-reports a year, so they are a genuinely independent check.
+| Council | Area-years | No car (per 10 points) | Private renting (per 10 points) | Drive time (per 5 min) |
+|---|---|---|---|---|
+| Leeds | 1,560 | **1.56 (1.35 to 1.79)** | **0.82 (0.74 to 0.90)** | **2.08 (1.47 to 2.94)** |
+| Newham | 370 | **0.78 (0.69 to 0.88)** | **1.13 (1.01 to 1.26)** | 0.63 (0.26 to 1.49) |
+| Bradford | 1,872 | **1.33 (1.24 to 1.44)** | 1.05 (0.94 to 1.17) | **1.36 (1.05 to 1.75)** |
+| York | 968 | **1.54 (1.27 to 1.88)** | 1.16 (0.96 to 1.40) | **2.67 (1.49 to 4.79)** |
+| Epping Forest | 780 | **2.01 (1.68 to 2.40)** | 0.99 (0.79 to 1.23) | 0.90 (0.75 to 1.08) |
+| Darlington | 198 | **1.37 (1.21 to 1.56)** | **1.45 (1.26 to 1.67)** | 0.80 (0.44 to 1.45) |
+| Wolverhampton | 322 | **1.39 (1.17 to 1.65)** | **1.32 (1.12 to 1.54)** | 0.81 (0.50 to 1.30) |
+| West Oxfordshire | 408 | **1.54 (1.07 to 2.22)** | **1.28 (1.09 to 1.52)** | 0.96 (0.81 to 1.13) |
+| Bassetlaw | 414 | **1.75 (1.36 to 2.27)** | **1.26 (1.01 to 1.58)** | 0.88 (0.56 to 1.37) |
+| Stratford-on-Avon | 228 | **1.56 (1.05 to 2.31)** | 1.02 (0.81 to 1.28) | 0.93 (0.74 to 1.18) |
+| Kingston upon Thames | 99 | 1.16 (0.96 to 1.41) | 1.17 (0.97 to 1.41) | 1.58 (0.77 to 3.23) |
+| Cotswold | 112 | 1.39 (0.87 to 2.25) | 0.98 (0.71 to 1.35) | 0.97 (0.74 to 1.26) |
+| **Pooled, 11 councils (not Leeds)** | 5,771 | **1.09 (1.00 to 1.17)** | **1.17 (1.09 to 1.26)** | 1.03 (0.89 to 1.19) |
+| **Pooled, without Newham** | 5,401 | **1.45 (1.35 to 1.55)** | **1.11 (1.02 to 1.20)** | 1.07 (0.95 to 1.20) |
+| FixMyStreet, 212 councils | 183,799 | **1.23 (1.11 to 1.36)** | **1.15 (1.07 to 1.24)** | 0.93 (0.81 to 1.07) |
 
-**2. Households without a car: confirmed everywhere.** In all four councils, areas
-with 10 percentage points more car-less households have more recorded fly-tipping:
-York 1.52 (1.25 to 1.84), Bassetlaw 1.75 (1.36 to 2.27), Bradford 1.33 (1.24 to
-1.44), Leeds 1.56 (1.35 to 1.79). In Leeds this holds both for incidents found by
+Rate ratios with 95% confidence intervals; bold where the interval excludes 1.
+Pooled models count each record once, so Newham's 89,915 records carry half the
+weight of the 11-council pool.
+
+**1. FixMyStreet is a thin and uneven sample in most of these councils.** For every
+100 incidents a council recorded there were between 0 (Newham, which uses its own
+reporting system) and 18 (West Oxfordshire) FixMyStreet reports, mostly under 3.
+Areas with high council counts are only loosely the areas with many FixMyStreet
+reports (rank correlation per resident 0.17 to 0.77). Most of these councils were
+outside the main FixMyStreet models, so this is a largely independent check.
+
+**2. Councils' records agree with FixMyStreet on the overall picture.** Pooled, the
+council records give almost the same answer as FixMyStreet: more fly-tipping with
+more private renting (1.17 against 1.15 per 10 points), more with more car-less
+households, and no link with drive time to a recycling centre (1.03 against 0.93).
+
+**3. Households without a car: the most consistent finding.** In 10 of the 12
+councils, areas with more car-less households record more fly-tipping, and Kingston
+and Cotswold point the same way. In Leeds this holds both for incidents found by
 council staff (1.84) and for those reported by the public (1.43), so it is not a
-reporting effect. It is larger than the FixMyStreet estimate (1.23).
+reporting effect. The exception is Newham, where most households in most areas have
+no car and black bags on pavements make up half the records; there it goes the
+other way (0.78), which pulls the pooled estimate down to 1.09 (1.45 without
+Newham).
 
-**3. Private renting: mixed.** Positive in York (1.18, 0.98 to 1.43; for black bags
-1.45, 1.17 to 1.81) and Bassetlaw (1.26, 1.01 to 1.58), close to zero in Bradford
-(1.05) and negative in Leeds (0.82, 0.74 to 0.90). Allowing also for deprivation,
-social renting, flats and terraced housing, it becomes positive in Bradford (1.32)
-and Bassetlaw (1.68), zero in Leeds (1.05) and negative but unclear in York (0.83).
-The bags-near-home link with private renting holds in York's records; the general
-private-renting link is less robust than the car-ownership one.
+**4. Private renting: positive in most places, not everywhere.** Clearly positive in
+Darlington, Wolverhampton, West Oxfordshire, Bassetlaw and Newham, positive but
+uncertain in York and Kingston, close to zero in Bradford, Epping Forest, Stratford
+and Cotswold, and negative in Leeds. In York's records the link is strongest for
+black bags (1.45, 1.17 to 1.81), matching the FixMyStreet finding that bags are
+left close to home.
 
-**4. Drive time: a positive link in the three urban councils, unlike in
-FixMyStreet.** Within the same council and year, areas 5 minutes further from a
-recycling centre have more recorded fly-tipping in York (2.49, 1.40 to 4.42),
-Bradford (1.36, 1.05 to 1.75) and Leeds (2.08, 1.47 to 2.94), but not in rural
-Bassetlaw (0.88, 0.56 to 1.37). It survives allowing for deprivation, social
-renting, flats and terraces in York (2.72) and Leeds (1.88), and weakens in
-Bradford (1.25, 0.99 to 1.57). In Leeds it is stronger for incidents found by
-council staff (3.52) than for those the public reported (1.54). Across the 212
-councils in the FixMyStreet models the same comparison shows nothing (0.93).
+**5. Drive time: no general link.** Areas further from a recycling centre record
+more fly-tipping in three Yorkshire cities, York (2.67), Leeds (2.08) and Bradford
+(1.36), and these survive allowing for deprivation and housing type in York and
+Leeds. In the other nine councils there is no link, or a slightly negative one,
+and pooled it is 1.03 (0.89 to 1.19). The Yorkshire results compare different
+places, and incidents are counted where waste is dumped, which in those cities
+includes edge-of-town lanes and industrial land; in Leeds the link is stronger for
+incidents found by council staff (3.52) than for those reported by the public
+(1.54).
 
-This is a comparison between places, so it may reflect where recycling centres
-are, not what distance does: incidents are counted where waste is dumped, and in
-these cities the areas far from a centre include urban fringes with lanes and
-industrial land where dumping, and crews' patrols, concentrate (rural areas in
-Leeds record more: 3.04, and 5.21 for staff-found incidents).
-
-**5. The one closure in these records shows no clear effect.** After 2013 Leeds
-lost its Stanley Road site in Harehills (a confirmed closure in the archive check),
-and drive time rose by 1 to 3.5 minutes in 15 postcode sectors in inner east
-Leeds. Compared with 101 sectors whose drive time never changed, and with 2013 as
-the reference year:
+**6. The one closure in these records shows no clear effect.** Leeds is the only
+council here whose drive times changed during its records. After 2013 it lost its
+Stanley Road site in Harehills (a confirmed closure in the archive check), and
+drive time rose by 1 to 3.5 minutes in 15 postcode sectors in inner east Leeds.
+Compared with 101 sectors whose drive time never changed, and with 2013 as the
+reference year:
 
 | Year | 2012 | 2014 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2022 to 2024 |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -613,11 +654,10 @@ late, with the change of system, and then disappears, is more likely a change in
 recording or in where crews worked than an effect of the closure. The affected
 sectors were also already different in 2012 (1.38).
 
-**What this adds.** The car-ownership finding is the most robust result in the
-project: it holds in official records, in records of what crews find, and in
-FixMyStreet. The drive-time question remains open: places far from a centre record
-more fly-tipping in three city councils, but the one closure we can follow over
-time in these records does not show a lasting effect.
+**What this adds.** With about 380,000 incidents recorded by 12 councils
+themselves, the main FixMyStreet results hold: fly-tipping goes with car-less
+households and private renting, and not with distance to a recycling centre.
+Car ownership is the most consistent of these across councils.
 
 ## What to do next
 
