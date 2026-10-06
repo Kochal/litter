@@ -1,0 +1,428 @@
+[
+ {
+  "council": "Cotswold",
+  "year": 2025,
+  "month": 8,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_August_Data_2025/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2025,
+  "month": 9,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_September_Data_2025/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2025,
+  "month": 10,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_October_Data_2025/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2025,
+  "month": 11,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_November_Data_2025/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2025,
+  "month": 12,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_December_Data_2025/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 1,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_January_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 2,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_February_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 3,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_March_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 4,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_April_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 5,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_May_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 6,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_June_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 7,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_July_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 8,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tip_Locations_August_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "Cotswold",
+  "year": 2026,
+  "month": 9,
+  "url": "https://services1.arcgis.com/k6HWkz7DMAcnnYfV/arcgis/rest/services/CDC_Fly_Tips_September_2026_Ubico/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2021,
+  "month": 11,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/November_2021/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 1,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/January_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 2,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/February_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 3,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/March_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 4,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/April_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 5,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/May_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 6,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/June_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 7,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/July_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 8,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/August_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 9,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/September_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 10,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/October_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 11,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/November_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2022,
+  "month": 12,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/December_2022/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 1,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/January_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 2,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/February_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 3,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/March_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 4,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/April_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 5,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/May_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 6,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/June_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 7,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/July_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 8,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/August_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 9,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/September_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 10,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/October_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 11,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/November_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2023,
+  "month": 12,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/December_2023/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 1,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/Jan_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 2,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/Feb_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 3,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/Mar_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 4,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/April_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 5,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/May_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 6,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/June_2024_new/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 7,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/July_2024_new/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 8,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/August_2024_new/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 9,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/September_2024_new/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 10,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/October_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 11,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/November_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2024,
+  "month": 12,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/December_2024/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 1,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/January_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 2,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/February_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 3,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/March_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 4,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/April_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 5,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/May_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 6,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/June_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 7,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/July_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 8,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/August_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 9,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/September_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 10,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/October_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 11,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/November_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2025,
+  "month": 12,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/December_2025/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 1,
+  "url": "https://services-eu1.arcgis.com/8cNZEkxama38wIz9/arcgis/rest/services/envreg_january_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 2,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/February_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 3,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/March_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 4,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/April_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 5,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/May_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 6,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/June_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 7,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/WODC_Fly_Tip_Locations_July_Data_2026/FeatureServer/0"
+ },
+ {
+  "council": "West Oxfordshire",
+  "year": 2026,
+  "month": 8,
+  "url": "https://services5.arcgis.com/z8GJkxrWic0alJoM/arcgis/rest/services/WODC_Fly_Tip_Locations_August_Data_2026/FeatureServer/0"
+ }
+]
