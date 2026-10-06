@@ -49,7 +49,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from wayback_hwrc_check import CDX, LIST_PAGE, Fetcher, norm_path, snapshot_text, tokens  # noqa: E402
+from wayback_hwrc_check import CDX, LIST_PAGE as OLD_LIST_PAGE, Fetcher, norm_path, snapshot_text, tokens  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 WB = ROOT / "data" / "wayback"
@@ -59,8 +59,12 @@ YEARS = range(2014, 2026)
 URL_KEYWORDS = (r"recycl|household-waste|household_waste|hwrc|hrc|\btips?\b|civic-amenity|amenity-site|"
                 r"waste-site|rubbish-tip|opening-times|opening-hours|book|permit|charg|diy|non-household|"
                 r"rubble|plasterboard|van|trailer")
+WASTE_URL = re.compile(r"recycl|waste|\btips?\b|hwrc|hrc|amenity|rubbish|bins?\b|dump", re.I)
 RULES_PAGE = re.compile(r"book|appointment|slot|permit|charg|diy|non-household|rubble|plasterboard|"
-                        r"opening-(?:times|hours)|vans?-|trailer|what-you-can", re.I)
+                        r"opening-(?:times|hours)|vans?\b|trailer|what-you-can|accepted", re.I)
+# The council's list of centres: last part of the address names centres, sites or tips
+LIST_PAGE = re.compile(r"/[^/]*(?:recycl|waste|tip|hwrc|hrc|amenit)[^/]*(?:centres|centers|sites|tips|hwrcs|hrcs|"
+                       r"locations|nearest|find)[^/]*/?(?:index\.[a-z]+)?$|/(?:hwrcs?|tips)/?$", re.I)
 TOPIC = re.compile(
     r"book(?:ing|ed)?\b|appointment|time slot|\bslots?\b|permits?\b|\bvans?\b|trailers?|"
     r"charg(?:e|es|ed|ing)\b|\bfees?\b|£\s?\d|free of charge|\bdiy\b|non-household|rubble|hardcore|"
@@ -166,8 +170,13 @@ def main():
         by_url = defaultdict(list)
         for r in cdx_rows(fx, domain):
             by_url[norm_path(r["original"])].append(r)
-        lists = [u for u in by_url if LIST_PAGE.search("/" + u.split("/", 1)[-1])]
-        rules = [u for u in by_url if RULES_PAGE.search(u.split("/", 1)[-1]) and u not in lists]
+        # Only the council's main site and its news site (not jobs, libraries, leisure...)
+        hosts = {domain, "www." + domain, "news." + domain}
+        by_url = {u: c for u, c in by_url.items() if u.split("/", 1)[0].split(":")[0] in hosts}
+        lists = [u for u in by_url if LIST_PAGE.search("/" + u.split("/", 1)[-1])
+                 or OLD_LIST_PAGE.search("/" + u.split("/", 1)[-1])]
+        rules = [u for u in by_url if u not in lists and RULES_PAGE.search(u.split("/", 1)[-1])
+                 and WASTE_URL.search(u.split("/", 1)[-1])]
         own = set()
         for s in dsites:
             toks = tokens(s["name"])

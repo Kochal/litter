@@ -75,7 +75,11 @@ python scripts/wayback_hwrc_rules.py --domains leeds.gov.uk kent.gov.uk   # quic
 python scripts/wayback_hwrc_rules.py                                     # everything; many hours, resumable
 ```
 
-Results go to `data/wayback/out/rules/` (commit and push that folder). The run
+If you ran an earlier version of the script, delete `data/wayback/out/rules/` first so
+every council is redone with the corrected page selection (pages already fetched come
+from the cache, so this is quick). Results go to `data/wayback/out/rules/` (commit and
+push that folder). `src/hwrc_rules.py` then works out each centre's weekly opening
+hours and each council's booking and DIY charge rules by year. The run
 resumes where it stopped (finished councils are listed in `done_domains.txt`), and
 councils that run the most centres go first, so a partial run is already useful.
 
