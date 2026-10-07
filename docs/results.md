@@ -370,6 +370,19 @@ verified rise in drive time of at least a minute record about 7% to 20% less
 fly-tipping in the years after (clearly so only in the first two years), which
 points to recording changes rather than behaviour.
 
+### Where drive times changed
+
+![Change in drive time to the nearest recycling centre, 2012 to 2024](../outputs/fig_drive_time_map.png)
+
+Between 2012 and 2024, with the verified closure history, 973 of 35,664
+neighbourhoods (2.7%) have a drive time to their nearest recycling centre at least
+3 minutes longer, 830 are 1 to 3 minutes longer and 1,618 are at least a minute
+shorter because new centres opened (`src/drive_time_map.py`; values per
+neighbourhood in `outputs/drive_time_change.csv`). The longer drives cluster
+around the 83 verified closures, for example in County Durham, West Yorkshire,
+East Lancashire, Shropshire, Suffolk, Kent and Cornwall. Wales is shown with its
+current centres only, so no changes appear there.
+
 ### Closure by closure
 
 The models above pool all changes in drive time. Here each recycling centre
@@ -743,6 +756,31 @@ to zero and precise enough to rule out more than about 7% extra reports for 10
 fewer hours a week. We also do not reproduce IECR's crowding link between places
 with FixMyStreet reports. Councils' own records cover too few neighbourhoods with
 changes in hours (6 councils, 1,498 neighbourhood-years) to add anything.
+
+**Why we do not reproduce IECR's crowding result.** Mostly we do not contradict
+it, our estimate is less precise. IECR reports 1.17 per standard deviation of
+crowding (90% range 1.08 to 1.26). On the same scale our comparison between
+neighbourhoods gives 1.09 (90% range 0.93 to 1.28), which includes their value.
+Reasons the two differ:
+
+- *Different crowding measures.* IECR uses the nearest centre residents are
+  allowed to use (some only take their own council's residents) and current 2026
+  opening hours; we use the nearest centre by drive time and hours read from
+  archived pages, which are noisier and blur any link.
+- *Different outcome.* IECR removes each neighbourhood's general habit of reporting
+  street problems online before comparing; we compare raw FixMyStreet reports
+  within the same council and year.
+- *Different coverage.* Our estimate uses the 193 councils with enough FixMyStreet
+  reports and the centres whose hours we could read (18,588 neighbourhoods, about
+  55% of England's).
+- *What drives crowding.* Splitting crowding into its parts, the number of
+  households a centre serves goes with somewhat more fly-tipping (1.13 per 2.7
+  times more households, not clear), while its opening hours go with none (1.01).
+  Centres with large catchments are mostly in dense urban areas, so a link between
+  places can reflect where crowded centres are rather than crowding itself.
+
+The comparison over time avoids that last problem, and there cutting a centre's
+hours or making it more crowded did not raise fly-tipping.
 
 ## What to do next
 
