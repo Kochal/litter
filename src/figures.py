@@ -286,6 +286,8 @@ def trend_plot(path: Path):
         ax.plot(t.index, y, ls, color=c, lw=2.2, marker="o", ms=3.5)
         ax.text(t.index[-1] + 0.15, y.iloc[-1], f"{lab} ({y.iloc[-1]:.0f})", fontsize=8, color=c, va="center")
     ax.axhline(100, color=INK2, lw=1)
+    ax.axvline(2018.5, color=INK2, lw=1, ls=":")
+    ax.text(2018.55, 285, "From 2019/20 councils were also\nasked to count what crews find", fontsize=7, color=INK2, va="top")
     ax.set_xlim(2011.7, 2029.5)
     ax.set_xticks(range(2012, 2025, 2), [f"{y}/{str(y + 1)[2:]}" for y in range(2012, 2025, 2)], fontsize=8)
     ax.set_ylabel("Recorded per person, 2012/13 = 100")

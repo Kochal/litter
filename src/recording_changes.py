@@ -8,8 +8,9 @@ For each English council, 2012/13 to 2024/25 (official counts per 1,000 people):
    year with the largest ratio (up or down) is the council's step; it counts as a
    step if the rate doubles or halves and the move is at least three times the
    council's typical year-to-year change.
-2. Signs that a step is a recording change, comparing the same two three-year
-   windows:
+   The step is dated at the largest single-year jump within a year of k.
+2. Signs that a step is a recording change, comparing the three-year windows
+   before and after k:
    - small items (single bags, single items and car-boot loads) become a larger
      share, by 10 percentage points or more: councils that start logging what crews
      find, or open an app, mostly add small incidents;
@@ -24,8 +25,13 @@ For each English council, 2012/13 to 2024/25 (official counts per 1,000 people):
    unclear", "steady rise" (median rate in 2022 to 2024 at least 1.25 times 2012 to
    2014 without a step), "little change" otherwise.
 
+Published evidence for the largest steps (council papers, local news), checked by
+hand, is in data/recording_evidence.csv and added to the output.
+
 The national trend is then shown for all councils and for councils without a
-likely recording change, next to large loads.
+step, next to large loads. Defra notes that from 2019/20 councils were also asked
+to count incidents their own crews find, so national figures from 2019/20 are not
+fully comparable with earlier years.
 Outputs: outputs/recording_changes.csv (one row per council), outputs/trend.csv.
 """
 from pathlib import Path
@@ -63,6 +69,9 @@ def classify(g: pd.DataFrame) -> dict:
     yy = np.log(rate.clip(lower=0.01)).diff().abs().median()
     step = k_best is not None and abs(best) >= np.log(STEP) and abs(best) >= 3 * yy
     early, late = rate.loc[2012:2014].median(), rate.loc[2022:2024].median()
+    if step:  # date the step at the largest single-year jump in the same direction near k
+        jumps = np.log(rate.clip(lower=0.01)).diff().loc[k_best - 1:k_best + 1]
+        k_best = int((jumps if best > 0 else -jumps).idxmax())
     out.update({"rate_2012_14": early, "rate_2022_24": late, "change_2012_24": late / early if early else np.nan,
                 "step_year": k_best if step else None, "step_ratio": float(np.exp(best)) if step else None})
     if step:
@@ -101,9 +110,15 @@ def main():
     d["fms"] = d["fms"].fillna(0)
     d["rate"] = d["total"] / d["population"] * 1000
     res = pd.DataFrame([classify(g) for _, g in d.groupby("LAD25CD")])
+    ev = pd.read_csv(ROOT / "data" / "recording_evidence.csv")  # published sources, checked by hand
+    res = res.merge(ev.rename(columns={"type": "evidence_type", "confidence": "evidence_confidence"}),
+                    on="council", how="left")
+    confirmed = res["evidence_type"].isin(["recording", "reporting channel"]) & \
+        res["evidence_confidence"].isin(["high", "medium"]) & res["step_year"].notna()
+    res.loc[confirmed, "class"] = "recording change, published evidence"
     res.to_csv(OUT / "recording_changes.csv", index=False)
 
-    rec = set(res.loc[res["class"] == "recording change likely", "LAD25CD"])
+    rec = set(res.loc[res["class"].str.startswith("recording change"), "LAD25CD"])
     smooth = set(res.loc[res["class"].isin(["steady rise", "little change"]), "LAD25CD"])
     d["large"] = d[LARGE].sum(axis=1)
     rows = []

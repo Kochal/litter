@@ -782,6 +782,71 @@ Reasons the two differ:
 The comparison over time avoids that last problem, and there cutting a centre's
 hours or making it more crowded did not raise fly-tipping.
 
+## Is fly-tipping rising? Real trends and recording changes
+
+![Recorded fly-tipping per person, 2012/13 = 100](../outputs/fig_trend.png)
+
+Recorded fly-tipping per person in England is 62% higher in 2024/25 than in
+2012/13 (13.2 to 21.5 incidents per 1,000 people, the same 296 councils every
+year); in Wales it is 34% higher (11.4 to 15.2), almost all since 2019. But
+councils change how they record fly-tipping, so part of this rise is recording.
+To separate the two (`src/recording_changes.py`):
+
+1. **Sudden steps.** For each English council we looked for a step change: the
+   recorded rate doubling or halving within a year or two and staying there, by
+   much more than the council's usual year-to-year variation. Gradual changes are
+   not steps.
+2. **Signs that a step is recording.** In the same years: small items (single
+   bags, single items, car-boot loads) becoming a much larger share, which is what
+   happens when crews or a new app start logging things that were ignored; total
+   incidents jumping while large loads, which are hard to miss and recorded
+   anyway, do not; FixMyStreet reports in the council jumping threefold (a new
+   reporting channel); or a change in the council's recording basis or a merger.
+3. **Published evidence.** For the 12 largest steps a search of council papers and
+   local news found a documented recording or reporting change for two (Camden,
+   Enfield) and weaker clues for three (Kirklees, Merton, Lewisham); for the other
+   seven nothing published explains the step (`data/recording_evidence.csv`).
+
+| Council trend, 2012/13 to 2024/25 | Councils | Typical change in recorded rate |
+|---|---|---|
+| Gradual rise (25% or more, no step) | 109 | x1.67 |
+| Little change (no step) | 114 | x0.89 |
+| Step with signs of a recording change | 39 | x2.74 |
+| Step with published evidence of a recording change | 2 | (Camden x4.8 in 2018/19; Enfield x0.07 in 2017/18) |
+| Step, cause unclear | 32 | x2.04 |
+
+Of the 73 councils with a step, 61 stepped up and 12 down. The largest steps
+include Reigate and Banstead (x16 in 2020/21, with small items up 21 percentage
+points and no rise in large loads), Kirklees (x14 in 2016/17, which the council
+put down to improved reporting), Camden (x4.8 in 2018/19, after it launched a
+reporting app) and Enfield (down to a fifteenth in 2017/18, consistent with a
+switch to counting only public reports).
+
+There is also a national break: from 2019/20 Defra asked councils to count the
+incidents their own crews find and clear as well, so national figures from
+2019/20 are not fully comparable with earlier years.
+
+**Where the rise looks real.**
+
+- *Gradual rises.* In the 223 councils with no sudden step, recorded fly-tipping
+  per person rose 43% (13.5 to 19.4 per 1,000), about two-thirds of the headline
+  rise. Recording can also change gradually, so this is an upper bound, but it is
+  the most believable measure of a real increase.
+- *Large loads.* Tipper-lorry loads or larger, which are rarely missed, nearly
+  tripled per person (30 to 88 per 100,000 people), and rose steadily rather than
+  in steps. This fits the rogue waste carrier explanation in the research brief.
+- *Wales* was flat until 2019 and rose about a third since.
+
+**Where it does not.** In the 41 councils with a step and signs of a recording
+change, much of the rise is recording; leaving them out lowers the national rise
+from 62% to 51%. Councils' own incident records (York, Leeds and others) do not
+show a consistent rise either: Leeds peaked in 2019 and has been lower since its
+change of recording system.
+
+Our other results are not affected by these national trends: every model
+compares councils or neighbourhoods within the same year, and the over-time
+models compare each council or neighbourhood with itself.
+
 ## What to do next
 
 In order of expected value:
