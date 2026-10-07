@@ -695,7 +695,7 @@ compared with those that did not (`src/diy_ban.py`).
 
 | Comparison | Outcome | Councils (charged vs comparison) | After the ban (95% CI) |
 |---|---|---|---|
-| Official counts | Construction and demolition | 100 vs 184 | 1.07 (0.74 to 1.54) |
+| Official counts | Construction and demolition | 100 vs 184 | 1.06 (0.74 to 1.54) |
 | Official counts, Wales as comparison | Construction and demolition | 100 vs 22 | 0.92 (0.54 to 1.57) |
 | Official counts | All fly-tipping | 100 vs 184 | 0.88 (0.76 to 1.03) |
 | Official counts | Bulky household waste | 100 vs 184 | 0.81 (0.70 to 0.95) |
@@ -708,7 +708,7 @@ Official counts compare 2024/25 (the first full year under the ban) with
 councils with at least 50 reports every year (23,838 neighbourhood-years).
 
 **The ban made no detectable difference to construction fly-tipping.** In the
-official counts the change is +7% with a wide range; the year-by-year chart shows
+official counts the change is +6% with a wide range; the year-by-year chart shows
 the charging councils' construction tipping was already drifting down towards the
 others before the ban, and it did not drop after it. In FixMyStreet, builders'
 waste stayed the same share of reports before and after. (FixMyStreet reports of
