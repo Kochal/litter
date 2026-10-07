@@ -45,6 +45,22 @@ DIY_FREE = re.compile(DIY + r".{0,80}?(?:free of charge|no charge|free\b)|(?:fre
 NOT_VISITS = re.compile(r"asbestos|museum|discovery centre|librar|galler|gas bottle|ceremon|tickets?\b")
 
 
+NOT_RESIDENT_CHARGE = re.compile(r"free of charge|no charge|not charge|free for (?:residents|householders)|"
+                                 r"business|trade\b|traders?|tradesp|commercial|builders? you hired|permit is free|"
+                                 r"no longer|update on diy|from 1 (?:september|january)|government|improver|retailers?|"
+                                 r"bulky|collected|for sale|buy ")
+
+
+def first_charge(text: str):
+    """First DIY charge mention that is about residents paying, not businesses,
+    not a statement that DIY waste is free, and not about the 2024 change."""
+    for m in DIY_CHARGE.finditer(text):
+        w = text[max(0, m.start() - 200): m.end() + 150]
+        if not NOT_VISITS.search(w) and not NOT_RESIDENT_CHARGE.search(w):
+            return m
+    return None
+
+
 def first_valid(pattern: re.Pattern, text: str):
     """First match not about asbestos appointments or other council services."""
     for m in pattern.finditer(text):
@@ -131,9 +147,9 @@ def main():
     for (d, y), g in s.groupby(["domain", "year"]):
         text = " ".join(g["text"])
         b = first_valid(BOOKING, text)
-        c = first_valid(DIY_CHARGE, text)
+        c = first_charge(text)
         free = DIY_FREE.search(text)
-        rows.append({"domain": d, "year": y, "booking": bool(b), "diy_charge": bool(c) and not (free and not c),
+        rows.append({"domain": d, "year": y, "booking": bool(b), "diy_charge": bool(c),
                      "diy_free_mentioned": bool(free), "booking_text": text[max(0, b.start() - 80): b.end() + 80] if b else "",
                      "charge_text": text[max(0, c.start() - 80): c.end() + 80] if c else "", "n_snippets": len(g)})
     council_year = pd.DataFrame(rows)

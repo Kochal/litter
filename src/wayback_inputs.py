@@ -80,6 +80,7 @@ def main():
         d += JOINT.get(r.LAD25CD, [])
         doms.append(";".join(dict.fromkeys(x for x in d if x)))
     out = pd.DataFrame({"site_id": j["site_id"], "name": j["name"], "nation": j["nation"], "postcode": j["postcode"],
+                        "easting": j["easting"], "northing": j["northing"],
                         "council": j["CTYUA25NM"], "district": j["LAD25NM"], "first_year": j["first"],
                         "last_year": j["last"], "domains": doms})
     out.to_csv(OUT, index=False)
