@@ -220,6 +220,57 @@ def council_records_plot(path: Path):
     plt.close(fig)
 
 
+def policy_plot(path: Path):
+    """DIY charge ban event studies (diy_ban.py) and opening hours estimates
+    (hours_analysis.py)."""
+    r = pd.read_csv(OUT / "diy_ban.csv")
+    h = pd.read_csv(OUT / "hours_models.csv")
+    fig, axes = plt.subplots(1, 3, figsize=(15, 3.9), gridspec_kw={"width_ratios": [1, 1, 1.1]})
+    panels = [
+        (r[(r["source"] == "official counts") & (r["outcome"] == "cde") & (r["comparison"] == "charged vs did not charge")
+           & r["term"].str.startswith("y")], 2022, 2023.75, "Official counts (financial years, 2023 = 2023/24): construction\nand demolition fly-tipping, charging vs non-charging councils"),
+        (r[(r["source"] == "FixMyStreet") & (r["outcome"] == "construction as share of all reports")
+           & r["term"].str.startswith("y")], 2023, 2023.5, "FixMyStreet (calendar years): builders' waste as a\nshare of all reports, same comparison"),
+    ]
+    for ax, (d, ref, ban, title) in zip(axes[:2], panels):
+        d = pd.concat([d, pd.DataFrame({"year": [ref], "irr": [1.0], "lo": [1.0], "hi": [1.0]})]).sort_values("year")
+        ax.fill_between(d["year"], d["lo"], d["hi"], color=SERIES, alpha=0.15, lw=0)
+        ax.plot(d["year"], d["irr"], "-o", color=SERIES, lw=2, ms=5, mec=SURFACE, mew=1.2)
+        ax.axhline(1, color=INK2, lw=1)
+        ax.axvline(ban, color="#d98a1f", lw=1, ls=":")
+        ax.text(ban + 0.05, 1.9, "ban", fontsize=8, color="#d98a1f")
+        ax.set_yscale("log")
+        ax.yaxis.set_minor_locator(NullLocator())
+        ax.yaxis.set_minor_formatter(NullFormatter())
+        ax.set_yticks([0.5, 0.75, 1, 1.5, 2], ["0.5", "0.75", "1", "1.5", "2"])
+        ax.set_ylim(0.45, 2.2)
+        ax.grid(axis="y", color=GRID, lw=0.8)
+        n = d.dropna(subset=["n_councils_treated"]).iloc[0]
+        ax.set_title(f"{title}\n{int(n.n_councils_treated)} vs {int(n.n_councils_comparison)} councils "
+                     f"(ratio to {ref} = 1)", fontsize=9, loc="left")
+    ax = axes[2]
+    rows = [("FixMyStreet", "nearest centre unchanged", "same neighbourhood over time", "hours_cut_10",
+             "10 fewer opening hours a week\n(same neighbourhood over time)"),
+            ("FixMyStreet", "nearest centre unchanged", "same neighbourhood over time", "log_crowding",
+             "2.7x more households per\nopening hour (over time)"),
+            ("FixMyStreet", "all neighbourhoods", "between neighbourhoods, same council and year", "log_crowding",
+             "2.7x more households per\nopening hour (between places)")]
+    y = np.arange(len(rows))[::-1]
+    for yy, (src, smp, comp, term, lab) in zip(y, rows):
+        x = h[(h["source"] == src) & (h["sample"] == smp) & (h["comparison"] == comp) & (h["term"] == term)].iloc[0]
+        ax.hlines(yy, x.lo, x.hi, color=SERIES, lw=2)
+        ax.plot(x.irr, yy, "o", color=SERIES, ms=6, mec=SURFACE, mew=1.5)
+    _ratio_axis(ax, 0.5, 2)
+    ax.set_xticks([0.5, 0.75, 1, 1.5, 2], ["0.5", "0.75", "1", "1.5", "2"])
+    ax.set_yticks(y, [r[4] for r in rows], fontsize=8)
+    n = h[(h["sample"] == "nearest centre unchanged") & (h["source"] == "FixMyStreet")].iloc[0]
+    ax.set_title(f"Opening hours: FixMyStreet reports\n{int(n.n_lsoa_years):,} neighbourhood-years, "
+                 f"{int(n.n_councils)} councils", fontsize=9, loc="left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     res = pd.read_csv(OUT / "model_results.csv")
     ev = pd.read_csv(OUT / "event_study.csv")
@@ -235,5 +286,7 @@ if __name__ == "__main__":
         closure_plot(OUT / "fig_closure_study.png")
     if (OUT / "council_records_models.csv").exists():
         council_records_plot(OUT / "fig_council_records.png")
+    if (OUT / "diy_ban.csv").exists() and (OUT / "hours_models.csv").exists():
+        policy_plot(OUT / "fig_policy.png")
     spec_plot(res, {"hwrc_type": "Bulky / HWRC-type household", "total": "All incidents",
                     "placebo": "Placebo"}, OUT / "fig_within_specs.png")

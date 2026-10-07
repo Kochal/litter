@@ -60,10 +60,19 @@ def lsoa_hours() -> pd.DataFrame:
     return d[["LSOA21CD", "year", "site_id", "weekly", "crowding", "same_site", "site_households"]]
 
 
-def fit(d: pd.DataFrame, y: str, x: str, label: dict) -> list[dict]:
+def fit(d: pd.DataFrame, y: str, x: str, label: dict, between: bool = False) -> list[dict]:
+    """between=True compares different neighbourhoods in the same council and year
+    (as IECR did), allowing for renting, car ownership, density and rural or urban;
+    otherwise each neighbourhood is compared with itself over time."""
     d = d.dropna(subset=[x, y])
-    d = d[d.groupby("LSOA21CD")[y].transform("sum") > 0]
-    m = pf.fepois(f"{y} ~ {x} | LSOA21CD + lad_year", data=d, offset="log_residents", vcov={"CRV1": "LAD25CD"})
+    if between:
+        rhs, fe = f"{x} + private_rent_10 + no_car_10 + log_density + rural", "lad_year"
+        label = {**label, "comparison": "between neighbourhoods, same council and year"}
+    else:
+        d = d[d.groupby("LSOA21CD")[y].transform("sum") > 0]
+        rhs, fe = x, "LSOA21CD + lad_year"
+        label = {**label, "comparison": "same neighbourhood over time"}
+    m = pf.fepois(f"{y} ~ {rhs} | {fe}", data=d, offset="log_residents", vcov={"CRV1": "LAD25CD"})
     b, se = m.coef()[x], m.se()[x]
     sd = d.groupby("LSOA21CD")[x].transform(lambda s: s - s.mean())
     changed = d.groupby("LSOA21CD")[x].agg(lambda s: s.max() - s.min())
@@ -90,6 +99,8 @@ if __name__ == "__main__":
     for sample, dd in (("nearest centre unchanged", d[d["same_site"]]), ("all neighbourhoods", d)):
         for x in ("hours_cut_10", "log_crowding"):
             rows += fit(dd, "n_flytip", x, {"source": "FixMyStreet", "sample": sample})
+    for x in ("hours_cut_10", "log_crowding"):
+        rows += fit(d, "n_flytip", x, {"source": "FixMyStreet", "sample": "all neighbourhoods"}, between=True)
     # Councils' own records, where they cover several years (council_records.py)
     try:
         import council_records as cr

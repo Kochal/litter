@@ -659,21 +659,102 @@ themselves, the main FixMyStreet results hold: fly-tipping goes with car-less
 households and private renting, and not with distance to a recycling centre.
 Car ownership is the most consistent of these across councils.
 
+## Recycling centre rules: opening hours and DIY charges
+
+Distance is only one part of access. A centre can also cut its opening hours,
+require visitors to book, or charge for DIY waste such as rubble, plasterboard and
+soil. None of this is published nationally, so we read it from archived council
+web pages, year by year from 2014 to 2025 (`scripts/wayback_hwrc_rules.py`, run
+locally, and `src/hwrc_rules.py`):
+
+- **What was read:** 12,524 archived pages from 316 council websites, covering all
+  845 recycling centres in England and Wales.
+- **Opening hours** were found for 627 centres (3,634 centre-years): weekly hours
+  are the average of the summer and winter daily hours times the days open. A
+  typical centre opens about 52 hours a week. 278 centres changed their weekly
+  hours by 7 hours or more at some point, mostly cuts.
+- **Booking** appears on 2% to 4% of council websites before 2020 and about a third
+  from 2020, when Covid booking systems began. Because that change coincides with
+  Covid, we did not test it.
+- **DIY charges:** a council counts as charging if its pages mention charges to
+  residents for DIY waste in at least two years from 2019 to 2023 (checked by
+  reading a sample of the matched text; mentions of free DIY waste, business
+  charges and asbestos appointments are excluded). 32 of 112 English waste disposal
+  authorities charged, close to the "about a third" reported by Defra, among them
+  Surrey, Hampshire, Devon, Dorset, Norfolk, Oxfordshire and Leeds
+  (`outputs/diy_charging_authorities.csv`).
+
+![Policy tests](../outputs/fig_policy.png)
+
+### Did the 2024 ban on DIY waste charges change fly-tipping?
+
+From 31 December 2023 councils in England may no longer charge residents for
+small amounts of DIY waste. If charges pushed people to fly-tip rubble and
+plasterboard, construction fly-tipping should fall in the councils that charged,
+compared with those that did not (`src/diy_ban.py`).
+
+| Comparison | Outcome | Councils (charged vs comparison) | After the ban (95% CI) |
+|---|---|---|---|
+| Official counts | Construction and demolition | 100 vs 184 | 1.07 (0.74 to 1.54) |
+| Official counts, Wales as comparison | Construction and demolition | 100 vs 22 | 0.92 (0.54 to 1.57) |
+| Official counts | All fly-tipping | 100 vs 184 | 0.88 (0.76 to 1.03) |
+| Official counts | Bulky household waste | 100 vs 184 | 0.81 (0.70 to 0.95) |
+| Official counts | Placebo (carcasses, clinical, vehicle parts) | 100 vs 184 | 0.99 (0.75 to 1.31) |
+| FixMyStreet | Builders' waste as a share of all reports | 18 vs 41 | 1.00 (0.77 to 1.31) |
+
+Official counts compare 2024/25 (the first full year under the ban) with
+2018/19 to 2022/23, leaving out 2023/24, which had one quarter under the ban;
+1,694 council-years. FixMyStreet compares 2024 and 2025 with 2019 to 2023 in
+councils with at least 50 reports every year (23,838 neighbourhood-years).
+
+**The ban made no detectable difference to construction fly-tipping.** In the
+official counts the change is +7% with a wide range; the year-by-year chart shows
+the charging councils' construction tipping was already drifting down towards the
+others before the ban, and it did not drop after it. In FixMyStreet, builders'
+waste stayed the same share of reports before and after. (FixMyStreet reports of
+every kind roughly doubled in the 18 charging councils after 2024, which points to
+more use of FixMyStreet there rather than more dumping, so the share is the fairer
+test.) Bulky household fly-tipping fell somewhat more in charging councils (0.81),
+but it had been falling faster there before the ban too.
+
+### Do cuts in opening hours raise fly-tipping?
+
+IECR found that neighbourhoods whose nearest centre serves more households per
+opening hour have more fly-tipping, comparing places at one point in time. With
+opening hours by year we can test this over time (`src/hours_analysis.py`): each
+neighbourhood is linked to its nearest centre by drive time, year by year
+(`src/hwrc_nearest.py`), and compared with itself when that centre's hours
+change, within the same council and year. The main sample keeps neighbourhoods
+whose nearest centre stayed the same, so only changes in hours count.
+
+| Change | Comparison | Change in FixMyStreet reports (95% CI) |
+|---|---|---|
+| 10 fewer opening hours a week | same neighbourhood over time | +1% (−4% to +7%) |
+| 2.7 times more households per opening hour | same neighbourhood over time | +4% (−18% to +31%) |
+| 2.7 times more households per opening hour | between neighbourhoods, same council and year | +11% (−12% to +41%) |
+
+Based on 65,523 neighbourhood-years from 11,400 neighbourhoods in 190 councils;
+3,591 neighbourhoods saw their nearest centre's hours change by more than 10 hours
+a week. The between-neighbourhood row uses 93,101 neighbourhood-years in 193
+councils and allows for renting, car ownership, density and rural or urban.
+
+**Cutting opening hours did not raise fly-tipping reports.** The estimate is close
+to zero and precise enough to rule out more than about 7% extra reports for 10
+fewer hours a week. We also do not reproduce IECR's crowding link between places
+with FixMyStreet reports. Councils' own records cover too few neighbourhoods with
+changes in hours (6 councils, 1,498 neighbourhood-years) to add anything.
+
 ## What to do next
 
 In order of expected value:
 
-1. **Recycling centre opening hours, booking and DIY charges.** Collect them year
-   by year with `scripts/wayback_hwrc_rules.py` (run locally), then test whether
-   fly-tipping changes when a centre cuts its hours or introduces booking, and the
-   England ban on DIY charges from January 2024, with Wales as the comparison.
-2. **Large losses of access.** The only clearly positive closure result is a rise
+1. **Large losses of access.** The only clearly positive closure result is a rise
    where drive time grew by 3 minutes or more. Check whether it depends on a few
    closures, as the earlier pooled result did.
-3. **Housing mechanisms.** Test the private-renting association more sharply
+2. **Housing mechanisms.** Test the private-renting association more sharply
    with HMO licensing registers, tenancy turnover and student term dates
    (seasonality needs the WasteDataFlow quarterly returns).
-4. **Litter.** No administrative litter series exists; OpenLitterMap points or
+3. **Litter.** No administrative litter series exists; OpenLitterMap points or
    Keep Scotland Beautiful / Keep Wales Tidy survey microdata would be needed.
 
 ## Attribution and licences
