@@ -271,6 +271,32 @@ def policy_plot(path: Path):
     plt.close(fig)
 
 
+def trend_plot(path: Path):
+    """Recorded fly-tipping per person, 2012/13 = 100 (recording_changes.py)."""
+    t = pd.read_csv(OUT / "trend.csv").set_index("year")
+    r = pd.read_csv(OUT / "recording_changes.csv")
+    n_smooth = int(r["class"].isin(["steady rise", "little change"]).sum())
+    series = [("all_per_1000", f"England, all {int(t['councils'].iloc[0])} councils", SERIES, "-"),
+              ("no_step_per_1000", f"England, {n_smooth} councils with no sudden step", "#1f8a70", "-"),
+              ("wales_per_1000", "Wales, 22 councils", INK2, "--"),
+              ("large_per_100k", "England, tipper-lorry loads or larger", "#d98a1f", "-")]
+    fig, ax = plt.subplots(figsize=(9, 4.4))
+    for col, lab, c, ls in series:
+        y = t[col] / t[col].iloc[0] * 100
+        ax.plot(t.index, y, ls, color=c, lw=2.2, marker="o", ms=3.5)
+        ax.text(t.index[-1] + 0.15, y.iloc[-1], f"{lab} ({y.iloc[-1]:.0f})", fontsize=8, color=c, va="center")
+    ax.axhline(100, color=INK2, lw=1)
+    ax.set_xlim(2011.7, 2029.5)
+    ax.set_xticks(range(2012, 2025, 2), [f"{y}/{str(y + 1)[2:]}" for y in range(2012, 2025, 2)], fontsize=8)
+    ax.set_ylabel("Recorded per person, 2012/13 = 100")
+    ax.grid(axis="y", color=GRID, lw=0.8)
+    ax.set_title("Recorded fly-tipping per person, official council counts, England and Wales 2012/13 to 2024/25",
+                 fontsize=9, loc="left")
+    fig.tight_layout()
+    fig.savefig(path, dpi=160)
+    plt.close(fig)
+
+
 if __name__ == "__main__":
     res = pd.read_csv(OUT / "model_results.csv")
     ev = pd.read_csv(OUT / "event_study.csv")
@@ -288,5 +314,7 @@ if __name__ == "__main__":
         council_records_plot(OUT / "fig_council_records.png")
     if (OUT / "diy_ban.csv").exists() and (OUT / "hours_models.csv").exists():
         policy_plot(OUT / "fig_policy.png")
+    if (OUT / "trend.csv").exists():
+        trend_plot(OUT / "fig_trend.png")
     spec_plot(res, {"hwrc_type": "Bulky / HWRC-type household", "total": "All incidents",
                     "placebo": "Placebo"}, OUT / "fig_within_specs.png")
