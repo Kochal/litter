@@ -1,6 +1,6 @@
 # What drives fly-tipping in England and Wales
 
-A summary of the project's findings, in five parts. Full results, tables and
+A summary of the project's findings, in six parts. Full results, tables and
 caveats are in [results.md](results.md); code is in `src/`.
 
 **How to read the numbers.** Results are given as percentage changes in
@@ -19,6 +19,12 @@ drivers are:
 - **No car:** the share of households without a car or van (Census 2021).
 - **Deprivation:** the share of households deprived in two or more of the Census's
   four dimensions (employment, education, health and housing).
+- **Moving rate:** how many residents moved into or out of the council area in a
+  year, from elsewhere in the UK or abroad, per 100 residents (ONS population
+  estimates).
+- **Street-cleaning spending:** what a council spends a year on street cleaning,
+  which includes clearing fly-tips, per resident, in 2024/25 prices (councils'
+  revenue outturn returns, adjusted with the consumer prices index).
 
 ## 1. Fly-tipping has risen, and most of the real rise is in bigger loads
 
@@ -149,7 +155,73 @@ rural dumping on FixMyStreet. Part of the growth in lorry-sized loads may be
 dumped in the countryside. Our findings explain kerbside fly-tipping; they say
 little about what drives countryside dumping.
 
-## 5. Methodology
+## 5. Changes in renting and car ownership do not explain the rise, but more people moving home explains part of it
+
+Between the 2011 and 2021 Censuses, the share of households renting privately
+rose and the share without a car fell (318 councils on 2025 boundaries):
+
+| Share of households | 2011 | 2021 | Change, points |
+|---|---|---|---|
+| Renting privately, England | 16.8% | 20.5% | +3.6 |
+| No car or van, England | 25.8% | 23.5% | −2.3 |
+| Renting privately, Wales | 14.1% | 17.0% | +2.8 |
+| No car or van, Wales | 22.9% | 19.4% | −3.5 |
+
+Using the council comparisons from part 3, more renting should have raised
+fly-tipping by about 6% and fewer car-less households should have lowered it by
+about 5%. The two roughly cancel out, so together they predict almost no change.
+
+| Size of load (England, 296 councils) | Predicted from renting and car ownership | Actual change, 2012/13 to 2014/15 against 2022/23 to 2024/25 |
+|---|---|---|
+| All fly-tipping | 0% | +33% |
+| Small items | −8% | +26% |
+| Van loads | +6% | +32% |
+| Tipper-lorry load or larger | −1% | +108% |
+
+Councils where renting grew fastest, or where car ownership changed most, did not
+see faster growth in fly-tipping (294 councils; 222 with no sudden jump in
+recording). The rise happened almost everywhere, which points to causes that
+changed for all councils at once. We looked at three:
+
+- **More people moving home goes with more fly-tipping.** The share of residents
+  moving into or out of their council area in a year rose from 12.8 to 15.7 in
+  every 100 (England, 2012/13 to 2024/25). When a council's moving rate rises by 5
+  in every 100, its fly-tipping rises 16% in councils with no sudden jump in
+  recording (likely range +1% to +34%; 222 councils, 2,875 council-years) and 22%
+  in all councils (0% to +48%; 295 councils, 3,814 council-years). The link is
+  clearest for van-sized loads (+20%, +1% to +43%), which fits clear-outs at moving
+  time. Applied to the national rise in moving, this accounts for about 8% to 11%
+  more fly-tipping, roughly a quarter to a third of the rise. Because each council
+  is compared with itself, fixed differences between councils cannot explain this,
+  but other things that changed at the same time could. Between councils, places
+  with more moving do not record more fly-tipping once renting is allowed for,
+  because the two go together.
+- **Spending on street cleaning did not fall.** Per person, in 2024/25 prices,
+  councils spent £15.44 in 2017/18 and £15.57 in 2024/25 (£11.90 and £15.57 in
+  prices of each year). Councils that cut spending saw slightly more of the largest
+  loads: 8% more if spending halves (+4% to +13%; 212 councils, 1,694
+  council-years), with no clear change for smaller loads. Because spending held
+  steady nationally, it cannot explain the rise.
+- **Prosecutions did not keep up.** Councils prosecuted 2,170 fly-tipping cases in
+  2012/13 and 1,377 in 2024/25 while incidents nearly doubled: from 3.1 to 1.1
+  prosecutions per 1,000 incidents. Fixed penalty notices roughly kept pace (50
+  per 1,000 incidents in 2012/13, 55 in 2024/25, peaking at 84 in 2021/22). A
+  falling chance of being prosecuted fits the growth in large, deliberate dumps,
+  but we cannot test it as a cause, because more incidents on their own push the
+  prosecution rate down.
+
+**What remains unexplained.** Most of the rise, and especially the more than
+doubling of lorry-sized loads, is not explained by anything we can measure council
+by council. The likely candidates changed for the whole country at once: the cost
+of getting rid of waste legally, unlicensed waste collectors advertising online,
+and enforcement. One hint: lorry-sized dumps grew faster in councils with many
+households without a car (48% more growth per decade per 10 percentage points,
++9% to +101%; 296 councils, 3,709 council-years), which would fit a growing trade
+in illegal collection for people who cannot get to a tip themselves. In the 223
+councils with no sudden jump in recording the estimate is similar (+51%) but too
+uncertain to rule out no change (−10% to +154%), so it is suggestive only.
+
+## 6. Methodology
 
 **Data.**
 
@@ -161,6 +233,10 @@ little about what drives countryside dumping.
 | Environment Agency and Natural Resources Wales site records | Recycling centre locations by year | 845 centres |
 | Archived council websites (Internet Archive) | Which centres were really open, their opening hours, booking and DIY charges | 12,524 pages from 316 council websites |
 | OS Open Roads, Census 2021 | Road network for drive times; renting, car ownership, deprivation | 35,672 neighbourhoods |
+| Census 2011 (Nomis KS402EW, KS404EW) | Renting and car ownership ten years earlier | 318 councils on 2025 boundaries |
+| ONS population estimates | Residents and moves into and out of each council area | 318 councils, 2012 to 2024 |
+| Council revenue outturn (RO5), ONS consumer prices index | Street-cleaning spending, in 2024/25 prices | 296 councils, 2017/18 to 2024/25 |
+| Enforcement actions in the official counts | Prosecutions and fixed penalty notices | 296 councils, 2012/13 to 2024/25 |
 
 A neighbourhood is an ONS Lower Layer Super Output Area, home to about 1,500 to
 1,700 people.
@@ -189,8 +265,31 @@ a much larger share; total incidents jumping while large loads do not; FixMyStre
 reports in the council tripling; or a change in its recording basis. The largest
 steps were checked against council papers and local news.
 
+**Why it has risen (part 5).** Three tests:
+
+1. *Did the places change?* The national change in each Census share times the
+   council comparisons in part 3 gives the predicted change. For example, councils
+   with 10 percentage points more private renting have about 18% more fly-tipping
+   per resident; renting rose 3.6 points, so renting alone predicts about 6% more.
+   This is compared with the actual change between 2012/13 to 2014/15 and 2022/23
+   to 2024/25.
+2. *Did fly-tipping grow faster where renting grew faster?* Each council's growth
+   against its change in renting and car ownership, allowing for 2021 levels,
+   deprivation and region, weighted by population. Also: whether the gap between
+   high- and low-renting, car-owning and deprived councils widened year by year.
+3. *Did anything else change in the same council at the same time?* Each council
+   compared with itself over time, after removing the change common to all
+   councils each year, for the moving rate and for street-cleaning spending.
+   Prosecutions and fines are shown as a trend only, because more incidents on
+   their own lower the number per incident.
+
+Every test was run in all councils and in the councils with no sudden jump in
+recording, and by size of load. Code: `src/composition_change.py`.
+
 **What the data cannot do.** Official counts measure recording as well as
 dumping. FixMyStreet captures the incidents members of the public choose to report
 through one website, about 1 in 20 of those councils record. Countryside dumping is
-under-recorded in both. The neighbourhood characteristics come from the 2021
-Census, so they describe places at one point in time.
+under-recorded in both. Renting and car ownership come from the 2011 and 2021
+Censuses, so changes are measured over one ten-year step. Comparing a council with
+itself over time removes fixed differences between councils, but not other changes
+that happened at the same time.

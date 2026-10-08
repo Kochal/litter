@@ -142,6 +142,8 @@ density, so a raw access-vs-fly-tipping correlation will be confounded.
 | English Indices of Deprivation 2025 (LSOA) | <https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025> |
 | Welsh (WIMD), Scottish (SIMD) and NI (NIMDM) deprivation indices | gov.wales, gov.scot, nisra.gov.uk |
 | Census 2021 tenure (TS054), car availability (TS045), household composition | Nomis (as above) |
+| Census 2011 tenure (KS402EW) and car availability (KS404EW), by local authority | Nomis API (datasets NM_619_1 and NM_621_1), used in `src/composition_change.py` to measure 2011 to 2021 change |
+| ONS consumer prices index, all items (D7BT), annual | <https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23>; saved as `data/cpi_ons_d7bt.csv`, used to put street-cleaning spending in 2024/25 prices |
 | Rural-Urban Classification | ONS Open Geography Portal |
 | Council waste service data (bulky waste collection charges, collection frequency) | Councils / WasteDataFlow (<https://www.wastedataflow.org>) |
 

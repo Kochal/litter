@@ -21,6 +21,8 @@ fly-tipping rose between 2012/13 and 2024/25?
    2017/18 onwards, from council revenue outturns).
 6. National descriptives by year: churn, cleansing spending (nominal), and
    enforcement (prosecutions and fixed penalty notices per 1,000 incidents).
+   Spending is also given in 2024/25 prices (ONS consumer prices index D7BT,
+   data/cpi_ons_d7bt.csv).
 By size of load: all, small items, van loads, tipper lorry or larger.
 Outputs: outputs/composition_shares.csv, outputs/composition_change.csv,
 outputs/rise_factors_by_year.csv.
@@ -161,6 +163,10 @@ def main():
     yr["fpn_per_1000_incidents"] = yr["fpn"] / yr["total"] * 1000
     has = e[e["street_cleansing_k"].notna()].groupby("year")["population"].sum()
     yr["cleansing_per_person_gbp"] = (yr["cleansing_k"] * 1000 / has).where(yr["cleansing_k"] > 0)
+    # In 2024/25 prices: ONS CPI (D7BT), financial year = 3/4 of its first calendar year + 1/4 of the next
+    cpi = pd.read_csv(ROOT / "data" / "cpi_ons_d7bt.csv").set_index("year")["cpi_2015_100"]
+    fycpi = pd.Series({y: 0.75 * cpi[y] + 0.25 * cpi[y + 1] for y in yr.index if y + 1 in cpi.index})
+    yr["cleansing_per_person_gbp_2024_prices"] = yr["cleansing_per_person_gbp"] * fycpi[2024] / fycpi
     yr.drop(columns="cleansing_k").round(3).to_csv(OUT / "rise_factors_by_year.csv")
     print(yr.round(2).to_string())
     pd.set_option("display.width", 230)
