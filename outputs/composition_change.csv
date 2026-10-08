@@ -1,0 +1,93 @@
+analysis,outcome,predicted_change,actual_change,from_renting,from_no_car,sample,term,growth_ratio,lo,hi,p,n_councils,n_council_years
+predicted from national change in shares,all,0.003937853288188187,0.3282890592824248,0.062089600961861224,-0.05475220510680934,,,,,,,,
+predicted from national change in shares,small items,-0.07645697014256625,0.2555508337723309,-0.0258917492552736,-0.05190924196426261,,,,,,,,
+predicted from national change in shares,van loads,0.06386737514055807,0.31787761227662936,0.14239319637489167,-0.06873799798836022,,,,,,,,
+predicted from national change in shares,tipper lorry or larger,-0.005774883195587388,1.078405285069791,0.16943571579400807,-0.14982490839236362,,,,,,,,
+council growth vs change in shares,all,,,,,all councils,d_rent10,1.3855918397823075,0.599634786980194,3.2017234292558356,0.44536500178004224,294.0,
+council growth vs change in shares,all,,,,,all councils,d_nocar10,0.7614718561719863,0.2888559927895419,2.007364923062117,0.5816363687857784,294.0,
+council growth vs change in shares,all,,,,,all councils,rent10,0.8197936230415148,0.5825137763891272,1.15372650677121,0.2543932786464803,294.0,
+council growth vs change in shares,all,,,,,all councils,nocar10,1.15131241689453,0.9018029360989442,1.4698558057811533,0.2582208975973146,294.0,
+council growth vs change in shares,all,,,,,all councils,dep5,0.8131756868800881,0.6646240515270816,0.9949304365581761,0.04450055011319611,294.0,
+council growth vs change in shares,all,,,,,councils with no sudden step,d_rent10,1.7174612307300658,0.8539371466955397,3.4542039662697803,0.12925041503426618,222.0,
+council growth vs change in shares,all,,,,,councils with no sudden step,d_nocar10,0.538491033307348,0.21451959631092174,1.3517300887147539,0.18745278223949746,222.0,
+council growth vs change in shares,all,,,,,councils with no sudden step,rent10,0.9100727803364932,0.6718159745522865,1.2328263942537954,0.5428894925462087,222.0,
+council growth vs change in shares,all,,,,,councils with no sudden step,nocar10,1.0655096274234042,0.8518626377415537,1.3327392420236692,0.5783863806221294,222.0,
+council growth vs change in shares,all,,,,,councils with no sudden step,dep5,0.8363713254362355,0.6819346860936405,1.0257829793334643,0.0862434176255263,222.0,
+council growth vs change in shares,small items,,,,,all councils,d_rent10,1.1046267753302197,0.3446454403959054,3.5404510542044476,0.8670198159236321,294.0,
+council growth vs change in shares,small items,,,,,all councils,d_nocar10,1.437396357609165,0.40387099441586427,5.115762997182788,0.5753589776887971,294.0,
+council growth vs change in shares,small items,,,,,all councils,rent10,0.7516087252232116,0.47234049970642755,1.1959924592169666,0.22828187833816316,294.0,
+council growth vs change in shares,small items,,,,,all councils,nocar10,1.2640926199667317,0.880649633577238,1.8144902250892814,0.20380388121366333,294.0,
+council growth vs change in shares,small items,,,,,all councils,dep5,0.79628753783505,0.6107465307028552,1.0381947518911088,0.09237038677582274,294.0,
+council growth vs change in shares,small items,,,,,councils with no sudden step,d_rent10,1.564551981438291,0.5702538814877995,4.29251423284675,0.38472760350554414,222.0,
+council growth vs change in shares,small items,,,,,councils with no sudden step,d_nocar10,0.8564406657055198,0.26261294282573666,2.793048225200537,0.7972209519031285,222.0,
+council growth vs change in shares,small items,,,,,councils with no sudden step,rent10,0.9311043307964325,0.637611801009207,1.359691388170141,0.7117514253571136,222.0,
+council growth vs change in shares,small items,,,,,councils with no sudden step,nocar10,1.0188573581047986,0.7513100206027432,1.3816803818635233,0.9043236316812594,222.0,
+council growth vs change in shares,small items,,,,,councils with no sudden step,dep5,0.8282620482774945,0.6392889401043379,1.0730953995619978,0.15385498409856374,222.0,
+council growth vs change in shares,van loads,,,,,all councils,d_rent10,0.9017650785349762,0.34830853909899123,2.334654955542395,0.8312915547872848,294.0,
+council growth vs change in shares,van loads,,,,,all councils,d_nocar10,0.5114087912247892,0.14631733644420167,1.7874775340906943,0.29358460676864007,294.0,
+council growth vs change in shares,van loads,,,,,all councils,rent10,0.8848434609937156,0.5974951091914574,1.3103838649371344,0.5414141079246084,294.0,
+council growth vs change in shares,van loads,,,,,all councils,nocar10,1.1078661823171156,0.8547389287414449,1.4359559821723933,0.43893363068593894,294.0,
+council growth vs change in shares,van loads,,,,,all councils,dep5,0.8758170942583761,0.6889280036963088,1.113404562566332,0.27890993447850176,294.0,
+council growth vs change in shares,van loads,,,,,councils with no sudden step,d_rent10,0.9178147322614686,0.3671356465191766,2.2944758721820033,0.8544472486598101,222.0,
+council growth vs change in shares,van loads,,,,,councils with no sudden step,d_nocar10,0.36926715350640504,0.10590573313393498,1.287543427760193,0.11796921361299353,222.0,
+council growth vs change in shares,van loads,,,,,councils with no sudden step,rent10,0.8987387474780977,0.6192109230417194,1.3044526608973896,0.5743348989794418,222.0,
+council growth vs change in shares,van loads,,,,,councils with no sudden step,nocar10,1.1609159501232023,0.9082067529088358,1.4839416673944728,0.23355243741630027,222.0,
+council growth vs change in shares,van loads,,,,,councils with no sudden step,dep5,0.8629337055441212,0.6731292019465187,1.106258022992846,0.24475937378095702,222.0,
+council growth vs change in shares,tipper lorry or larger,,,,,all councils,d_rent10,0.5174941975868305,0.01887962854910892,14.184614058451759,0.6965626450846593,241.0,
+council growth vs change in shares,tipper lorry or larger,,,,,all councils,d_nocar10,0.314722479752942,0.002483061685679401,39.890365927312594,0.6398296617712831,241.0,
+council growth vs change in shares,tipper lorry or larger,,,,,all councils,rent10,0.46357846041658735,0.11190662256397778,1.920395630199194,0.28908350481870926,241.0,
+council growth vs change in shares,tipper lorry or larger,,,,,all councils,nocar10,1.4811359226349996,0.7046787636079035,3.1131399647804385,0.2999962261363941,241.0,
+council growth vs change in shares,tipper lorry or larger,,,,,all councils,dep5,0.84490708094501,0.3891924580257698,1.834228697678797,0.6700185602503228,241.0,
+council growth vs change in shares,tipper lorry or larger,,,,,councils with no sudden step,d_rent10,0.7035284040639059,0.012956616385502294,38.2007308542784,0.863012192683358,183.0,
+council growth vs change in shares,tipper lorry or larger,,,,,councils with no sudden step,d_nocar10,0.5936804389037772,0.0029693130460402965,118.69966489622821,0.8470422236021795,183.0,
+council growth vs change in shares,tipper lorry or larger,,,,,councils with no sudden step,rent10,0.33064376762680836,0.056705524631865664,1.927947969447328,0.21860791298495608,183.0,
+council growth vs change in shares,tipper lorry or larger,,,,,councils with no sudden step,nocar10,1.5142369197391494,0.550359965797151,4.16620683116006,0.42168920444376934,183.0,
+council growth vs change in shares,tipper lorry or larger,,,,,councils with no sudden step,dep5,1.1115365571371316,0.4931438490040695,2.5053815845973824,0.7987086253609466,183.0,
+extra growth per decade by 2021 characteristic,all,,,,,all councils,rent_x_t,0.7376375030330231,0.41594777659333,1.3081187507170302,0.29783341510127403,296.0,3814.0
+extra growth per decade by 2021 characteristic,all,,,,,all councils,nocar_x_t,1.231244968040783,0.8802216686975034,1.7222527293255314,0.22440278967481153,296.0,3814.0
+extra growth per decade by 2021 characteristic,all,,,,,all councils,dep_x_t,0.7709507056277969,0.6173093458144383,0.9628316735166724,0.02178910476275453,296.0,3814.0
+extra growth per decade by 2021 characteristic,all,,,,,councils with no sudden step,rent_x_t,1.0420457624545718,0.8048762767260111,1.3491009766947926,0.7546006614580492,223.0,2875.0
+extra growth per decade by 2021 characteristic,all,,,,,councils with no sudden step,nocar_x_t,0.9798386872004031,0.8398471732532926,1.1431649513274653,0.7956830722747874,223.0,2875.0
+extra growth per decade by 2021 characteristic,all,,,,,councils with no sudden step,dep_x_t,0.9392573541038836,0.8174223650010704,1.0792515779000895,0.376666636449952,223.0,2875.0
+extra growth per decade by 2021 characteristic,small items,,,,,all councils,rent_x_t,0.6597808202799016,0.3777489196013228,1.1523811405434272,0.14387092217179842,296.0,3813.0
+extra growth per decade by 2021 characteristic,small items,,,,,all councils,nocar_x_t,1.3184158979910339,0.9423924005770881,1.8444763338616472,0.10660446065423601,296.0,3813.0
+extra growth per decade by 2021 characteristic,small items,,,,,all councils,dep_x_t,0.6642661909583447,0.49706356526268897,0.8877125649254051,0.005690570559992558,296.0,3813.0
+extra growth per decade by 2021 characteristic,small items,,,,,councils with no sudden step,rent_x_t,1.0189042713966134,0.7558160557967353,1.3735695428908197,0.9021913036201274,223.0,2874.0
+extra growth per decade by 2021 characteristic,small items,,,,,councils with no sudden step,nocar_x_t,1.0422768057230498,0.8731551372553087,1.2441556985658555,0.6466680170058101,223.0,2874.0
+extra growth per decade by 2021 characteristic,small items,,,,,councils with no sudden step,dep_x_t,0.8179838838440705,0.6740571206697635,0.9926423350647111,0.041871802284001,223.0,2874.0
+extra growth per decade by 2021 characteristic,van loads,,,,,all councils,rent_x_t,0.7489248475690093,0.4289504417228761,1.307583284104942,0.30924109784138176,296.0,3813.0
+extra growth per decade by 2021 characteristic,van loads,,,,,all councils,nocar_x_t,1.1977069960209532,0.8573353377872893,1.6732099857447436,0.29022598228812835,296.0,3813.0
+extra growth per decade by 2021 characteristic,van loads,,,,,all councils,dep_x_t,0.8962873540332357,0.7019565290630192,1.144417051113116,0.3798669146867546,296.0,3813.0
+extra growth per decade by 2021 characteristic,van loads,,,,,councils with no sudden step,rent_x_t,0.9016920234633372,0.6359381928959076,1.2785023989123576,0.5613244347922257,223.0,2874.0
+extra growth per decade by 2021 characteristic,van loads,,,,,councils with no sudden step,nocar_x_t,0.9691930460961788,0.7898349977029816,1.1892802462957308,0.7644032511653975,223.0,2874.0
+extra growth per decade by 2021 characteristic,van loads,,,,,councils with no sudden step,dep_x_t,1.1044118304660087,0.9226750338676621,1.3219448305222303,0.2789576799656497,223.0,2874.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,all councils,rent_x_t,0.5540306789969226,0.24281384982551246,1.264137088927865,0.1605881744973474,296.0,3709.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,all councils,nocar_x_t,1.4822563474218382,1.091775412563378,2.0123954562356356,0.011640697216793727,296.0,3709.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,all councils,dep_x_t,1.1157404771606605,0.7666308517623444,1.623828221252711,0.5673175454022337,296.0,3709.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,councils with no sudden step,rent_x_t,0.3182381582559382,0.09796997485046999,1.0337404447097875,0.05680682750632937,223.0,2809.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,councils with no sudden step,nocar_x_t,1.5116817004115481,0.8980795557001822,2.5445201918414915,0.11985555409568249,223.0,2809.0
+extra growth per decade by 2021 characteristic,tipper lorry or larger,,,,,councils with no sudden step,dep_x_t,1.3514792495120587,0.9588808009707793,1.9048208703443816,0.08539658742130585,223.0,2809.0
+same council over time: churn,all,,,,,all councils,churn5,1.2181535971809185,1.0011983859112121,1.4821220321627706,0.04861323441515175,295.0,3814.0
+"same council over time: churn and cleansing spending, 2017 on",all,,,,,all councils,churn5,1.2246483100387089,1.057693735859575,1.417956287754532,0.006726129819061066,295.0,2355.0
+"same council over time: churn and cleansing spending, 2017 on",all,,,,,all councils,log_cleansing_pc,0.9722172726400331,0.9250341911151199,1.0218070145928195,0.26696490675359197,295.0,2355.0
+same council over time: churn,all,,,,,councils with no sudden step,churn5,1.1626288707548673,1.007737933909997,1.3413267930365134,0.03885981772501612,222.0,2875.0
+"same council over time: churn and cleansing spending, 2017 on",all,,,,,councils with no sudden step,churn5,1.2068611091197872,1.0406406841632236,1.3996317450119893,0.012886086078574666,222.0,1774.0
+"same council over time: churn and cleansing spending, 2017 on",all,,,,,councils with no sudden step,log_cleansing_pc,0.971830103055692,0.9137324646083427,1.033621750114857,0.3635904391063025,222.0,1774.0
+same council over time: churn,small items,,,,,all councils,churn5,1.186919406938803,0.9260617209096073,1.5212567874895135,0.17594445647108858,295.0,3813.0
+"same council over time: churn and cleansing spending, 2017 on",small items,,,,,all councils,churn5,1.1671890719338478,0.955124610477247,1.4263377937262887,0.13073837394354615,295.0,2355.0
+"same council over time: churn and cleansing spending, 2017 on",small items,,,,,all councils,log_cleansing_pc,0.9495569422274154,0.9119793325185505,0.9886829167961859,0.01198874062364208,295.0,2355.0
+same council over time: churn,small items,,,,,councils with no sudden step,churn5,1.2129848761529634,0.9450149221123433,1.5569408221481058,0.12952679405816703,222.0,2874.0
+"same council over time: churn and cleansing spending, 2017 on",small items,,,,,councils with no sudden step,churn5,1.1929950510561198,0.9523055956932511,1.4945173044040745,0.12480115063473662,222.0,1774.0
+"same council over time: churn and cleansing spending, 2017 on",small items,,,,,councils with no sudden step,log_cleansing_pc,0.9607556965520395,0.9057963978642165,1.0190496568916194,0.1828235363394688,222.0,1774.0
+same council over time: churn,van loads,,,,,all councils,churn5,1.3601177266075015,1.0671465171557746,1.733520374655282,0.012951998799438202,295.0,3813.0
+"same council over time: churn and cleansing spending, 2017 on",van loads,,,,,all councils,churn5,1.423041542398713,1.2427911243777787,1.6294348999365258,3.298075141877632e-07,295.0,2355.0
+"same council over time: churn and cleansing spending, 2017 on",van loads,,,,,all councils,log_cleansing_pc,0.9848810402555523,0.926046781743141,1.0474531984539703,0.6278451439838115,295.0,2355.0
+same council over time: churn,van loads,,,,,councils with no sudden step,churn5,1.198846229950035,1.0050783283234135,1.4299704237607842,0.04376685146642978,222.0,2874.0
+"same council over time: churn and cleansing spending, 2017 on",van loads,,,,,councils with no sudden step,churn5,1.2790113514692898,1.0950718892940177,1.4938471649034193,0.0018934447657870113,222.0,1774.0
+"same council over time: churn and cleansing spending, 2017 on",van loads,,,,,councils with no sudden step,log_cleansing_pc,0.9659370026657254,0.9175076095913186,1.016922675479981,0.186645330312893,222.0,1774.0
+same council over time: churn,tipper lorry or larger,,,,,all councils,churn5,1.3343278224697719,0.7799021258829134,2.2828899662266324,0.2924759104189958,287.0,3709.0
+"same council over time: churn and cleansing spending, 2017 on",tipper lorry or larger,,,,,all councils,churn5,1.5420087378672473,0.9583585493483215,2.481107878962238,0.07430631241320373,282.0,2251.0
+"same council over time: churn and cleansing spending, 2017 on",tipper lorry or larger,,,,,all councils,log_cleansing_pc,0.9128162193426724,0.8435826808153617,0.9877318124759166,0.023406314751010626,282.0,2251.0
+same council over time: churn,tipper lorry or larger,,,,,councils with no sudden step,churn5,1.2662616998991232,0.7029875537097714,2.280863557498187,0.43172217767107424,217.0,2809.0
+"same council over time: churn and cleansing spending, 2017 on",tipper lorry or larger,,,,,councils with no sudden step,churn5,1.4680930748546666,0.8525742037408262,2.5279879064830557,0.16612063011086398,212.0,1694.0
+"same council over time: churn and cleansing spending, 2017 on",tipper lorry or larger,,,,,councils with no sudden step,log_cleansing_pc,0.8932622609904944,0.838526355332253,0.9515711245518191,0.00046759950996788646,212.0,1694.0
