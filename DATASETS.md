@@ -130,6 +130,21 @@ facility capacity (tonnage from the Waste Data Interrogator).
 The population-weighted centroids from the Open Geography Portal are the
 standard origin points for travel-time calculations.
 
+LSOA 2021 layers used here (`src/geography.py`), all ONS ArcGIS feature services
+under <https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services>, in British National Grid:
+
+| Layer | Service | Use |
+|---|---|---|
+| Population-weighted centroids | `LSOA_PopCentroids_EW_2021_V4` | Origins for drive times; exported as `outputs/report/lsoa_population_weighted_centroids.parquet` |
+| Boundaries, super generalised (200 m), with rural-urban class | `LSOA_2021_EW_BSC_V4_RUC` | Maps; the polygons in `outputs/report/drive_time_change_lsoa.parquet` |
+| Boundaries, generalised (20 m), clipped to the coastline | `Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5` | Not used; a good default for analysis maps |
+| Boundaries, full resolution, clipped to the coastline | `Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BFC_V10` | Not used; for assigning points to areas near boundaries |
+| Boundaries, full resolution, to the extent of the realm (includes estuaries and sea) | `Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BFE_V10` | Not used |
+
+Each service's layer is at `<service>/FeatureServer/0`; the same files can be
+downloaded as GeoPackage or shapefile from <https://geoportal.statistics.gov.uk>
+by searching for "Lower layer Super Output Areas (December 2021) Boundaries EW".
+
 ---
 
 ## 5. Recommended confounders

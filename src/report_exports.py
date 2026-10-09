@@ -14,6 +14,12 @@ Outputs (outputs/report/):
 - recycling_centres.parquet: GeoParquet points, every English centre with the years it
   appears open in the verified history, and whether it closed between 2012 and
   2023 (the crosses on the map).
+- lsoa_population_weighted_centroids.parquet: GeoParquet points, the ONS
+  population-weighted centroid of every neighbourhood (LSOA 2021), the point
+  drive times are measured from, with its council, rural-urban class, residents,
+  and drive times in 2012 and 2024. 8 of 35,672 have no drive time because they
+  could not be routed on the road network: the Isles of Scilly (no road link) and
+  7 whose centroid lies on a road not connected to the main OS Open Roads network.
 No personal data: only published aggregates and public facility names.
 """
 import json
@@ -231,7 +237,8 @@ def workbook(d: dict) -> Workbook:
         "One sheet per chart in the report (docs/story.md). Derived columns (percentage changes, indexes, rates, "
         "totals) are formulas. A rate ratio of 1.20 means 20% more fly-tipping per resident.",
         "The map of drive-time changes (figure 2) is in drive_time_change_lsoa.parquet and recycling_centres.parquet "
-        "(GeoParquet, British National Grid; centres for England only, as on the map), which open in QGIS, ArcGIS, R (sf) or Python (geopandas).",
+        "(GeoParquet, British National Grid; centres for England only, as on the map), which open in QGIS, ArcGIS, R (sf) or Python (geopandas). "
+        "lsoa_population_weighted_centroids.parquet has the point drive times are measured from for every neighbourhood.",
         "Sources: Defra and Welsh Government fly-tipping statistics; FixMyStreet (mySociety); ONS Census 2011 and 2021, "
         "population estimates and consumer prices index; council revenue outturn (MHCLG); Environment Agency and "
         "Natural Resources Wales site records. Open Government Licence v3.0. Code: github.com/kochal/litter.",
@@ -274,8 +281,34 @@ def map_layers():
     return len(g), int((g["change_min_2012_2024"] >= 3).sum()), int(pts["closed_2012_2023"].sum())
 
 
+def centroids():
+    from access_panel import lsoa_to_lad
+    from drive_time_map import change
+    raw = ROOT / "data" / "raw"
+    pwc = gpd.read_file(raw / "lsoa21_pwc.gpkg", columns=["LSOA21CD"])
+    attrs = gpd.read_file(raw / "lsoa21_bsc_ruc.gpkg", columns=["LSOA21CD", "LSOA21NM", "RUC21CD", "RUC21NM"],
+                          ignore_geometry=True)
+    lad = gpd.read_file(raw / "lad25_bgc.gpkg", columns=["LAD25CD", "LAD25NM"], ignore_geometry=True)
+    cen = pd.read_csv(ROOT / "data" / "interim" / "census_lsoa.csv")[["LSOA21CD", "residents", "households"]]
+    t = change().rename(columns={"t2012": "drive_min_2012", "t2024": "drive_min_2024",
+                                 "change": "change_min_2012_2024", "max_rise": "largest_rise_min"})
+    g = (pwc.merge(attrs, on="LSOA21CD", how="left").merge(lsoa_to_lad(), on="LSOA21CD", how="left")
+         .merge(lad, on="LAD25CD", how="left").merge(cen, on="LSOA21CD", how="left").merge(t, on="LSOA21CD", how="left"))
+    g = g.to_crs(27700)
+    g["easting"], g["northing"] = g.geometry.x.round(1), g.geometry.y.round(1)
+    ll = g.geometry.to_crs(4326)
+    g["lat"], g["lon"] = ll.y.round(6), ll.x.round(6)
+    g["nation"] = g["LSOA21CD"].str[0].map({"E": "England", "W": "Wales"})
+    cols = ["LSOA21CD", "LSOA21NM", "LAD25CD", "LAD25NM", "nation", "RUC21CD", "RUC21NM", "residents", "households",
+            "easting", "northing", "lat", "lon", "drive_min_2012", "drive_min_2024", "change_min_2012_2024",
+            "largest_rise_min", "geometry"]
+    g[cols].to_parquet(REP / "lsoa_population_weighted_centroids.parquet", index=False)
+    return len(g), int(g["drive_min_2012"].isna().sum())
+
+
 if __name__ == "__main__":
     REP.mkdir(exist_ok=True)
     d = json.loads((REP / "story_data.json").read_text())
     workbook(d).save(REP / "fly_tipping_story_data.xlsx")
     print("neighbourhoods, 3+ min longer, closures:", map_layers())
+    print("centroids, without drive times:", centroids())
